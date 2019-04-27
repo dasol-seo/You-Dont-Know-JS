@@ -1,6 +1,6 @@
-# You Don't Know JS (book series)
+# You Don't Know JS (시리즈 도서)
 
-이 책은 자바스크립트의 핵심 매커니즘에 대해 깊이 빠져 드는 시리즈 도서입니다. 이 시리즈의 초판이 이제 완성되었습니다.
+이 책은 자바스크립트의 핵심 매커니즘에 대해 자세히 다루는 시리즈 도서입니다. 이 시리즈의 초판이 이제 완성되었습니다.
 
 <a href="http://www.ebooks.com/1993212/you-don-t-know-js-up-going/simpson-kyle/"><img src="up %26 going/cover.jpg" width="75"></a>&nbsp;
 <a href="http://www.ebooks.com/1647631/you-don-t-know-js-scope-closures/simpson-kyle/"><img src="scope %26 closures/cover.jpg" width="75"></a>&nbsp;
@@ -15,12 +15,12 @@
 
 ## 목차
 
-* 온라인 문서 (무료!): ["Up & Going"](up\%20&\%20going/README.md#you-dont-know-js-up--going), 전자책: [구입하기](http://www.ebooks.com/1993212/you-don-t-know-js-up-going/simpson-kyle/) 출판 중이지만, 전자책은 무료!
-* Read online (free!): ["Scope & Closures"](scope\%20&\%20closures/README.md#you-dont-know-js-scope--closures), Published: [Buy Now](http://www.ebooks.com/1647631/you-don-t-know-js-scope-closures/simpson-kyle/)
-* Read online (free!): ["this & Object Prototypes"](this\%20&\%20object\%20prototypes/README.md#you-dont-know-js-this--object-prototypes), Published: [Buy Now](http://www.ebooks.com/1734321/you-don-t-know-js-this-object-prototypes/simpson-kyle/)
-* Read online (free!): ["Types & Grammar"](types\%20&\%20grammar/README.md#you-dont-know-js-types--grammar), Published: [Buy Now](http://www.ebooks.com/1935541/you-don-t-know-js-types-grammar/simpson-kyle/)
-* Read online (free!): ["Async & Performance"](async\%20&\%20performance/README.md#you-dont-know-js-async--performance), Published: [Buy Now](http://www.ebooks.com/1977375/you-don-t-know-js-async-performance/simpson-kyle/)
-* Read online (free!): ["ES6 & Beyond"](es6\%20&\%20beyond/README.md#you-dont-know-js-es6--beyond), Published: [Buy Now](http://www.ebooks.com/2481820/you-don-t-know-js-es6-beyond/simpson-kyle/)
+* 온라인으로 읽기 (무료!): ["Up & Going"](up\%20&\%20going/README.md#you-dont-know-js-up--going), 전자책: [구입하기](http://www.ebooks.com/1993212/you-don-t-know-js-up-going/simpson-kyle/) 출판 중이지만, 전자책은 무료입니다!
+* 온라인으로 읽기 (무료!): ["Scope & Closures"](scope\%20&\%20closures/README.md#you-dont-know-js-scope--closures), 전자책: [구입하기](http://www.ebooks.com/1647631/you-don-t-know-js-scope-closures/simpson-kyle/)
+* 온라인으로 읽기 (무료!): ["this & Object Prototypes"](this\%20&\%20object\%20prototypes/README.md#you-dont-know-js-this--object-prototypes), 전자책: [구입하기](http://www.ebooks.com/1734321/you-don-t-know-js-this-object-prototypes/simpson-kyle/)
+* 온라인으로 읽기 (무료!): ["Types & Grammar"](types\%20&\%20grammar/README.md#you-dont-know-js-types--grammar), 전자책: [구입하기](http://www.ebooks.com/1935541/you-don-t-know-js-types-grammar/simpson-kyle/)
+* 온라인으로 읽기 (무료!): ["Async & Performance"](async\%20&\%20performance/README.md#you-dont-know-js-async--performance), 전자책: [구입하기](http://www.ebooks.com/1977375/you-don-t-know-js-async-performance/simpson-kyle/)
+* 온라인으로 읽기 (무료!): ["ES6 & Beyond"](es6\%20&\%20beyond/README.md#you-dont-know-js-es6--beyond), 전자책: [구입하기](http://www.ebooks.com/2481820/you-don-t-know-js-es6-beyond/simpson-kyle/)
 
 ## 출판
 
