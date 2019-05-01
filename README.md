@@ -15,12 +15,12 @@
 
 ## 목차
 
-* 온라인으로 읽기 (무료!): ["Up & Going"](up\%20&\%20going/README.md#you-dont-know-js-up--going), 출판 되었음: [구입하기](http://www.ebooks.com/1993212/you-don-t-know-js-up-going/simpson-kyle/) 출판 중이지만, 전자책은 무료입니다!
-* 온라인으로 읽기 (무료!): ["Scope & Closures"](scope\%20&\%20closures/README.md#you-dont-know-js-scope--closures), 출판 되었음: [구입하기](http://www.ebooks.com/1647631/you-don-t-know-js-scope-closures/simpson-kyle/)
-* 온라인으로 읽기 (무료!): ["this & Object Prototypes"](this\%20&\%20object\%20prototypes/README.md#you-dont-know-js-this--object-prototypes), 출판 되었음: [구입하기](http://www.ebooks.com/1734321/you-don-t-know-js-this-object-prototypes/simpson-kyle/)
-* 온라인으로 읽기 (무료!): ["Types & Grammar"](types\%20&\%20grammar/README.md#you-dont-know-js-types--grammar), 출판 되었음: [구입하기](http://www.ebooks.com/1935541/you-don-t-know-js-types-grammar/simpson-kyle/)
-* 온라인으로 읽기 (무료!): ["Async & Performance"](async\%20&\%20performance/README.md#you-dont-know-js-async--performance), 출판 되었음: [구입하기](http://www.ebooks.com/1977375/you-don-t-know-js-async-performance/simpson-kyle/)
-* 온라인으로 읽기 (무료!): ["ES6 & Beyond"](es6\%20&\%20beyond/README.md#you-dont-know-js-es6--beyond), 출판 되었음: [구입하기](http://www.ebooks.com/2481820/you-don-t-know-js-es6-beyond/simpson-kyle/)
+* 온라인으로 읽기 (무료!): ["Up & Going"](up\%20&\%20going/README.md#you-dont-know-js-up--going), 출판 되었음: [구입하기](http://www.ebooks.com/1993212/you-don-t-know-js-up-going/simpson-kyle/) 출판 중이지만, 전자책은 무료입니다!
+* 온라인으로 읽기 (무료!): ["Scope & Closures"](scope\%20&\%20closures/README.md#you-dont-know-js-scope--closures), 출판 되었음: [구입하기](http://www.ebooks.com/1647631/you-don-t-know-js-scope-closures/simpson-kyle/)
+* 온라인으로 읽기 (무료!): ["this & Object Prototypes"](this\%20&\%20object\%20prototypes/README.md#you-dont-know-js-this--object-prototypes), 출판 되었음: [구입하기](http://www.ebooks.com/1734321/you-don-t-know-js-this-object-prototypes/simpson-kyle/)
+* 온라인으로 읽기 (무료!): ["Types & Grammar"](types\%20&\%20grammar/README.md#you-dont-know-js-types--grammar), 출판 되었음: [구입하기](http://www.ebooks.com/1935541/you-don-t-know-js-types-grammar/simpson-kyle/)
+* 온라인으로 읽기 (무료!): ["Async & Performance"](async\%20&\%20performance/README.md#you-dont-know-js-async--performance), 출판 되었음: [구입하기](http://www.ebooks.com/1977375/you-don-t-know-js-async-performance/simpson-kyle/)
+* 온라인으로 읽기 (무료!): ["ES6 & Beyond"](es6\%20&\%20beyond/README.md#you-dont-know-js-es6--beyond), 출판 되었음: [구입하기](http://www.ebooks.com/2481820/you-don-t-know-js-es6-beyond/simpson-kyle/)
 
 ## 출판
 
