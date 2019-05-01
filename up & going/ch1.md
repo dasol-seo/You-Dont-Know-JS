@@ -415,37 +415,41 @@ By the way, that kind of "protection" against mistakes is similar to the static-
 
 **Note:** For more information about how different values in variables can be used in your programs, see the *Types & Grammar* title of this series.
 
-## Blocks
+## 블록
 
-The phone store employee must go through a series of steps to complete the checkout as you buy your new phone.
+여러분이 새 휴대폰을 사려고 할 때, 휴대폰 대리점 직원은 일련의 단계를 거쳐 판매를 완료합니다.
 
-Similarly, in code we often need to group a series of statements together, which we often call a *block*. In JavaScript, a block is defined by wrapping one or more statements inside a curly-brace pair `{ .. }`. Consider:
+
+
+마찬가지로, 코드에서 일련의 구문을 그룹화해야 하는 경우가 종종 있습니다. 자바스크립트에서 블록은 중괄호 쌍 `{ .. }` 안에 하나 이상의 구문을 감싸서 정의됩니다.
+
+생각해보세요:
 
 ```js
 var amount = 99.99;
 
-// a general block
+// 일반 블록
 {
 	amount = amount * 2;
 	console.log( amount );	// 199.98
 }
 ```
 
-This kind of standalone `{ .. }` general block is valid, but isn't as commonly seen in JS programs. Typically, blocks are attached to some other control statement, such as an `if` statement (see "Conditionals") or a loop (see "Loops"). For example:
+이런 종류의 독립적인  `{ .. }` 일반 블록은 유효하지만, JS 프로그램에서 일반적으로 볼 수 있지 않습니다. 일반적으로 블록은 `if` 문 ("조건"을 참고하세요) 이나 반복문 ("반복"을 참고하세요) 과 같은 제어문에 덧붙여집니다. 다음과 같이요:
 
 ```js
 var amount = 99.99;
 
-// is amount big enough?
-if (amount > 10) {			// <-- block attached to `if`
+// amount가 충분히 클까요?
+if (amount > 10) {			// <-- 블록이 `if`에 덧붙여졌습니다
 	amount = amount * 2;
 	console.log( amount );	// 199.98
 }
 ```
 
-We'll explain `if` statements in the next section, but as you can see, the `{ .. }` block with its two statements is attached to `if (amount > 10)`; the statements inside the block will only be processed if the conditional passes.
+아래 부분의 `if` 문에서 볼 수 있듯이, 두개의 구문이 포함된 `{ .. }` 블록은 `if (amount > 10)` 에 덧붙여집니다. 블록안의 구문은 조건을 통과하는 경우에만 실행됩니다.
 
-**Note:** Unlike most other statements like `console.log(amount);`, a block statement does not need a semicolon (`;`) to conclude it.
+**참고:** `console.log(amout);` 와 같은 대부분의 다른 구문들과는 달리, 블록은 세미콜론(`;`)이 필요하지 않습니다.
 
 ## Conditionals
 
