@@ -158,28 +158,28 @@ Once you submit the input text by clicking "OK," you'll observe that the value y
 
 To keep things simple while we're learning basic programming concepts, the examples in this book will not require input. But now that you've seen how to use `prompt(..)`, if you want to challenge yourself you can try to use input in your explorations of the examples.
 
-## Operators
+## 연산자
 
-Operators are how we perform actions on variables and values. We've already seen two JavaScript operators, the `=` and the `*`.
+연산자는 변수와 값에 대해 어떠한 행동을 수행하기 위한 방법입니다. 우리는 이미 `=` 와 `*`, 두개의 자바스크립트 연산자를 보았습니다.
 
-The `*` operator performs mathematic multiplication. Simple enough, right?
+`*` 연산자는 수학적으로 곱하기 연산을 수행합니다. 간단하죠?
 
-The `=` equals operator is used for *assignment* -- we first calculate the value on the *right-hand side* (source value) of the `=` and then put it into the variable that we specify on the *left-hand side* (target variable).
+`=` 동등 연산자는 보통 *할당*에 사용합니다. 첫번째로 우리는 `=` 연산자의 *오른쪽 부분*부터(값) 계산한 후 왼편(변수)에서 미리 정해놓은 변수에 할당합니다.
 
-**Warning:** This may seem like a strange reverse order to specify assignment. Instead of `a = 42`, some might prefer to flip the order so the source value is on the left and the target variable is on the right, like `42 -> a` (this is not valid JavaScript!). Unfortunately, the `a = 42` ordered form, and similar variations, is quite prevalent in modern programming languages. If it feels unnatural, just spend some time rehearsing that ordering in your mind to get accustomed to it.
+**경고:** 여러분 중 몇몇은 `a = 42` 대신 `42 -> a`(이 형식은 자바스크립트에서는 사용할 수 없습니다.)처럼 순서를 뒤집어서 왼편에는 값, 오른편에는 변수를 넣는 형식이 익숙해서, 할당을 역순으로 표현하는 것이 이상하게 보일 수 있습니다. 안타깝지만, 현대의 여러 프로그래밍 언어는 `a = 42`와 같은 비슷한 형식을 주로 사용하고 있습니다. 만약 이러한 할당 방식이 자연스럽지 않다고 느낀다면, 시간을 들여 연습하고 익숙해져야 합니다.
 
-Consider:
+생각해봅시다:
 
 ```js
 a = 2;
 b = a + 1;
 ```
 
-Here, we assign the `2` value to the `a` variable. Then, we get the value of the `a` variable (still `2`), add `1` to it resulting in the value `3`, then store that value in the `b` variable.
+위 코드에서, 우리는 변수 `a`에 `2`값을 할당합니다. 그런 다음 변수 값 `a`(아직은 `2`)를 갖고 여기에 `1`을 추가하여 값 `3`을 만든 다음 그 값을 `b` 변수에 저장합니다.
 
-While not technically an operator, you'll need the keyword `var` in every program, as it's the primary way you *declare* (aka *create*) *var*iables (see "Variables").
+연산자를 설명하는 지금 단락에서 관련된 기술적인 얘기는 아니지만, 여러분은 모든 프로그래밍에서 변수("Variables")를 선언(혹은 *생성*)하기 위한 방법으로 보통 `var` 키워드를 필요로 할 것입니다. 
 
-You should always declare the variable by name before you use it. But you only need to declare a variable once for each *scope* (see "Scope"); it can be used as many times after that as needed. For example:
+여러분은 변수를 사용하기 전에 항상 이름과 함께 선언해야합니다. 물론 각 범위("Scope")에서 한번만 선언하고 그 후에는 얼마든지 그 변수를 사용할 수 있습니다. 예를 들어:
 
 ```js
 var a = 20;
@@ -190,26 +190,32 @@ a = a * 2;
 console.log( a );	// 42
 ```
 
-Here are some of the most common operators in JavaScript:
+아래는 자바스크립트에서 흔하게 사용하는 연산자들입니다:
 
-* Assignment: `=` as in `a = 2`.
-* Math: `+` (addition), `-` (subtraction), `*` (multiplication), and `/` (division), as in `a * 3`.
-* Compound Assignment: `+=`, `-=`, `*=`, and `/=` are compound operators that combine a math operation with assignment, as in `a += 2` (same as `a = a + 2`).
-* Increment/Decrement: `++` (increment), `--` (decrement), as in `a++` (similar to `a = a + 1`).
-* Object Property Access: `.` as in `console.log()`.
+* 할당(Assignment): `=`는 `a = 2`와 같이 사용한다.
 
-   Objects are values that hold other values at specific named locations called properties. `obj.a` means an object value called `obj` with a property of the name `a`. Properties can alternatively be accessed as `obj["a"]`. See Chapter 2.
-* Equality: `==` (loose-equals), `===` (strict-equals), `!=` (loose not-equals), `!==` (strict not-equals), as in `a == b`.
+* 수학적 계산: `+` 더하기(addition), `-` 빼기(subtraction), `*` 곱하기(multiplication), 그리고 `/` 나누기(division), 이는 `a * 3`과 같이 사용합니다.
 
-   See "Values & Types" and Chapter 2.
-* Comparison: `<` (less than), `>` (greater than), `<=` (less than or loose-equals), `>=` (greater than or loose-equals), as in `a <= b`.
+* 혼합 할당(Compound Assignment): `+=`, `-=`, `*=`, 그리고 `/=`는 수학적 연산자와 할당 연산자를 결합하여 사용하는 혼합 연산자입니다. 이는 `a += 2`와 같이 사용합니다. (`a = a + 2`와 같은 의미입니다.)
 
-   See "Values & Types" and Chapter 2.
-* Logical: `&&` (and), `||` (or), as in `a || b` that selects either `a` *or* `b`.
+* 증감(Increment)/감소(Decrement): `++` (증감), `--` (감소), 이는 `a++`와 같이 사용합니다.(`a = a + 1`와 같은 의미입니다.)
 
-   These operators are used to express compound conditionals (see "Conditionals"), like if either `a` *or* `b` is true.
+* 객체 속성 접근자(Object Property Access): `.` 이는 `console.log()`와 같이 사용합니다.
+
+   객체는 속성이라고 불리는 위치에 특정한 이름과 함께 저장된 값들을 가지고 있는 값입니다. `obj.a`는 `obj`라고 불리는 객체의 `a`라는 속성을 값을 의미합니다. 또한 속성들은 `obj["a"]`으로도 접근이 가능합니다. 이는 Chapter 2에서 더 다루겠습니다.
+
+* 동등(Equality): `==` 느슨한 동등(loose-equals), `===` 엄격한 동등(strict-equals), `!=` 느슨한 동등하지 않음(loose not-equals), `!==` 엄격한 동등하지 않음(strict not-equals), 이는 `a == b`와 같이 사용합니다. 이는 Chapter 2와 "Values & Types"에서 더 다루겠습니다.
+
+* 비교(Comparison): `<` 미만(less than), `>` 초과(greater than), `<=` 이하(less than or loose-equals), `>=` 이상(greater than or loose-equals), 이는 `a <= b`와 같이 사용합니다. 
+
+   이는 Chapter 2에서 더 다루겠습니다.
+
+* 논리(Logical): `&&` 그리고(and), `||` 또는(or), 이는 `a || b`와 같이 사용하며 `a` 또는 `b`를 선택합니다. 
+   이 연산자들은 `a` 또는 `b` 중 true를 구하기 위한 식처럼 복합적인 조건("Conditionals")을 표현하기 위하여 사용합니다.
 
 **Note:** For much more detail, and coverage of operators not mentioned here, see the Mozilla Developer Network (MDN)'s "Expressions and Operators" (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators).
+
+**알림:** 더 자세한 내용과, 여기서 언급하지 않은 연산자에 대한 얘기는, Mozilla Developer Network (MDN)의 "Expressions and Operators" (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators)대한 항목을 보는 것이 좋습니다.
 
 ## Values & Types
 
