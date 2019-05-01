@@ -30,7 +30,7 @@
 
 책을 구입하는 것 외에 이 일에(혹은 다른 OSS 작업) 재정적으로 기여하길 원하신다면, 저는 여러분의 아낌없는 지원([patreon](https://www.patreon.com/getify))에 항상 감사할 것입니다.
 
-<a href="https://www.patreon.com/getify">[![patreon.png](https://s11.postimg.org/axpzguh77/patreon.png)](https://www.patreon.com/getify)</a>
+<a href="https://www.patreon.com/getify">[![patreon.png](https://c5.patreon.com/external/logo/become_a_patron_button.png)](https://www.patreon.com/getify)</a>
 
 ## 오프라인 교육
 
