@@ -219,8 +219,7 @@ console.log( a );	// 42
 
 ## Values & Types
 
-If you ask an employee at a phone store how much a certain phone costs, and they say "ninety-nine, ninety-nine" (i.e., $99.99), they're giving you an actual numeric dollar figure that represents what you'll need to pay (plus taxes) to buy it. If you want to buy two of those phones, you can easily do the mental math to double that value to get $199.98 for your base cost.
-
+만약 여러분이 핸드폰 가게의 점원에게 어떤 핸드폰의 가격을 물어봤다고 가정해봅시다. 이때 점원은 여러분에게 핸드폰을 구입하기 위해 지불해야할 금액(세금을 포함한) $99.99라는 숫자(금액)를 말해줄 것입니다. 이러한 직접적인 숫자는 여러분이 핸드폰 두개를 구매한다고 생각했을 때 $199.98이란 금액을 쉽게 암산할 수 있게 합니다. 
 If that same employee picks up another similar phone but says it's "free" (perhaps with air quotes), they're not giving you a number, but instead another kind of representation of your expected cost ($0.00) -- the word "free."
 
 When you later ask if the phone includes a charger, that answer could only have been either "yes" or "no."
