@@ -449,13 +449,13 @@ if (amount > 10) {			// <-- 블록이 `if`에 덧붙여졌습니다
 
 **참고:** `console.log(amout);` 와 같은 대부분의 다른 구문들과는 달리, 블록은 세미콜론(`;`)이 필요하지 않습니다.
 
-## Conditionals
+## 조건부
 
-"Do you want to add on the extra screen protectors to your purchase, for $9.99?" The helpful phone store employee has asked you to make a decision. And you may need to first consult the current *state* of your wallet or bank account to answer that question. But obviously, this is just a simple "yes or no" question.
+"액정 보호 필름을 $9.99에 추가로 구매하시겠습니까?" 라며 휴대폰 대리점 직원이 구매 의사를 물어봅니다. 그리고 여러분은 대답하기 위해 우선 지갑이나 은행 계좌의 잔고를 확인해야 할 수도 있습니다. 하지만 확실한 것은, 이것은 단순히 "예" 혹은 "아니오"라고 대답하면 되는 질문이라는 것입니다.
 
-There are quite a few ways we can express *conditionals* (aka decisions) in our programs.
+프로그램에서 조건부(일명 결정)를 표현하는 데는 몇 가지 방법이 있습니다.
 
-The most common one is the `if` statement. Essentially, you're saying, "*If* this condition is true, do the following...". For example:
+가장 일반적인 방법은 `if` 문 입니다. 핵심은 , "*만약* 이 조건이 참이라면, 다음을 따르십시오...". 예를 들면:
 
 ```js
 var bank_balance = 302.13;
@@ -466,9 +466,9 @@ if (amount < bank_balance) {
 }
 ```
 
-The `if` statement requires an expression in between the parentheses `( )` that can be treated as either `true` or `false`. In this program, we provided the expression `amount < bank_balance`, which indeed will either evaluate to `true` or `false` depending on the amount in the `bank_balance` variable.
+`if` 문은 `( )` 괄호 사이에 `true` 나 `false` 로 평가될 수 있는 표현식이 필요합니다. 이 프로그램에는 `bank_balance` 변수의 크기에 따라서 `true` 혹은 `false` 로 평가되는  `amount < bank_balance` 표현식이 있습니다.
 
-You can even provide an alternative if the condition isn't true, called an `else` clause. Consider:
+조건이 참이 아닐때는 `else` 절이라 불리는 대안을 마련할 수도 있습니다. 다음을 보세요:
 
 ```js
 const ACCESSORY_PRICE = 9.99;
@@ -478,20 +478,20 @@ var amount = 99.99;
 
 amount = amount * 2;
 
-// can we afford the extra purchase?
+// 추가 구매를 감당할 수 있을까요?
 if ( amount < bank_balance ) {
 	console.log( "I'll take the accessory!" );
 	amount = amount + ACCESSORY_PRICE;
 }
-// otherwise:
+// 그렇지 않다면:
 else {
 	console.log( "No, thanks." );
 }
 ```
 
-Here, if `amount < bank_balance` is `true`, we'll print out `"I'll take the accessory!"` and add the `9.99` to our `amount` variable. Otherwise, the `else` clause says we'll just politely respond with `"No, thanks."` and leave `amount` unchanged.
+보세요, 만약 `amount < bank_balance` 가 `true` 라면  `"I'll take the accessory!"` 가 출력되고  `amount` 변수에 `9.99` 가 더해질 것 입니다. 그렇지 않다면,  `else` 절에서 정중하게  `"No, thanks."` 를 출력하고  `amount` 는 변경하지 않을 것입니다.
 
-As we discussed in "Values & Types" earlier, values that aren't already of an expected type are often coerced to that type. The `if` statement expects a `boolean`, but if you pass it something that's not already `boolean`, coercion will occur.
+앞서 "Values & Types"에서 논의한 바와 같이, values that aren't already of an expected type are often coerced to that type. The `if` statement expects a `boolean`, but if you pass it something that's not already `boolean`, coercion will occur.
 
 JavaScript defines a list of specific values that are considered "falsy" because when coerced to a `boolean`, they become `false` -- these include values like `0` and `""`. Any other value not on the "falsy" list is automatically "truthy" -- when coerced to a `boolean` they become `true`. Truthy values include things like `99.99` and `"free"`. See "Truthy & Falsy" in Chapter 2 for more information.
 
