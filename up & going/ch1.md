@@ -491,13 +491,13 @@ else {
 
 보세요, 만약 `amount < bank_balance` 가 `true` 라면  `"I'll take the accessory!"` 가 출력되고  `amount` 변수에 `9.99` 가 더해질 것 입니다. 그렇지 않다면,  `else` 절에서 정중하게  `"No, thanks."` 를 출력하고  `amount` 는 변경하지 않을 것입니다.
 
-앞서 "Values & Types"에서 논의한 바와 같이, values that aren't already of an expected type are often coerced to that type. The `if` statement expects a `boolean`, but if you pass it something that's not already `boolean`, coercion will occur.
+앞서 "Values & Types"에서 논의한 바와 같이, 이미 추정된 타입이 아닌 값은 종종 그 타입으로 강제 형변환 됩니다. `if` 문은 `boolean` 값을 기대하지만, `boolean` 이 아닌 다른 것을 전달하면 강제 형변환 됩니다.
 
-JavaScript defines a list of specific values that are considered "falsy" because when coerced to a `boolean`, they become `false` -- these include values like `0` and `""`. Any other value not on the "falsy" list is automatically "truthy" -- when coerced to a `boolean` they become `true`. Truthy values include things like `99.99` and `"free"`. See "Truthy & Falsy" in Chapter 2 for more information.
+자바스크립트는  "거짓"으로 간주되는 특정 값(`boolean`으로 강제 형변환 될 때 `false`가 되는 값들 --`0`이나 `""` 등)들의 목록을 정의합니다. 이 목록에 없는 다른 모든 값들은 자동으로 "참"(`boolean`으로 강제 형변환 하면 `true`가 되는 값들)입니다. "참"값에는 `99.99`나 `"free"`와 같은 값이 포함됩니다. 2장의 "Truthy & Falsy"항목에서 더 자세한 내용을 참고해주세요.
 
-*Conditionals* exist in other forms besides the `if`. For example, the `switch` statement can be used as a shorthand for a series of `if..else` statements (see Chapter 2). Loops (see "Loops") use a *conditional* to determine if the loop should keep going or stop.
+*조건부*는 `if`이외의 다른 형태도 있습니다. 예를들어, `switch`문은 일련의 `if..else`문에 대한 축약어로 사용될 수 있습니다 (2장 참조). 반복("반복" 참조)은 *조건부*를 사용하여 반복을 계속 진행할 지 또는 중지할지를 결정합니다.
 
-**Note:** For deeper information about the coercions that can occur implicitly in the test expressions of *conditionals*, see Chapter 4 of the *Types & Grammar* title of this series.
+**참고:** *조건부*의 조건식에서 암시적으로 발생할 수 있는 강제 타입변환에 대한 더 자세한 내용은 이 시리즈 중 *Types & Grammar*의 4장을 참조해주세요.
 
 ## Loops
 
