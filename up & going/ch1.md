@@ -499,39 +499,41 @@ else {
 
 **참고:** *조건부*의 조건식에서 암시적으로 발생할 수 있는 강제 타입변환에 대한 더 자세한 내용은 이 시리즈 중 *Types & Grammar*의 4장을 참조해주세요.
 
-## Loops
+## 반복
 
-During busy times, there's a waiting list for customers who need to speak to the phone store employee. While there's still people on that list, she just needs to keep serving the next customer.
+한창 바쁠 때에는, 휴대폰 대리점 직원과 통화를 해야 하는 통화 대기 고객 명단이 생깁니다. 그 목록에는 여전히 손님들이 있지만, 직원은 단지 다음 손님을 계속 응대해야 합니다.
 
-Repeating a set of actions until a certain condition fails -- in other words, repeating only while the condition holds -- is the job of programming loops; loops can take different forms, but they all satisfy this basic behavior.
+특정 조건이 실패할때까지 일련의 동작을 반복 -- 즉, 조건이 유지되는 동안만 반복 -- 하는 것이 프로그래밍 반복의 작업입니다.; 반복은 다른 형태를 취할 수 있지만, 모두 이 기본 행동을 만족합니다.
 
-A loop includes the test condition as well as a block (typically as `{ .. }`). Each time the loop block executes, that's called an *iteration*.
 
-For example, the `while` loop and the `do..while` loop forms illustrate the concept of repeating a block of statements until a condition no longer evaluates to `true`:
+반복문은 조건식과 (일반적으로 `{ .. }`와 같은)블록을 포함합니다. 반복문 블록이 실행될 때 마다, 이를 *반복*이라고 합니다.
+
+
+예를 들어, `while` 문과 `do..while`문 형식은 조건이 더 이상 `true`가 아닌 것으로 평가될 때 까지 구문 블록을 반복하는 개념을 보여줍니다.:
 
 ```js
 while (numOfCustomers > 0) {
 	console.log( "How may I help you?" );
 
-	// help the customer...
+	// 손님을 도와줍니다...
 
 	numOfCustomers = numOfCustomers - 1;
 }
 
-// versus:
+// 한편:
 
 do {
 	console.log( "How may I help you?" );
 
-	// help the customer...
+	// 손님을 도와줍니다...
 
 	numOfCustomers = numOfCustomers - 1;
 } while (numOfCustomers > 0);
 ```
 
-The only practical difference between these loops is whether the conditional is tested before the first iteration (`while`) or after the first iteration (`do..while`).
+이 두가지 반복문의 단 한가지 유일한 차이점은 조건문이 첫 번째 반복 이전에 검사되는지 (`while`) 아니면 첫 번째 반복 이후에 검사되는지 (`do..while`) 입니다.
 
-In either form, if the conditional tests as `false`, the next iteration will not run. That means if the condition is initially `false`, a `while` loop will never run, but a `do..while` loop will run just the first time.
+어느 형식이든, 조건식 검사가 `false`인 경우, 다음 반복은 실행되지 않습니다. 즉, 조건식이 처음부터 `false`이면, `while`문은 전혀 실행되지 않지만, `do..while`문은 첫번째 반복은 실행될 것 입니다.
 
 Sometimes you are looping for the intended purpose of counting a certain set of numbers, like from `0` to `9` (ten numbers). You can do that by setting a loop iteration variable like `i` at value `0` and incrementing it by `1` each iteration.
 
