@@ -535,22 +535,22 @@ do {
 
 어느 형식이든, 조건식 검사가 `false`인 경우, 다음 반복은 실행되지 않습니다. 즉, 조건식이 처음부터 `false`이면, `while`문은 전혀 실행되지 않지만, `do..while`문은 첫번째 반복은 실행될 것 입니다.
 
-Sometimes you are looping for the intended purpose of counting a certain set of numbers, like from `0` to `9` (ten numbers). You can do that by setting a loop iteration variable like `i` at value `0` and incrementing it by `1` each iteration.
+때때로 여러분은 특정 범위의 수(`0` 부터 `9` 까지의 10개의 수 처럼)를 세기 위해 반복을 합니다. 반복문에서 `i`와 같은 반복 변수를 0으로 설정하고 매 반복마다 `1`씩 증가시킴으로써 이렇게 할 수 있습니다.
 
-**Warning:** For a variety of historical reasons, programming languages almost always count things in a zero-based fashion, meaning starting with `0` instead of `1`. If you're not familiar with that mode of thinking, it can be quite confusing at first. Take some time to practice counting starting with `0` to become more comfortable with it!
+**주의:** 다양한 역사적 이유로, 프로그래밍 언어는 거의 대부분 `1`대신 `0`부터 수를 세는 유행이 있습니다. 여러분이 이렇게 생각하는 방식에 익숙하지 않다면, 처음에는 조금 혼란스러울 것 입니다. 좀 더 익숙해 질 수 있도록 잠시 시간을 갖고 `0`부터 수를 세는 연습을 해보세요!
 
-The conditional is tested on each iteration, much as if there is an implied `if` statement inside the loop.
+조건문은 루프 안에 암묵적인 `if`문이 있는 것처럼, 매 반복마다 검사됩니다.
 
-We can use JavaScript's `break` statement to stop a loop. Also, we can observe that it's awfully easy to create a loop that would otherwise run forever without a `break`ing mechanism.
+자바스크립트의 `break`문을 사용해 반복을 멈출 수 있습니다. 또한, 멈추는(`break`ing) 방법이 없이 영원히 돌아가는 루프를 만드는 것이 정말로 쉽다는 것도 알 수 있습니다.
 
-Let's illustrate:
+한번 확인해볼까요:
 
 ```js
 var i = 0;
 
-// a `while..true` loop would run forever, right?
+// `while..true`루프가 영원히 실행되겠죠?
 while (true) {
-	// stop the loop?
+	// 루프를 멈춰볼까요?
 	if ((i <= 9) === false) {
 		break;
 	}
@@ -561,7 +561,7 @@ while (true) {
 // 0 1 2 3 4 5 6 7 8 9
 ```
 
-**Warning:** This is not necessarily a practical form you'd want to use for your loops. It's presented here for illustration purposes only.
+**주의:** This is not necessarily a practical form you'd want to use for your loops. It's presented here for illustration purposes only.
 
 While a `while` (or `do..while`) can accomplish the task manually, there's another syntactic form called a `for` loop for just that purpose:
 
