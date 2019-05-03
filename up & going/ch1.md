@@ -561,9 +561,9 @@ while (true) {
 // 0 1 2 3 4 5 6 7 8 9
 ```
 
-**주의:** This is not necessarily a practical form you'd want to use for your loops. It's presented here for illustration purposes only.
+**주의:** 이것이 반드시 루프에 사용하기 원하는 실용적인 형식은 아닙니다. 단지 설명하기 위한 목적으로 보여드렸습니다.
 
-While a `while` (or `do..while`) can accomplish the task manually, there's another syntactic form called a `for` loop for just that purpose:
+`while`(혹은 `do..while`)이 수동으로 작업을 수행할 수 있는 반면에, 같은 목적을 위한 `for`문 이라는 또 다른 구문 형식이 있습니다.:
 
 ```js
 for (var i = 0; i <= 9; i = i + 1) {
@@ -572,11 +572,11 @@ for (var i = 0; i <= 9; i = i + 1) {
 // 0 1 2 3 4 5 6 7 8 9
 ```
 
-As you can see, in both cases the conditional `i <= 9` is `true` for the first 10 iterations (`i` of values `0` through `9`) of either loop form, but becomes `false` once `i` is value `10`.
+보시다시피, 두 가지 경우 모두 첫 10번의 반복(`i`가 `0`부터 `9`까지)에 대해서는 조건식 `i <= 9`가 `true`가 됩니다. 하지만 `i`가 `10`일때 조건식은 `false`가 됩니다.
 
-The `for` loop has three clauses: the initialization clause (`var i=0`), the conditional test clause (`i <= 9`), and the update clause (`i = i + 1`). So if you're going to do counting with your loop iterations, `for` is a more compact and often easier form to understand and write.
+`for`루프 에는 세개의 절이 있습니다.: 초기화 절(`var i=0`), 조건 검사 절(`i <= 9`), 갱신 절(`i = i + 1`). 따라서 루프 반복 횟수를 세보려면 `for`은 더 간단하며 이해하고 작성하기에 쉬운 형식입니다.
 
-There are other specialized loop forms that are intended to iterate over specific values, such as the properties of an object (see Chapter 2) where the implied conditional test is just whether all the properties have been processed. The "loop until a condition fails" concept holds no matter what the form of the loop.
+예를 들어, 암시적 조건 검사가 단지 모든 속성이 처리되었는지의 여부인 객체(2장 참고)의 속성같은 특정 값들을 반복하기 위한 또 다른 특별한 루프 형식이 있습니다. "조건이 실패할때까지 반복" 개념은 루프의 형식에 상관없이 유지됩니다.
 
 ## Functions
 
