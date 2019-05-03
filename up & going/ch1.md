@@ -449,13 +449,13 @@ if (amount > 10) {			// <-- 블록이 `if`에 덧붙여졌습니다
 
 **참고:** `console.log(amout);` 와 같은 대부분의 다른 구문들과는 달리, 블록은 세미콜론(`;`)이 필요하지 않습니다.
 
-## Conditionals
+## 조건부
 
-"Do you want to add on the extra screen protectors to your purchase, for $9.99?" The helpful phone store employee has asked you to make a decision. And you may need to first consult the current *state* of your wallet or bank account to answer that question. But obviously, this is just a simple "yes or no" question.
+"액정 보호 필름을 $9.99에 추가로 구매하시겠습니까?" 라며 휴대폰 대리점 직원이 구매 의사를 물어봅니다. 그리고 여러분은 대답하기 위해 우선 지갑이나 은행 계좌의 잔고를 확인해야 할 수도 있습니다. 하지만 확실한 것은, 이것은 단순히 "예" 혹은 "아니오"라고 대답하면 되는 질문이라는 것입니다.
 
-There are quite a few ways we can express *conditionals* (aka decisions) in our programs.
+프로그램에서 조건부(일명 결정)를 표현하는 데는 몇 가지 방법이 있습니다.
 
-The most common one is the `if` statement. Essentially, you're saying, "*If* this condition is true, do the following...". For example:
+가장 일반적인 방법은 `if` 문 입니다. 핵심은 , "*만약* 이 조건이 참이라면, 다음을 따르십시오...". 예를 들면:
 
 ```js
 var bank_balance = 302.13;
@@ -466,9 +466,9 @@ if (amount < bank_balance) {
 }
 ```
 
-The `if` statement requires an expression in between the parentheses `( )` that can be treated as either `true` or `false`. In this program, we provided the expression `amount < bank_balance`, which indeed will either evaluate to `true` or `false` depending on the amount in the `bank_balance` variable.
+`if` 문은 `( )` 괄호 사이에 `true` 나 `false` 로 평가될 수 있는 표현식이 필요합니다. 이 프로그램에는 `bank_balance` 변수의 크기에 따라서 `true` 혹은 `false` 로 평가되는  `amount < bank_balance` 표현식이 있습니다.
 
-You can even provide an alternative if the condition isn't true, called an `else` clause. Consider:
+조건이 참이 아닐때는 `else` 절이라 불리는 대안을 마련할 수도 있습니다. 다음을 보세요:
 
 ```js
 const ACCESSORY_PRICE = 9.99;
@@ -478,77 +478,79 @@ var amount = 99.99;
 
 amount = amount * 2;
 
-// can we afford the extra purchase?
+// 추가 구매를 감당할 수 있을까요?
 if ( amount < bank_balance ) {
 	console.log( "I'll take the accessory!" );
 	amount = amount + ACCESSORY_PRICE;
 }
-// otherwise:
+// 그렇지 않다면:
 else {
 	console.log( "No, thanks." );
 }
 ```
 
-Here, if `amount < bank_balance` is `true`, we'll print out `"I'll take the accessory!"` and add the `9.99` to our `amount` variable. Otherwise, the `else` clause says we'll just politely respond with `"No, thanks."` and leave `amount` unchanged.
+보세요, 만약 `amount < bank_balance` 가 `true` 라면  `"I'll take the accessory!"` 가 출력되고  `amount` 변수에 `9.99` 가 더해질 것 입니다. 그렇지 않다면,  `else` 절에서 정중하게  `"No, thanks."` 를 출력하고  `amount` 는 변경하지 않을 것입니다.
 
-As we discussed in "Values & Types" earlier, values that aren't already of an expected type are often coerced to that type. The `if` statement expects a `boolean`, but if you pass it something that's not already `boolean`, coercion will occur.
+앞서 "Values & Types"에서 논의한 바와 같이, 이미 추정된 타입이 아닌 값은 종종 그 타입으로 강제 형변환 됩니다. `if` 문은 `boolean` 값을 기대하지만, `boolean` 이 아닌 다른 것을 전달하면 강제 형변환 됩니다.
 
-JavaScript defines a list of specific values that are considered "falsy" because when coerced to a `boolean`, they become `false` -- these include values like `0` and `""`. Any other value not on the "falsy" list is automatically "truthy" -- when coerced to a `boolean` they become `true`. Truthy values include things like `99.99` and `"free"`. See "Truthy & Falsy" in Chapter 2 for more information.
+자바스크립트는  "거짓"으로 간주되는 특정 값(`boolean`으로 강제 형변환 될 때 `false`가 되는 값들 --`0`이나 `""` 등)들의 목록을 정의합니다. 이 목록에 없는 다른 모든 값들은 자동으로 "참"(`boolean`으로 강제 형변환 하면 `true`가 되는 값들)입니다. "참"값에는 `99.99`나 `"free"`와 같은 값이 포함됩니다. 2장의 "Truthy & Falsy"항목에서 더 자세한 내용을 참고해주세요.
 
-*Conditionals* exist in other forms besides the `if`. For example, the `switch` statement can be used as a shorthand for a series of `if..else` statements (see Chapter 2). Loops (see "Loops") use a *conditional* to determine if the loop should keep going or stop.
+*조건부*는 `if`이외의 다른 형태도 있습니다. 예를들어, `switch`문은 일련의 `if..else`문에 대한 축약어로 사용될 수 있습니다 (2장 참조). 반복("반복" 참조)은 *조건부*를 사용하여 반복을 계속 진행할 지 또는 중지할지를 결정합니다.
 
-**Note:** For deeper information about the coercions that can occur implicitly in the test expressions of *conditionals*, see Chapter 4 of the *Types & Grammar* title of this series.
+**참고:** *조건부*의 조건식에서 암시적으로 발생할 수 있는 강제 타입변환에 대한 더 자세한 내용은 이 시리즈 중 *Types & Grammar*의 4장을 참조해주세요.
 
-## Loops
+## 반복
 
-During busy times, there's a waiting list for customers who need to speak to the phone store employee. While there's still people on that list, she just needs to keep serving the next customer.
+한창 바쁠 때에는, 휴대폰 대리점 직원과 통화를 해야 하는 통화 대기 고객 명단이 생깁니다. 그 목록에는 여전히 손님들이 있지만, 직원은 단지 다음 손님을 계속 응대해야 합니다.
 
-Repeating a set of actions until a certain condition fails -- in other words, repeating only while the condition holds -- is the job of programming loops; loops can take different forms, but they all satisfy this basic behavior.
+특정 조건이 실패할때까지 일련의 동작을 반복 -- 즉, 조건이 유지되는 동안만 반복 -- 하는 것이 프로그래밍 반복의 작업입니다.; 반복은 다른 형태를 취할 수 있지만, 모두 이 기본 행동을 만족합니다.
 
-A loop includes the test condition as well as a block (typically as `{ .. }`). Each time the loop block executes, that's called an *iteration*.
 
-For example, the `while` loop and the `do..while` loop forms illustrate the concept of repeating a block of statements until a condition no longer evaluates to `true`:
+반복문은 조건식과 (일반적으로 `{ .. }`와 같은)블록을 포함합니다. 반복문 블록이 실행될 때 마다, 이를 *반복*이라고 합니다.
+
+
+예를 들어, `while` 문과 `do..while`문 형식은 조건이 더 이상 `true`가 아닌 것으로 평가될 때 까지 구문 블록을 반복하는 개념을 보여줍니다.:
 
 ```js
 while (numOfCustomers > 0) {
 	console.log( "How may I help you?" );
 
-	// help the customer...
+	// 손님을 도와줍니다...
 
 	numOfCustomers = numOfCustomers - 1;
 }
 
-// versus:
+// 한편:
 
 do {
 	console.log( "How may I help you?" );
 
-	// help the customer...
+	// 손님을 도와줍니다...
 
 	numOfCustomers = numOfCustomers - 1;
 } while (numOfCustomers > 0);
 ```
 
-The only practical difference between these loops is whether the conditional is tested before the first iteration (`while`) or after the first iteration (`do..while`).
+이 두가지 반복문의 단 한가지 유일한 차이점은 조건문이 첫 번째 반복 이전에 검사되는지 (`while`) 아니면 첫 번째 반복 이후에 검사되는지 (`do..while`) 입니다.
 
-In either form, if the conditional tests as `false`, the next iteration will not run. That means if the condition is initially `false`, a `while` loop will never run, but a `do..while` loop will run just the first time.
+어느 형식이든, 조건식 검사가 `false`인 경우, 다음 반복은 실행되지 않습니다. 즉, 조건식이 처음부터 `false`이면, `while`문은 전혀 실행되지 않지만, `do..while`문은 첫번째 반복은 실행될 것 입니다.
 
-Sometimes you are looping for the intended purpose of counting a certain set of numbers, like from `0` to `9` (ten numbers). You can do that by setting a loop iteration variable like `i` at value `0` and incrementing it by `1` each iteration.
+때때로 여러분은 특정 범위의 수(`0` 부터 `9` 까지의 10개의 수 처럼)를 세기 위해 반복을 합니다. 반복문에서 `i`와 같은 반복 변수를 0으로 설정하고 매 반복마다 `1`씩 증가시킴으로써 이렇게 할 수 있습니다.
 
-**Warning:** For a variety of historical reasons, programming languages almost always count things in a zero-based fashion, meaning starting with `0` instead of `1`. If you're not familiar with that mode of thinking, it can be quite confusing at first. Take some time to practice counting starting with `0` to become more comfortable with it!
+**주의:** 다양한 역사적 이유로, 프로그래밍 언어는 거의 대부분 `1`대신 `0`부터 수를 세는 유행이 있습니다. 여러분이 이렇게 생각하는 방식에 익숙하지 않다면, 처음에는 조금 혼란스러울 것 입니다. 좀 더 익숙해 질 수 있도록 잠시 시간을 갖고 `0`부터 수를 세는 연습을 해보세요!
 
-The conditional is tested on each iteration, much as if there is an implied `if` statement inside the loop.
+조건문은 루프 안에 암묵적인 `if`문이 있는 것처럼, 매 반복마다 검사됩니다.
 
-We can use JavaScript's `break` statement to stop a loop. Also, we can observe that it's awfully easy to create a loop that would otherwise run forever without a `break`ing mechanism.
+자바스크립트의 `break`문을 사용해 반복을 멈출 수 있습니다. 또한, 멈추는(`break`ing) 방법이 없이 영원히 돌아가는 루프를 만드는 것이 정말로 쉽다는 것도 알 수 있습니다.
 
-Let's illustrate:
+한번 확인해볼까요:
 
 ```js
 var i = 0;
 
-// a `while..true` loop would run forever, right?
+// `while..true`루프가 영원히 실행되겠죠?
 while (true) {
-	// stop the loop?
+	// 루프를 멈춰볼까요?
 	if ((i <= 9) === false) {
 		break;
 	}
@@ -559,9 +561,9 @@ while (true) {
 // 0 1 2 3 4 5 6 7 8 9
 ```
 
-**Warning:** This is not necessarily a practical form you'd want to use for your loops. It's presented here for illustration purposes only.
+**주의:** 이것이 반드시 루프에 사용하기 원하는 실용적인 형식은 아닙니다. 단지 설명하기 위한 목적으로 보여드렸습니다.
 
-While a `while` (or `do..while`) can accomplish the task manually, there's another syntactic form called a `for` loop for just that purpose:
+`while`(혹은 `do..while`)이 수동으로 작업을 수행할 수 있는 반면에, 같은 목적을 위한 `for`문 이라는 또 다른 구문 형식이 있습니다.:
 
 ```js
 for (var i = 0; i <= 9; i = i + 1) {
@@ -570,11 +572,11 @@ for (var i = 0; i <= 9; i = i + 1) {
 // 0 1 2 3 4 5 6 7 8 9
 ```
 
-As you can see, in both cases the conditional `i <= 9` is `true` for the first 10 iterations (`i` of values `0` through `9`) of either loop form, but becomes `false` once `i` is value `10`.
+보시다시피, 두 가지 경우 모두 첫 10번의 반복(`i`가 `0`부터 `9`까지)에 대해서는 조건식 `i <= 9`가 `true`가 됩니다. 하지만 `i`가 `10`일때 조건식은 `false`가 됩니다.
 
-The `for` loop has three clauses: the initialization clause (`var i=0`), the conditional test clause (`i <= 9`), and the update clause (`i = i + 1`). So if you're going to do counting with your loop iterations, `for` is a more compact and often easier form to understand and write.
+`for`루프 에는 세개의 절이 있습니다.: 초기화 절(`var i=0`), 조건 검사 절(`i <= 9`), 갱신 절(`i = i + 1`). 따라서 루프 반복 횟수를 세보려면 `for`은 더 간단하며 이해하고 작성하기에 쉬운 형식입니다.
 
-There are other specialized loop forms that are intended to iterate over specific values, such as the properties of an object (see Chapter 2) where the implied conditional test is just whether all the properties have been processed. The "loop until a condition fails" concept holds no matter what the form of the loop.
+예를 들어, 암시적 조건 검사가 단지 모든 속성이 처리되었는지의 여부인 객체(2장 참고)의 속성같은 특정 값들을 반복하기 위한 또 다른 특별한 루프 형식이 있습니다. "조건이 실패할때까지 반복" 개념은 루프의 형식에 상관없이 유지됩니다.
 
 ## Functions
 
