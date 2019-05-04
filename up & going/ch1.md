@@ -1,162 +1,167 @@
 # You Don't Know JS: Up & Going
+
 # Chapter 1: Into Programming
 
-Welcome to the *You Don't Know JS* (*YDKJS*) series.
+_You Don't Know JS_ (_YDKJS_) 시리즈에 오신걸 환영합니다.
 
-*Up & Going* is an introduction to several basic concepts of programming -- of course we lean toward JavaScript (often abbreviated JS) specifically -- and how to approach and understand the rest of the titles in this series. Especially if you're just getting into programming and/or JavaScript, this book will briefly explore what you need to get *up and going*.
+*Up & Going*은 여러 프로그래밍 기본 개념에대한 소개입니다. 물론 우리는 주로 Javascript를 집중해서 배울 것입니다(가끔은 JS 외적인 부분포함). 그리고 나머지 시리즈들에 대해서 어떻게 접근하고 이해하는지 배울 것입니다. 특히 여러분이 프로그래밍 혹은 자바스크립트에 입문하는 경우라면 이 책은 *up and going*에서 여러분이 필요한것을 설명해 줄 것입니다.
 
-This book starts off explaining the basic principles of programming at a very high level. It's mostly intended if you are starting *YDKJS* with little to no prior programming experience, and are looking to these books to help get you started along a path to understanding programming through the lens of JavaScript.
+이 책은 프로그래밍 기본원리에 대해서 아주 자세히 시작합니다. 이 책은 주로 여러분이 사전 프로그래밍 경험이 거의 없는 상태에서 *YDK JS*를 처음 시작하는 경우와, Javascript 관점을 통하여 프로그래밍을 이해하는데에 도움을 찾고자 하는 사람들에게 마추어져 있습니다.
 
-Chapter 1 should be approached as a quick overview of the things you'll want to learn more about and practice to get *into programming*. There are also many other fantastic programming introduction resources that can help you dig into these topics further, and I encourage you to learn from them in addition to this chapter.
+Chapter 1은 *프로그래밍을 시작*하는데 있어서 여러분들이 더 배우고 싶고 연습하고 싶은것들에 대해 전반적으로 다룰 것입니다. 이러한 주제들에 대해 더 깊게 설명해주는 다른 훌륭한 프로그래밍 소개 자료들이 많습니다. 이 챕터 뿐만 아니라 다른 자료들도 보시길 권장드립니다.
 
-Once you feel comfortable with general programming basics, Chapter 2 will help guide you to a familiarity with JavaScript's flavor of programming. Chapter 2 introduces what JavaScript is about, but again, it's not a comprehensive guide -- that's what the rest of the *YDKJS* books are for!
+전반적인 프로그래밍 기초에 편해지셨다면, 챕터2는 자바스크립트에 조금 더 익숙해지도록 도와 줄 것입니다. 챕터 2는 Javascript가 무엇인지 소개 합니다. 다시 말씀드리지만, 이 시리즈는 종합적인 가이드가 아닙니다. 다른 YDKJS 책들이 준비되어 있습니다!
 
-If you're already fairly comfortable with JavaScript, first check out Chapter 3 as a brief glimpse of what to expect from *YDKJS*, then jump right in!
+이미 자바스크립트에 어느정도 익숙하시다면, 챕터3를 잠깐 살펴보시고 건너 뛰셔도 좋습니다!
 
 ## Code
 
-Let's start from the beginning.
+처음부터 시작해봅시다.
 
-A program, often referred to as *source code* or just *code*, is a set of special instructions to tell the computer what tasks to perform. Usually code is saved in a text file, although with JavaScript you can also type code directly into a developer console in a browser, which we'll cover shortly.
+종종 _소스코드_ 혹은 *코드*라고 언급되는 프로그램은 컴퓨터에게 업무를 수행하도록 전달하는 특별한 명령의 집합체 입니다. Javascript로 직접 브라우저에 있는 개발자 콘솔에서 직접 코드를 입력할수 있지만 보통 코드는 텍스트 파일로 저장이됩니다. 이는 곧 다루게 될 것입니다.
 
-The rules for valid format and combinations of instructions is called a *computer language*, sometimes referred to as its *syntax*, much the same as English tells you how to spell words and how to create valid sentences using words and punctuation.
+유효한 형식과 명령들의 조합 규칙들을 *컴퓨터 언어*라고 합니다. 때로는 syntax라고도 합니다. 어떻게 단어를 철자하는지와 단어와 구두점을 사용해서 유효한 문장을 만드는지와 같이 영어와 매우 흡사합니다.
 
 ### Statements
 
-In a computer language, a group of words, numbers, and operators that performs a specific task is a *statement*. In JavaScript, a statement might look as follows:
+컴퓨터 언어에서는 단어, 숫자, 특정한 일을 수행하는 연산자의 집합을 *선언식*이라고 합니다. Javascript에서, 선언식은 다음과 같습니다.
 
 ```js
 a = b * 2;
 ```
 
-The characters `a` and `b` are called *variables* (see "Variables"), which are like simple boxes you can store any of your stuff in. In programs, variables hold values (like the number `42`) to be used by the program. Think of them as symbolic placeholders for the values themselves.
+철자 `a`와 `b`를 *변수*라고 합니다.("Variables"를 찾아보세요). 이는 어떤 물건을 보관 할 수 있는 단순한 상자와 같습니다. 프로그램에서, 변수는 프로그램에서 사용되는 값(숫자 42와 같은)들을 가지고 있습니다. 값 자체를 기호로 표시된 플레이스홀더 처럼 생각할 수 있습니다.
 
-By contrast, the `2` is just a value itself, called a *literal value*, because it stands alone without being stored in a variable.
+반대로, 2는 *상수값*이라고 하는 단순한 값 그 자체 입니다. 왜냐하면 변수가 어디에 저장되지 않고 독립적으로 있기 때문입니다.
 
-The `=` and `*` characters are *operators* (see "Operators") -- they perform actions with the values and variables such as assignment and mathematic multiplication.
+`=` 과 `*` 문자들은 _연산자_("Operators"를 찾아보세요) 입니다. 할당과 수학곱셉과 같이 값과 변수를 가지고 행동을 수행 합니다.
 
-Most statements in JavaScript conclude with a semicolon (`;`) at the end.
+Javascript에서 대부분의 선언식은 세미콜론(`;`)으로 끝납니다.
 
 The statement `a = b * 2;` tells the computer, roughly, to get the current value stored in the variable `b`, multiply that value by `2`, then store the result back into another variable we call `a`.
+선언문 `a = b * 2;` 는 대략적으로 컴퓨터에게 현재 값을 변수 `b`에 저장시키고, 그 값을 `2`로 곱한다음에, 돌려받은 결과값을 `a` 라고하는 변수에 저장하라고 명령 합니다.
 
-Programs are just collections of many such statements, which together describe all the steps that it takes to perform your program's purpose.
+프로그램은 단지 여러 선언문들에 집합입니다. 프로그램 목적을 수행하도록하는 모든 단계를 함께 기술합니다.
 
 ### Expressions
 
-Statements are made up of one or more *expressions*. An expression is any reference to a variable or value, or a set of variable(s) and value(s) combined with operators.
+선언식은 하나 이상의 *표현식*으로 이루어 집니다. 표현식은 변수나 값, 혹은 변수들의 집합이나 연산자로 결합되는 값들에 참조입니다.
 
-For example:
+예를들면:
 
 ```js
 a = b * 2;
 ```
 
-This statement has four expressions in it:
+이 선언식은 네가지 표현식을 포함하고 있습니다.
 
-* `2` is a *literal value expression*
-* `b` is a *variable expression*, which means to retrieve its current value
-* `b * 2` is an *arithmetic expression*, which means to do the multiplication
-* `a = b * 2` is an *assignment expression*, which means to assign the result of the `b * 2` expression to the variable `a` (more on assignments later)
+- `2`는 _상수 값 표현식_ 입니다.
+- `b`는 현재값을 가져오는 _변수 표현식_ 입니다.
+- `b * 2`는 곱셈을 하는 _산술 표현식_ 입니다.
+- `a = b * 2`는 _할당 표현식_ 입니다. 이는, `b * 2` 표현식을 변수 `a`에 할당하는 것입니다.(할당에 대해서는 다음에 자세히 다루겠습니다.)
 
-A general expression that stands alone is also called an *expression statement*, such as the following:
+A general expression that stands alone is also called an _expression statement_, such as the following:
+아래와 같이, 독립적으로 있는 일반적인 *표현식*은 또한 *표현 선언식*이기도 합니다.
 
 ```js
 b * 2;
 ```
 
-This flavor of expression statement is not very common or useful, as generally it wouldn't have any effect on the running of the program -- it would retrieve the value of `b` and multiply it by `2`, but then wouldn't do anything with that result.
+이러한 표현 선언식 종류는 아주 일반적이지 않고 유용하지 않습니다, 일반적으로 프로그램 실행에 어떠한 영향도 주지 않습니다. `b` 값을 가져와서 `2`로 곱셈을 하지만, 그 결과값으로 어떠한 것도 수행하지 않습니다.
 
-A more common expression statement is a *call expression* statement (see "Functions"), as the entire statement is the function call expression itself:
+더 일반적인 표현 선언식은 _호출표현_ 선언식 입니다.("Functions"를 확인해보세요) 전체 선언식은 함수호출 표현식 자체 입니다.
 
 ```js
-alert( a );
+alert(a);
 ```
 
 ### Executing a Program
 
-How do those collections of programming statements tell the computer what to do? The program needs to be *executed*, also referred to as *running the program*.
+어떻게 이러한 프로그래밍 선언식 집합이 컴퓨터에게 무엇을 하라고 전달을 할까요? 프로그램은 *실행*이 필요합니다. 이는 또한 _프로그램 실행_ 이라고도 합니다.
 
-Statements like `a = b * 2` are helpful for developers when reading and writing, but are not actually in a form the computer can directly understand. So a special utility on the computer (either an *interpreter* or a *compiler*) is used to translate the code you write into commands a computer can understand.
+`a = b * 2` 와 같은 선언식은 개발자들에게는 읽고 쓰기 쉽습니다. 하지만 컴퓨터가 바로 이해할 수 있는 형식은 아닙니다. 그래서 컴퓨터(_인터프리터_ 혹은 _컴파일러_)에 있는 특별한 유틸리티가 컴퓨터가 이해할 수 있는 명령어로 코드를 해석하는것에 사용됩니다.
 
-For some computer languages, this translation of commands is typically done from top to bottom, line by line, every time the program is run, which is usually called *interpreting* the code.
+몇몇 컴퓨터 언어같은경우, 명령어 해석이 주로 위에서 아래로, 한 줄씩, 프로그램이 실행될때 마다 이루어 집니다. 이와 같은 방법을 _해석_ 이라고도 합니다.
 
-For other languages, the translation is done ahead of time, called *compiling* the code, so when the program *runs* later, what's running is actually the already compiled computer instructions ready to go.
+몇몇 다른 언어들 경우에는, 해석이 미리 이루어집니다. 이러한 것을 _컴파일_ 한다고 합니다. 그래서 프로그램 *실행*이 나중에 실행되고, 컴파일 컴퓨터 명령어는 미리 실행 준비를 합니다.
 
-It's typically asserted that JavaScript is *interpreted*, because your JavaScript source code is processed each time it's run. But that's not entirely accurate. The JavaScript engine actually *compiles* the program on the fly and then immediately runs the compiled code.
+Javascript 가 _해석_ 된다고 주장합니다. 왜냐하면 Javascript 소스 코드가 실행 될때마다 처리 되기 때문입니다. 하지만, 이는 완전히 정확하지 않습니다. Javascript엔진은 사실 바로 프로그램을 _컴파일_ 하고 바로 컴파일된 코드를 실행합니다.
 
-**Note:** For more information on JavaScript compiling, see the first two chapters of the *Scope & Closures* title of this series.
+**Note:** Javascript 컴파일링에대해 더 자세히 알고 싶으시면, _Scope & Closures_ 시리즈의 처음 두 챕터를 보세요
 
 ## Try It Yourself
 
-This chapter is going to introduce each programming concept with simple snippets of code, all written in JavaScript (obviously!).
+이 챕터는 간단한 코드 스니펫으로 각 프로그래밍 개념에 대해서 소개할 것입니다. 당연히 모든 것은 Javascript로 할 것입니다.
 
-It cannot be emphasized enough: while you go through this chapter -- and you may need to spend the time to go over it several times -- you should practice each of these concepts by typing the code yourself. The easiest way to do that is to open up the developer tools console in your nearest browser (Firefox, Chrome, IE, etc.).
+강조해도 지나치지 않습니다: 이 챕터를 진행하는 동안 여러분은 아마 여러번 반복해서 공부해야 할 것입니다. 코드를 직접 치면서 각 개념들을 연습하세요. 가장 쉬운 방법은 여러분의 브라우저(Firefox, Chrome, IE, etc.)에 개발자 도구에있는 콘솔을 열어 사용 하는 것입니다.
 
-**Tip:** Typically, you can launch the developer console with a keyboard shortcut or from a menu item. For more detailed information about launching and using the console in your favorite browser, see "Mastering The Developer Tools Console" (http://blog.teamtreehouse.com/mastering-developer-tools-console). To type multiple lines into the console at once, use `<shift> + <enter>` to move to the next new line. Once you hit `<enter>` by itself, the console will run everything you've just typed.
+**Tip:** 일반적으로, 키보드 단축키 혹은 메뉴 아이템에서 개발자 도구 콘솔을 열 수 있습니다. 여러분이 가장 선호하는 브라우저에서 콘솔을 실행시키고 사용하는법에 대한 더 자세한 정보는, "개발자 툴 마스터하기" (http://blog.teamtreehouse.com/mastering-developer-tools-console)를 참고하세요. 한번에 여러 줄을 콘솔에 입력하려면, `<shift> + <enter>`를 사용하세요. 여러분이 `<enter>`를 입력한다면, 콘솔은 여러분이 입력한 모든 것을 실행할것 입니다.
 
 Let's get familiar with the process of running code in the console. First, I suggest opening up an empty tab in your browser. I prefer to do this by typing `about:blank` into the address bar. Then, make sure your developer console is open, as we just mentioned.
+콘솔에서 코드 실행 과정을 알아봅시다. 우선, 브라우저에서 빈탭 열기를 권장드립니다. 저는 `about:blank`를 주소바에 입력하는 것을 선호합니다. 그리고나서, 위에서 말씀드린것처럼 개발자 콘솔을 열어보세요.
 
-Now, type this code and see how it runs:
+그럼, 이 코드를 치시고 어떻게 실행되는지 보세요.
 
 ```js
 a = 21;
 
 b = a * 2;
 
-console.log( b );
+console.log(b);
 ```
 
-Typing the preceding code into the console in Chrome should produce something like the following:
+위에 코드를 크롬 콘솔에 입력하시면 다음과 같이 보일것입니다:
 
 <img src="fig1.png" width="500">
 
-Go on, try it. The best way to learn programming is to start coding!
+계속해서 실행해보세요. 프로그래밍을 배우는것에 최고의 방법은 코딩을 하는 것입니다!
 
 ### Output
 
-In the previous code snippet, we used `console.log(..)`. Briefly, let's look at what that line of code is all about.
+이전 코드 스니펫에서 우리는 `console.log(..)`를 사용했습니다. 간략히, 코드가 의미하는 바가 무엇인지 살펴보겠습니다.
 
-You may have guessed, but that's exactly how we print text (aka *output* to the user) in the developer console. There are two characteristics of that statement that we should explain.
+눈치 채셨겠지만, 이렇게 하는것이 바로 개발자 콘솔에서 텍스트(유저에게는 *output*이라고 하는)를 출력하는 방법입니다.
 
-First, the `log( b )` part is referred to as a function call (see "Functions"). What's happening is we're handing the `b` variable to that function, which asks it to take the value of `b` and print it to the console.
+첫번째로, `log( b )` 부분은 함수호출("Functions"를 살펴보세요)을 참조 하게 됩니다. 무슨일이 일어났느냐하면, `b`값을 받아서 콘솔에 출력하라고 변수`b`를 함수에 전달 해주었습니다.
 
-Second, the `console.` part is an object reference where the `log(..)` function is located. We cover objects and their properties in more detail in Chapter 2.
+두번째로, `console.` 부분은 `log(..)`함수가 위치해있는 객체참조입니다. 우리는 챕터2에서 객체와 그 속성들을 상세히 다룰 것입니다.
 
-Another way of creating output that you can see is to run an `alert(..)` statement. For example:
+출력물을 만드는 다른 한가지 방법은 `alert(..)` 선언식을 실행하는 것입니다. 예를들면:
 
 ```js
-alert( b );
+alert(b);
 ```
 
-If you run that, you'll notice that instead of printing the output to the console, it shows a popup "OK" box with the contents of the `b` variable. However, using `console.log(..)` is generally going to make learning about coding and running your programs in the console easier than using `alert(..)`, because you can output many values at once without interrupting the browser interface.
+실행을 하면 콘솔에 출력이 되지않고, 변수b 내용과 함께 “OK” 박스가 뜨게됩니다. 하지만, 일반적으로 코딩을 연습하는데 `console.log(..)`를 사용하고, `alert(..)`을 사용하는 것보다 더 쉽습니다. 왜냐하면 브라우저와 끊김없이 한번에 많은 값들을 출력할 수 있기 때문입니다.
 
-For this book, we'll use `console.log(..)` for output.
+이 책에서, 우리는 출력으로 `console.log(..)`를 사용할 것입니다.
 
 ### Input
 
-While we're discussing output, you may also wonder about *input* (i.e., receiving information from the user).
+출력값에 대해서 이야기하는동안, 여러분은 아마도 _입력값_(유저에게 정보를 받는)에 대해 궁금했을 것입니다.
 
-The most common way that happens is for the HTML page to show form elements (like text boxes) to a user that they can type into, and then using JS to read those values into your program's variables.
+HTML페이지에서 가장 쉬운 방법은 입력할수 있도록 form요소를 유저에게 보여주고, JS를 사용해서 그 입력값들을 프로그램 변수로 읽는 것입니다.
 
-But there's an easier way to get input for simple learning and demonstration purposes such as what you'll be doing throughout this book. Use the `prompt(..)` function:
+하지만 이 책에서 다룰 간단한 학습과 데모 목적으로 입력값을 받는 더 쉬운 방법이 있습니다. `prompt(..)`함수를 이용 해보세요:
 
 ```js
-age = prompt( "Please tell me your age:" );
+age = prompt("Please tell me your age:");
 
-console.log( age );
+console.log(age);
 ```
 
-As you may have guessed, the message you pass to `prompt(..)` -- in this case, `"Please tell me your age:"` -- is printed into the popup.
+예상하셨듯이, 여러분이 `prompt(..)`에 전달한 메시지가(`"Please tell me your age:"`) 나타날 것입니다.
 
-This should look similar to the following:
+다음과 같이 보일 것 입니다.
 
 <img src="fig2.png" width="500">
 
-Once you submit the input text by clicking "OK," you'll observe that the value you typed is stored in the `age` variable, which we then *output* with `console.log(..)`:
+“OK”를 클릭을 해서 입력 텍스트를 제출하면, 여러분이 입력한 값이 `age` 변수에 저장되는 것을 볼 수 일을 것입니다. 그리고 나서 `console.log(..)`로 *출력*을 할것입니다.
 
 <img src="fig3.png" width="500">
 
 To keep things simple while we're learning basic programming concepts, the examples in this book will not require input. But now that you've seen how to use `prompt(..)`, if you want to challenge yourself you can try to use input in your explorations of the examples.
+우리가 기초 프로그래밍 개념을 배우는 동안 간단하게 하기위해서, 이 책의 예제들은 입력값을 요구하지 않을 것입니다. 하지만 `prompt(..)`를 어떻게 사용하는지 배웠기 때문에, 만약 여러분이 도전을 하고 싶으면 예제에서 input값을 직접 사용해보세요.
 
 ## Operators
 
