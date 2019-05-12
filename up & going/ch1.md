@@ -600,7 +600,7 @@ printAmount(); // "199.98"
 
 ```js
 function printAmount(amt) {
-    console.log( amt.toFixed( 2 ) );
+	console.log( amt.toFixed( 2 ) );
 }
 
 function formatAmount() {
@@ -672,16 +672,16 @@ two();		// 2
 
 ```js
 function outer() {
-    var a = 1;
+	var a = 1;
 
-    function inner() {
-        var b = 2;
+	function inner() {
+		var b = 2;
 
 		// `a` and `b`에 접근이 가능합니다.
 		console.log( a + b );	// 3
 	}
 
-    inner();
+	inner();
 
 	// `a`만 접근 할수 있습니다.
 	console.log( a );			// 1
