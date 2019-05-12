@@ -582,15 +582,15 @@ There are other specialized loop forms that are intended to iterate over specifi
 
 ## Functions
 
-The phone store employee probably doesn't carry around a calculator to figure out the taxes and final purchase amount. That's a task she needs to define once and reuse over and over again. Odds are, the company has a checkout register with those "functions" built in.
+아마도 핸드폰 가게 직원은 세금과 최종 구매 금액을 알아내기 위해 계산기를 들고 다니지는 않을 것 입니다.그 일은 처음에 규칙을 정하고 반복해서 재사용 해야 할 일입니다. 회사에서 그러한 "기능들"이 내장되어 있는 계산기(컴퓨터, 태블릿 등)을 제공 할 것입니다.
 
-Similarly, your program will almost certainly want to break up the code's tasks into reusable pieces. The way to do this is to define a `function`.
+이와 유사하게, 프로그램은 코드 수행을 재사용 가능한 단위로 나눌 것입니다. 되풀이해서 반복되게 반복되는 대신에(말장난 입니다!). 이렇게 하는 방법이 함수를 정의하는 것입니다.
 
-A function is generally a named section of code that can be "called" by name, and the code inside it will be run each time. Consider:
+함수는 일반적으로 이름으로 호출 가능한 코드의 고유한 부분입니다, 그리고 내부 코드는 매번 실행 될 것입니다. 생각 해 보세요:
 
 ```js
 function printAmount() {
-	console.log( amount.toFixed( 2 ) );
+    console.log( amount.toFixed( 2 ) );
 }
 
 var amount = 99.99;
@@ -602,207 +602,206 @@ amount = amount * 2;
 printAmount(); // "199.98"
 ```
 
-Functions can optionally take arguments (aka parameters) -- values you pass in. And they can also optionally return a value back.
+함수는 추가로 인자들(매개변수라고도 하는)을 받을 수 있습니다. 그리고 그 함수들은 경우에따라 값을 반환할수 있습니다.
 
 ```js
 function printAmount(amt) {
-	console.log( amt.toFixed( 2 ) );
+    console.log( amt.toFixed( 2 ) );
 }
 
 function formatAmount() {
-	return amount.toFixed( 2 );
+    return "$" + amount.toFixed( 2 );
 }
 
 var amount = 99.99;
 
-printAmount( amount * 2 );		// "199.98"
+printAmount( amount * 2 );      // "199.98"
 
 amount = formatAmount();
-console.log( "$" + amount );	// "$99.99"
+console.log( amount );          // "$99.99"
 ```
 
-The function `printAmount(..)` takes a parameter that we call `amt`. The function `formatAmount()` returns a value. Of course, you can also combine those two techniques in the same function.
+`printAmount(..)` 함수는 `amt` 매개변수를 가집니다. `formatAmount()`함수는 값을 리턴합니다. 당연히 한 함수에서 두가지를 사용 할 수 있습니다.
 
-Functions are often used for code that you plan to call multiple times, but they can also be useful just to organize related bits of code into named collections, even if you only plan to call them once.
+반복되는 코드에 대해서 함수로 사용할 수 있습니다. 그리고 함수들을 한번만 호출 할지라도, 관련된 코드를 고유한 집합으로 묶어서 사용하기도 유용합니다
 
-Consider:
+생각 해 보세요:
 
 ```js
 const TAX_RATE = 0.08;
 
 function calculateFinalPurchaseAmount(amt) {
-	// calculate the new amount with the tax
-	amt = amt + (amt * TAX_RATE);
+    // 세금을 포함한 금액 계산하기
+    amt = amt + (amt * TAX_RATE);
 
-	// return the new amount
-	return amt;
+    // 새롭게 계산된 금액 돌려주기
+    return amt;
 }
 
 var amount = 99.99;
 
 amount = calculateFinalPurchaseAmount( amount );
 
-console.log( amount.toFixed( 2 ) );		// "107.99"
+console.log( amount.toFixed( 2 ) );     // "107.99"
 ```
 
-Although `calculateFinalPurchaseAmount(..)` is only called once, organizing its behavior into a separate named function makes the code that uses its logic (the `amount = calculateFinal...` statement) cleaner. If the function had more statements in it, the benefits would be even more pronounced.
+비록 calculateFinalPurchaseAmount(..) 가 한번만 호출 되더라도, 기능을 고유한 함수로 나누는 것은 코드(the amount = calculateFinal... statement)를 더 명확하게 해줍니다. 만약 함수가 더 많은 문을 가지고 있으면, 그 장점이 훨씬 더 부각됩니다.
 
-### Scope
+### 스코프
 
-If you ask the phone store employee for a phone model that her store doesn't carry, she will not be able to sell you the phone you want. She only has access to the phones in her store's inventory. You'll have to try another store to see if you can find the phone you're looking for.
+핸드폰 대리점에 가서 점원에게 핸드폰 기종을 물어봤을 때 그 기종이 없다면 그 점원은 당신에게 핸드폰을 팔 수 없을 것 입니다. 그 점원은 그 가게의 재고만 판매 할 수 있기 때문입니다. 여러분은 다른 가게에 가서 당신이 원하는 기종의 핸드폰이 있는지 찾아봐야 합니다. 
 
-Programming has a term for this concept: *scope* (technically called *lexical scope*). In JavaScript, each function gets its own scope. Scope is basically a collection of variables as well as the rules for how those variables are accessed by name. Only code inside that function can access that function's *scoped* variables.
+프로그래밍도 이와 같은 개념을 가지고 있습니다. *스코프(scope)* (기술적으로 말하자면 *lexical scope*). 자바스크립트 안에서 각각의 함수는 각자의 스코프를 가지고 있습니다. 스코프는 기본적으로 변수와 이름으로 어떤 방법으로 접근하는가에 대한 규칙들의 집합입니다. 함수의 스코프에 속한 변수만 접근 가능한 코드만 함수 안에 있습니다.
 
-A variable name has to be unique within the same scope -- there can't be two different `a` variables sitting right next to each other. But the same variable name `a` could appear in different scopes.
+변수 이름은 같은 스코프 안이라면 특별해야 합니다. 즉 각기 다른 변수 `a`는 같이 있을 수 없습니다. 하지만 같은 변수의 이름일지라도 다른 스코프에 속해 있다면 가능합니다.
 
 ```js
 function one() {
-	// this `a` only belongs to the `one()` function
-	var a = 1;
-	console.log( a );
+    // `a`는 one 함수에만 속해 있습니다.
+    var a = 1;
+    console.log( a );
 }
 
 function two() {
-	// this `a` only belongs to the `two()` function
-	var a = 2;
-	console.log( a );
+    // `a`는 two 함수에만 속해 있습니다.
+    var a = 2;
+    console.log( a );
 }
 
-one();		// 1
-two();		// 2
+one();      // 1
+two();      // 2
 ```
 
-Also, a scope can be nested inside another scope, just like if a clown at a birthday party blows up one balloon inside another balloon. If one scope is nested inside another, code inside the innermost scope can access variables from either scope.
+또한 스코프는 다른 스코프 안에 겹쳐 질 수 있습니다. 마치 광대가 생일 파티에서 풍선 속에 풍선을 부는 것처럼요. 만약 한 스코프가 다른 스코프 안에 겹쳐진다면 가장 깊숙이 있는 스코프는 다른 스코프의 변수에 접근할 수 있습니다.
 
-Consider:
+생각 해 보세요:
 
 ```js
 function outer() {
-	var a = 1;
+    var a = 1;
 
-	function inner() {
-		var b = 2;
+    function inner() {
+        var b = 2;
 
-		// we can access both `a` and `b` here
-		console.log( a + b );	// 3
-	}
+        // `a` and `b`에 접근이 가능합니다.
+        console.log( a + b );   // 3
+    }
 
-	inner();
+    inner();
 
-	// we can only access `a` here
-	console.log( a );			// 1
+    // `a`만 접근 할수 있습니다.
+    console.log( a );           // 1
 }
 
 outer();
 ```
 
-Lexical scope rules say that code in one scope can access variables of either that scope or any scope outside of it.
+렉시컬 스코프(Lexical scope: 정적스코프)의 규칙은 한 스코프 안에 있는 코드들은 다른 스코프 또는 밖에 있는 어느 스코프든 접근할 수 있습니다. 
 
-So, code inside the `inner()` function has access to both variables `a` and `b`, but code only in `outer()` has access only to `a` -- it cannot access `b` because that variable is only inside `inner()`.
+그래서 코드 안에 `inner()` 함수는 두 변수 `a`와 `b`에 접근이 가능하지만 `outer()`  함수내부에 코드는 `a`만 가능합니다. `b`에 접근이 안 되는 이유는 `inner()` 함수 안에만 있기 때문입니다.
 
-Recall this code snippet from earlier:
+이전 코드 스니펫에 다시 돌아 가봅시다: 
 
 ```js
 const TAX_RATE = 0.08;
 
 function calculateFinalPurchaseAmount(amt) {
-	// calculate the new amount with the tax
-	amt = amt + (amt * TAX_RATE);
+    // 세금이 포함된 새로운 금액을 계산
+    amt = amt + (amt * TAX_RATE);
 
-	// return the new amount
-	return amt;
+    // 새로운 금액을 반환
+    return amt;
 }
 ```
 
-The `TAX_RATE` constant (variable) is accessible from inside the `calculateFinalPurchaseAmount(..)` function, even though we didn't pass it in, because of lexical scope.
+비록 상수(변수) `TAX_RATE`값을 `calculateFinalPurchaseAmount(..)`함수안에 전달하지 않아도, 렉시컬 스코프에 의해서 함수 내부에서 접근이 가능합니다.
 
-**Note:** For more information about lexical scope, see the first three chapters of the *Scope & Closures* title of this series.
+**참고:** 렉시컬 스코프에 관해 더 알고 싶으시면 시리즈 중 *Scope & Closures* 에 처음 세개의 장 을 참고하면 됩니다.
 
-## Practice
+## 연습
 
-There is absolutely no substitute for practice in learning programming. No amount of articulate writing on my part is alone going to make you a programmer.
+프로그래밍을 배우는데 있어서 연습 외에 좋은 대안은 없습니다. 제가 명확하게 글을 쓴다고 할지라도 그것이 당신을 프로그래머로 만들 수는 없습니다.
 
-With that in mind, let's try practicing some of the concepts we learned here in this chapter. I'll give the "requirements," and you try it first. Then consult the code listing below to see how I approached it.
+앞에 언급한 글을 되새기면서 이 장에서 우리가 배운 것들을 연습해봅시다. 제가 "필수 사항"을 제시하면 그걸 시도해 주세요. 그다음 아래의 코드들을 보면서 제가 어떻게 접근했는지를 참고해 보세요.
 
-* Write a program to calculate the total price of your phone purchase. You will keep purchasing phones (hint: loop!) until you run out of money in your bank account. You'll also buy accessories for each phone as long as your purchase amount is below your mental spending threshold.
-* After you've calculated your purchase amount, add in the tax, then print out the calculated purchase amount, properly formatted.
-* Finally, check the amount against your bank account balance to see if you can afford it or not.
-* You should set up some constants for the "tax rate," "phone price," and "accessory price," as well as your current "bank balance" and your "spending threshold."
-* You should define functions for calculating the tax and for formatting the price with a "$" and rounding to two decimal places.
-* **Bonus Challenge:** Try to incorporate input into this program, perhaps with the `prompt(..)` covered in "Input" earlier. You may prompt the user for their bank account balance, for example. Have fun and be creative!
+* 핸드폰의 총 구매가격을 계산하는 코드를 써보세요. 당신이 은행 계좌에 가지고 있는 돈이 떨어질 때까지 핸드폰 구매를 계속할 것입니다(힌트: loop!) 각각의 핸드폰에 액세서리 또한 당신의 허용하는 구매 한계치까지 구매할 것입니다.
+* 구매 금액을 계산한후에, 세금을 더하고, 그리고 나서 적절한 형식으로 계산한 구매금액을 출력하세요.
+* 마지막으로 당신의 은행 잔액을 확인하며 더 구매를 할 수 있는지 확인합니다. 최종적으로, 여러분의 통장에 남은 잔액이 충분한지 확인을 합니다.
+* "tax rate(세율)", "phone price(핸드폰 가격)", "accessory price(액세서리 가격)", "spending threshold(한도 금액)," "bank account balance(은행 잔액)" 등의 변수를 설정합니다.
+* 세금을 계산하기 위한 함수를 정의합니다. 또한 금액은 "$"와 소수점 두 자리 까지 정도로 맞춥니다.
+* **보너스 챌린지:** input을 포함해 보세요. 이전 "Input"에서 다룬 prompt(..)를 가지고 input을 코드에 넣어보세요. 예를들어서, 사용자의 은행잔고를 바로 알려줄 수 있습니다. 창의력을 더한 즐거운 코딩을 해보세요!
 
-OK, go ahead. Try it. Don't peek at my code listing until you've given it a shot yourself!
+그럼 한번 해보세요! 단, 여러분이 직접 해볼 때까지 저의 코드를 보지 마세요.
 
-**Note:** Because this is a JavaScript book, I'm obviously going to solve the practice exercise in JavaScript. But you can do it in another language for now if you feel more comfortable.
+**참고:** 이 책은 자바스크립트 책이기 때문에, 저는 연습문제를 자바스크립트 언어로 풀 것입니다. 다른 언어가 편하다면 그 언어를 사용하셔도 됩니다!
 
-Here's my JavaScript solution for this exercise:
+여기 해당 문제의 저의 솔루션입니다.
 
 ```js
-var bank_balance = 303.91;
-
 const SPENDING_THRESHOLD = 200;
 const TAX_RATE = 0.08;
 const PHONE_PRICE = 99.99;
 const ACCESSORY_PRICE = 9.99;
 
+var bank_balance = 303.91;
+var amount = 0;
 
 function calculateTax(amount) {
-	return amount * TAX_RATE;
+    return amount * TAX_RATE;
 }
 
 function formatAmount(amount) {
-	return "$" + amount.toFixed(2);
+    return "$" + amount.toFixed( 2 );
 }
 
-var amount = 0;
-
-// keep buying phones while you still have money
+// 잔고가 있을 때 까지 핸드폰을 구입
 while (amount < bank_balance) {
-	// buy a new phone!
-	amount = amount + PHONE_PRICE;
+    // 새로운 폰을 구입!
+    amount = amount + PHONE_PRICE;
 
-	// can we afford the accessory?
-	if (amount < SPENDING_THRESHOLD) {
-		amount = amount + ACCESSORY_PRICE;
-	}
+    // 액세서리까지 구입하는 것이 충분할까?
+    if (amount < SPENDING_THRESHOLD) {
+        amount = amount + ACCESSORY_PRICE;
+    }
 }
 
-// don't forget to pay the government, too
+// 세금 내는 것을 잊지말기!
 amount = amount + calculateTax( amount );
 
 console.log(
-	"Your purchase: " + formatAmount( amount )
+    "Your purchase: " + formatAmount( amount )
 );
-// Your purchase: $334.76
+// 구매 금액: $334.76
 
-// can you actually afford this purchase?
+// 구매하기에 금액이 정말 충분한가?
 if (amount > bank_balance) {
-	console.log(
-		"You can't afford this purchase. :("
-	);
+    console.log(
+        "You can't afford this purchase. :("
+    );
 }
-// You can't afford this purchase. :(
+// 구매를 하기에 현재 잔액이 충분하지 않습니다. :(
 ```
 
-**Note:** The simplest way to run this JavaScript program is to type it into the developer console of your nearest browser.
+**참고:** 이 자바스크립트 프로그램을 실행시키는 가장 간단한 방법은 당신의 인터넷 브라우저 개발자 콘솔에 코드를 입력하는 것입니다. 
+어떻게 했나요? 제 코드를 이미 보았기 때문에 그렇게 힘든 것은 아닐 것입니다. 또한 몇 개의 변수를 변경해서 다른 값으로 이 프로그램이 어떻게 실행되는지 시도해 보세요.
 
-How did you do? It wouldn't hurt to try it again now that you've seen my code. And play around with changing some of the constants to see how the program runs with different values.
+## 리뷰
 
-## Review
+프로그래밍을 배우는 것은 복잡하거나 엄청난 과정이 있어야 하는 건 아닙니다. 몇 가지 기본개념만 가지고 있으면 됩니다.
 
-Learning programming doesn't have to be a complex and involved process. There are just a few basic concepts you need to wrap your head around. These act like building blocks. To build a tall tower, you start first by putting block on top of block on top of block. The same goes with programming. Here are some of the essential programming building blocks:
+이것은 마치 벽돌을 쌓는것과 같습니다. 높은 타워를 짓는다고 생각 해 보세요. 당신은 벽돌을 층층이 위로 쌓는 것부터 시작할 것입니다. 프로그래밍도 이와 같습니다. 여기 가장 기본이 되는 몇 개의 빌딩 블록이 있습니다.
 
-* You need *operators* to perform actions on
-* You need values and *types* to perform different kinds of actions like math on `number`s or output with `string`s.
-* You need *variables* to store data (aka *state*) during your program's execution.
-* You need *conditionals* like `if` statements to make decisions.
-* You need *loops* to repeat tasks until a condition stops being true.
-* You need *functions* to organize your code into logical and reusable chunks.
+* 값에 대한 작업을 수행하는 *연산자*
+* `숫자` 나 `문자열`의 결괏값 등같이 다른 종류에 작업을 실행하는 값과 *타입*
+* 프로그램이 실행되는 동안 데이터를 저장 할 (*state*  라고도 한다.) *변수*
+* `if` 조건문과 같은 결정을 할 수 있는 *조건*
+* 조건이 참이 될 때까지 반복해서 작업하는 *루프*
+* 논리적이고 재사용이 가능한 코드로 정리할 수 있는 *함수*
 
-Code comments are one effective way to write more readable code, which makes your program easier to understand, maintain, and fix later if there are problems.
+주석은 더 읽기 쉽게 쓸 수 있도록 하는 효율적인 방법 중 하나입니다. 주석을 사용함으로써, 문제가 생겼을 때 코드를 더 쉽게 이해하고, 유지보수와 수정을 할 수 있습니다.
 
-Finally, don't neglect the power of practice. The best way to learn how to write code is to write code.
+마지막으로 연습의 힘을 무시하지 마세요. 코드를 배우는 가장 좋은 방법은 직접 코드를 써보는 것 입니다.
 
-I'm excited you're well on your way to learning how to code, now! Keep it up. Don't forget to check out other beginner programming resources (books, blogs, online training, etc.). This chapter and this book are a great start, but they're just a brief introduction.
+여러분은 잘하고 있습니다.지금까지 여러분이 잘 따라와 주셔서 기쁩니다. 앞으로도 계속 열심히 하세요. 다른 초보자 프로그래밍 자료들(책, 블로그, 온라인 코스 등등) 또한 찾아보는 것도 잊지 마세요. 간단한 소개 정도 이지만 이 장과 이 책은 좋은 시작입니다.
 
-The next chapter will review many of the concepts from this chapter, but from a more JavaScript-specific perspective, which will highlight most of the major topics that are addressed in deeper detail throughout the rest of the series.
+다음 장에서는, 이 장에서 다뤘던 많은 개념들을 설명 복습 할 것입니다. 나머지 시리즈 전체에 걸쳐 깊고 자세히 다뤄질 가장 주요한 토픽이 자바스크립트의 특유 관점에 대해서 다뤄질 것입니다.
