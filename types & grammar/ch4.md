@@ -87,7 +87,7 @@ Another task that seems awfully related to `ToString` is when you use the `JSON.
 
 It's important to note that this stringification is not exactly the same thing as coercion. But since it's related to the `ToString` rules above, we'll take a slight diversion to cover JSON stringification behaviors here.
 
-For most simple values, JSON stringification behaves bascially the same as `toString()` conversions, except that the serialization result is *always a `string`*:
+For most simple values, JSON stringification behaves basically the same as `toString()` conversions, except that the serialization result is *always a `string`*:
 
 ```js
 JSON.stringify( 42 );	// "42"
@@ -581,7 +581,7 @@ Let's try again: `~x` is roughly the same as `-(x+1)`. That's weird, but slightl
 
 You're probably still wondering what the heck all this `~` stuff is about, or why it really matters for a coercion discussion. Let's quickly get to the point.
 
-Consider `-(x+1)`. What's the only value that can you can perform that operation on that will produce a `0` (or `-0` technically!) result? `-1`. In other words, `~` used with a range of `number` values will produce a falsy (easily coercible to `false`) `0` value for the `-1` input value, and any other truthy `number` otherwise.
+Consider `-(x+1)`. What's the only value that you can perform that operation on that will produce a `0` (or `-0` technically!) result? `-1`. In other words, `~` used with a range of `number` values will produce a falsy (easily coercible to `false`) `0` value for the `-1` input value, and any other truthy `number` otherwise.
 
 Why is that relevant?
 
@@ -640,9 +640,9 @@ I find this to be cleaner code than the previous `>= 0` / `== -1` clutter.
 
 ##### Truncating Bits
 
-There's one more place `~` may show up in code you run accross: some developers use the double tilde `~~` to truncate the decimal part of a `number` (i.e., "coerce" it to a whole number "integer"). It's commonly (though mistakingly) said this is the same result as calling `Math.floor(..)`.
+There's one more place `~` may show up in code you run across: some developers use the double tilde `~~` to truncate the decimal part of a `number` (i.e., "coerce" it to a whole number "integer"). It's commonly (though mistakingly) said this is the same result as calling `Math.floor(..)`.
 
-How `~~` works is that the first `~` applies the `ToInt32` "coercion" and does the the bitwise flip, and then the second `~` does another bitwise flip, flipping all the bits back to the original state. The end result is just the `ToInt32` "coercion" (aka truncation).
+How `~~` works is that the first `~` applies the `ToInt32` "coercion" and does the bitwise flip, and then the second `~` does another bitwise flip, flipping all the bits back to the original state. The end result is just the `ToInt32` "coercion" (aka truncation).
 
 **Note:** The bitwise double-flip of `~~` is very similar to the parity double-negate `!!` behavior, explained in the "Explicitly: * --> Boolean" section later.
 
@@ -687,17 +687,17 @@ Parsing a numeric value out of a string is *tolerant* of non-numeric characters 
 
 Parsing should not be seen as a substitute for coercion. These two tasks, while similar, have different purposes. Parse a `string` as a `number` when you don't know/care what other non-numeric characters there may be on the right-hand side. Coerce a `string` (to a `number`) when the only acceptable values are numeric and something like `"42px"` should be rejected as a `number`.
 
-**Tip:** `parseInt(..)` has a a twin, `parseFloat(..)`, which (as it sounds) pulls out a floating-point number from a string.
+**Tip:** `parseInt(..)` has a twin, `parseFloat(..)`, which (as it sounds) pulls out a floating-point number from a string.
 
 Don't forget that `parseInt(..)` operates on `string` values. It makes absolutely no sense to pass a `number` value to `parseInt(..)`. Nor would it make sense to pass any other type of value, like `true`, `function(){..}` or `[1,2,3]`.
 
 If you pass a non-`string`, the value you pass will automatically be coerced to a `string` first (see "`ToString`" earlier), which would clearly be a kind of hidden *implicit* coercion. It's a really bad idea to rely upon such a behavior in your program, so never use `parseInt(..)` with a non-`string` value.
 
-Prior to ES5, another gotcha existed with `parseInt(..)`, which was the source of many JS programs' bugs. If you didn't pass a second argument to indicate which numeric base (aka radix) to use for interpreting the numeric `string` contents, `parseInt(..)` would look at the first character to make a guess.
+Prior to ES5, another gotcha existed with `parseInt(..)`, which was the source of many JS programs' bugs. If you didn't pass a second argument to indicate which numeric base (aka radix) to use for interpreting the numeric `string` contents, `parseInt(..)` would look at the beginning character(s) to make a guess.
 
-If the first character was `x` or `X`, the guess (by convention) was that you wanted to interpret the `string` as a hexadecimal (base-16) `number`. If the first character was `0`, the guess (again, by convention) was that you wanted to interpret the `string` as an octal (base-8) `number`.
+If the first two characters were `"0x"` or `"0X"`, the guess (by convention) was that you wanted to interpret the `string` as a hexadecimal (base-16) `number`. Otherwise, if the first character was `"0"`, the guess (again, by convention) was that you wanted to interpret the `string` as an octal (base-8) `number`.
 
-Hexadecimal `string`s (with the leading `x` or `X`) aren't terribly easy to get mixed up. But the octal number guessing proved devilishly common. For example:
+Hexadecimal `string`s (with the leading `0x` or `0X`) aren't terribly easy to get mixed up. But the octal number guessing proved devilishly common. For example:
 
 ```js
 var hour = parseInt( selectedHour.value );
@@ -715,7 +715,7 @@ var hour = parseInt( selectedHour.value, 10 );
 var minute = parseInt( selectedMiniute.value, 10 );
 ```
 
-As of ES5, `parseInt(..)` no longer guesses. Unless you say otherwise, it assumes base-10. That's much nicer. Just be careful if your code has to run in pre-ES5 environments, in which case you still need to pass `10` for the radix.
+As of ES5, `parseInt(..)` no longer guesses octal. Unless you say otherwise, it assumes base-10 (or base-16 for `"0x"` prefixes). That's much nicer. Just be careful if your code has to run in pre-ES5 environments, in which case you still need to pass `10` for the radix.
 
 #### Parsing Non-Strings
 
@@ -758,7 +758,7 @@ So, if you pass in a value like `Infinity` (the result of `1 / 0` obviously), wh
 
 I think it's a good thing that **all values** in JS have some sort of default `string` representation, so that they aren't mysterious black boxes that we can't debug and reason about.
 
-Now, what about base-19? Obviously, completely bogus and contrived. No real JS programs use base-19. It's absurd. But again, let's indulge the ridiulousness. In base-19, the valid numeric characters are `0` - `9` and `a` - `i` (case insensitive).
+Now, what about base-19? Obviously, completely bogus and contrived. No real JS programs use base-19. It's absurd. But again, let's indulge the ridiculousness. In base-19, the valid numeric characters are `0` - `9` and `a` - `i` (case insensitive).
 
 So, back to our `parseInt( 1/0, 19 )` example. It's essentially `parseInt( "Infinity", 19 )`. How does it parse? The first character is `"I"`, which is value `18` in the silly base-19. The second character `"n"` is not in the valid set of numeric characters, and as such the parsing simply politely stops, just like when it ran across `"p"` in `"42px"`.
 
@@ -910,7 +910,7 @@ Wouldn't you generally agree that we simplified the type conversion here to redu
 
 Some would argue, at least in some circumstances, yes. But I think an equal argument can be made of many other circumstances that here, the simplification **actually aids in the readability of the code** by abstracting or hiding away such details, either in the language itself or in our own abstractions.
 
-Undoubtedly, behind the scenes, somewhere, the intermediate conversion step is still happening. But if that detail is hidden from view here, we can just reason about getting `y` to type `SomeType` as an generic operation and hide the messy details.
+Undoubtedly, behind the scenes, somewhere, the intermediate conversion step is still happening. But if that detail is hidden from view here, we can just reason about getting `y` to type `SomeType` as a generic operation and hide the messy details.
 
 While not a perfect analogy, what I'm going to argue throughout the rest of this chapter is that JS *implicit* coercion can be thought of as providing a similar aid to your code.
 
@@ -977,7 +977,7 @@ b; // "42"
 
 **Tip:** Numeric addition with the `+` operator is commutative, which means `2 + 3` is the same as `3 + 2`. String concatenation with `+` is obviously not generally commutative, **but** with the specific case of `""`, it's effectively commutative, as `a + ""` and `"" + a` will produce the same result.
 
-It's extremely common/idiomatic to (*implicitly*) coerce `number` to `string` with a `+ ""` operation. In fact, interestingly, even some of the most vocal crticics of *implicit* coercion still use that approach in their own code, instead of one of its *explicit* alternatives.
+It's extremely common/idiomatic to (*implicitly*) coerce `number` to `string` with a `+ ""` operation. In fact, interestingly, even some of the most vocal critics of *implicit* coercion still use that approach in their own code, instead of one of its *explicit* alternatives.
 
 **I think this is a great example** of a useful form in *implicit* coercion, despite how frequently the mechanism gets criticized!
 
@@ -1002,7 +1002,7 @@ Generally, this sort of gotcha won't bite you unless you're really trying to cre
 
 What about the other direction? How can we *implicitly coerce* from `string` to `number`?
 
-```
+```js
 var a = "3.14";
 var b = a - 0;
 
@@ -1024,7 +1024,7 @@ Both `array` values have to become `number`s, but they end up first being coerce
 
 So, is *implicit* coercion of `string` and `number` values the ugly evil you've always heard horror stories about? I don't personally think so.
 
-Compare `b = String(a)` (*explicit*) to `b = a + ""` (*implicit*). I think cases can be made for both approaches being useful in your code. Certainly `b = a + ""` is quite a bit more common in JS programs, proving its own utility regardless of *feelings* about the the merits or hazards of *implicit* coercion in general.
+Compare `b = String(a)` (*explicit*) to `b = a + ""` (*implicit*). I think cases can be made for both approaches being useful in your code. Certainly `b = a + ""` is quite a bit more common in JS programs, proving its own utility regardless of *feelings* about the merits or hazards of *implicit* coercion in general.
 
 ### Implicitly: Booleans --> Numbers
 
@@ -1069,10 +1069,10 @@ function onlyOne() {
 var a = true;
 var b = false;
 
-onlyOne( b, a );				// true
-onlyOne( b, a, b, b, b );		// true
+onlyOne( b, a );		// true
+onlyOne( b, a, b, b, b );	// true
 
-onlyOne( b, b );				// false
+onlyOne( b, b );		// false
 onlyOne( b, a, b, b, b, a );	// false
 ```
 
@@ -1135,7 +1135,7 @@ while (c) {
 }
 
 c = d ? a : b;
-c;								// "abc"
+c;					// "abc"
 
 if ((a && d) || c) {
 	console.log( "yep" );		// yep
@@ -1214,7 +1214,7 @@ foo();					// "hello world"
 foo( "yeah", "yeah!" );	// "yeah yeah!"
 ```
 
-The `a = a || "hello"` idiom (sometimes said to be JavaScript's version of the C# "null coallescing operator") acts to test `a` and if it has no value (or only an undesired falsy value), provides a backup default value (`"hello"`).
+The `a = a || "hello"` idiom (sometimes said to be JavaScript's version of the C# "null coalescing operator") acts to test `a` and if it has no value (or only an undesired falsy value), provides a backup default value (`"hello"`).
 
 **Be careful**, though!
 
@@ -1662,9 +1662,9 @@ false == {};			// false
 0 == {};				// false
 ```
 
-In this list of 24 comparisons, 17 of them are quite reasonable and predictable. For example, we know that `""` and `NaN` are not at all equatable values, and indeed they don't coerce to be loose equals, whereas `"0"` and `0` are reasonably equitable and *do* coerce as loose equals.
+In this list of 24 comparisons, 17 of them are quite reasonable and predictable. For example, we know that `""` and `NaN` are not at all equatable values, and indeed they don't coerce to be loose equals, whereas `"0"` and `0` are reasonably equatable and *do* coerce as loose equals.
 
-However, seven of the comparisons are marked with "UH OH!" because as false positives, they are much more likely gotchas that could trip you up. `""` and `0` are definitely distinctly different values, and it's rare you'd want to treat them as equitable, so their mutual coercion is troublesome. Note that there aren't any false negatives here.
+However, seven of the comparisons are marked with "UH OH!" because as false positives, they are much more likely gotchas that could trip you up. `""` and `0` are definitely distinctly different values, and it's rare you'd want to treat them as equatable, so their mutual coercion is troublesome. Note that there aren't any false negatives here.
 
 #### The Crazy Ones
 

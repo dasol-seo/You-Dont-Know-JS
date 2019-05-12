@@ -9,14 +9,15 @@
 	* Transpiling
 * Chapter 2: Syntax
 	* Block-Scoped Declarations
+	* Spread / Rest
 	* Default Parameter Values
 	* Destructuring
 	* Object Literal Extensions
-	* Interpolated String Literals
+	* Template Literals
 	* Arrow Functions
 	* `for..of` Loops
 	* Regular Expression Extensions
-	* Numeric Literals
+	* Number Literal Extensions
 	* Unicode
 	* Symbols
 * Chapter 3: Organization
@@ -27,22 +28,31 @@
 * Chapter 4: Async Flow Control
 	* Promises
 	* Generators + Promises
-	* `async` Functions
 * Chapter 5: Collections
-	* Map
-	* WeakMap
-	* Set
-	* WeakSet
-	* Typed Arrays
-* Chapter 6: New APIs
+	* TypedArrays
+	* Maps
+	* WeakMaps
+	* Sets
+	* WeakSets
+* Chapter 6: API Additions
+	* `Array`
 	* `Object`
 	* `Math`
 	* `Number`
 	* `String`
-	* `Array`
-* Chapter 7: Meta
+* Chapter 7: Meta Programming
 	* Function Names
-	* `Reflect` API
+	* Meta Properties
+	* Well Known Symbols
 	* Proxies
-	* Tail Call Optimization
-* Appendix A: Thank You's!
+	* `Reflect` API
+	* Feature Testing
+	* Tail Call Optimization (TCO)
+* Chapter 8: Beyond ES6
+	* `async function`s
+	* `Object.observe(..)`
+	* Exponentiation Operator
+	* Object Properties and `...`
+	* `Array#includes(..)`
+	* SIMD
+* Appendix A: Acknowledgments

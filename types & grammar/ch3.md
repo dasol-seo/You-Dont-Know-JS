@@ -300,7 +300,7 @@ var d = { foo: "bar" };
 d; // { foo: "bar" }
 
 var e = new Function( "a", "return a * 2;" );
-var f = function(a) { return a * 2; }
+var f = function(a) { return a * 2; };
 function g(a) { return a * 2; }
 
 var h = new RegExp( "^a*b+", "g" );
@@ -328,7 +328,7 @@ The `Date(..)` and `Error(..)` native constructors are much more useful than the
 
 To create a date object value, you must use `new Date()`. The `Date(..)` constructor accepts optional arguments to specify the date/time to use, but if omitted, the current date/time is assumed.
 
-By far the most common reason you construct a date object is to get the current unix timestamp value (an integer number of seconds since Jan 1, 1970). You can do this by calling `getTime()` on a date object instance.
+By far the most common reason you construct a date object is to get the current timestamp value (a signed integer number of milliseconds since Jan 1, 1970). You can do this by calling `getTime()` on a date object instance.
 
 But an even easier way is to just call the static helper function defined as of ES5: `Date.now()`. And to polyfill that for pre-ES5 is pretty easy:
 
@@ -478,7 +478,7 @@ One minor side-benefit of this approach is that the `.prototype`s are already cr
 
 Also, be very careful not to use `Array.prototype` as a default value **that will subsequently be modified**. In this example, `vals` is used read-only, but if you were to instead make in-place changes to `vals`, you would actually be modifying `Array.prototype` itself, which would lead to the gotchas mentioned earlier!
 
-**Note:** While we're pointing out these native prototypes and some usefulness, be cautious of relying on them and even more wary of modifying them in anyway. See Appendix A "Native Prototypes" for more discussion.
+**Note:** While we're pointing out these native prototypes and some usefulness, be cautious of relying on them and even more wary of modifying them in any way. See Appendix A "Native Prototypes" for more discussion.
 
 ## Review
 

@@ -1,40 +1,42 @@
 # You Don't Know JS
-# Preface
 
-I'm sure you noticed, but "JS" in the book series title is not an abbreviation for words used to curse about JavaScript, though cursing at the language's quirks is something we can probably all identify with!
+# 머리말
 
-From the earliest days of the web, JavaScript has been a foundational technology that drives interactive experience around the content we consume. While flickering mouse trails and annoying pop-up prompts may be where JavaScript started, nearly 2 decades later, the technology and capability of JavaScript has grown many orders of magnitude, and few doubt its importance at the heart of the world's most widely available software platform: the web.
+눈치챘겠지만, 시리즈 제목 중에 "JS"는 자바스크립트를 폄하하기 위해 사용된 축약어가 아닙니다. 우리 모두 자바스크립트의 취약점을 비난할지라도!
 
-But as a language, it has perpetually been a target for a great deal of criticism, owing partly to its heritage but even more to its design philosophy. Even the name evokes, as Brendan Eich once put it, "dumb kid brother" status next to its more mature older brother "Java". But the name is merely an accident of politics and marketing. The two languages are vastly different in many important ways. "JavaScript" is as related to "Java" as "Carnival" is to "Car".
+웹 초창기부터, 자바스크립트는 우리가 소비하는 콘텐츠 중심으로 상호작용하는 경험을 제공하는 기반 기술이었습니다. 깜빡거리는 마우스 흔적과 불쾌한 팝업 창이 자바스크립트가 시작된 지점일지도 모릅니다. 거의 20년 후, 자바스크립트의 기술과 기능은 성장했고, 세계에서 가장 널리 사용되는 소프트웨어 플랫폼의 핵심인 웹의 중요성은 의심의 여지가 없습니다.
 
-Because JavaScript borrows concepts and syntax idioms from several languages, including proud C-style procedural roots as well as subtle, less obvious Scheme/Lisp-style functional roots, it is exceedingly approachable to a broad audience of developers, even those with just little to no programming experience. The "Hello World" of JavaScript is so simple that the language is inviting and easy to get comfortable with in early exposure.
+그러나 프로그래밍 언어로서 자바스크립트는 끊임없는 비난의 대상이었는데, 부분적으로는 과거에서부터 전해 내려온 폐해 탓이기도 하지만 그보다는 설계 철학 자체가 문제시되기도 했습니다. 브렌던 아이크가 언급했듯이, 자바스크립트라는 이름이 성숙한 형인 '자바' 옆에 바보 같은 동생이라는 느낌을 줍니다. 그러나 이름은 단지 정치와 마케팅에 의한 우연한 사고일 뿐입니다. 두 언어는 여러 중요한 부분에서 크게 다릅니다. '자바스크립트'와 '자바'는 '카메라'와 '카'만큼이나 무관합니다.
 
-While JavaScript is perhaps one of the easiest languages to get up and running with, its eccentricities make solid mastery of the language a vastly less common occurrence than in many other languages. Where it takes a pretty in-depth knowledge of a language like C or C++ to write a full-scale program, full-scale production JavaScript can, and often does, barely scratch the surface of what the language can do.
+자바스크립트는 개념과 구문 체계는 자부심이 강한 C 스타일의 절차적인 뿌리뿐만 아니라 미묘하고 불확실한 스킴/리스프 스타일의 함수형 언어를 포함해 몇몇 언어로부터 빌려왔기 때문에, 프로그래밍 경험이 거의 없거나 전혀 없는 개발자들을 포함해 폭넓은 개발자층에 접근할 수 있었습니다. 자바스크립트의 'Hello World'는 정말 단순해서 언어가 출시 당시엔 매력적이고 편안함을 얻기 쉬웠습니다.
 
-Sophisticated concepts which are deeply rooted into the language tend instead to surface themselves in *seemingly* simplistic ways, such as passing around functions as callbacks, which encourages the JavaScript developer to just use the language as-is and not worry too much about what's going on under the hood.
+자바스크립트는 아마 처음 시작하고 실행하기는 가장 쉬운 언어들 중 하나지만, 기이한 특징들 탓에 다른 많은 언어들에 비해 언어 자체를 완전히 익힌 사람은 드뭅니다. C 또는 C++과 같은 언어로 전체 규모의 프로그램을 작성하려면 깊이 있는 지식이 필요하지만, 자바스크립트로 만든다면 수박 겉핥기 정도만 알고 있어도 가능합니다.
 
-It is simultaneously a simple, easy-to-use language that has broad appeal, and a complex and nuanced collection of language mechanics which without careful study will elude *true understanding* even for the most seasoned of JavaScript developers.
+콜백 함수를 다른 함수의 인자로 넘기는 것처럼, 언어에 깊게 뿌리 박힌 정교한 개념들이 오히려 겉보기에 단순한 방식으로 사용해도 괜찮게끔 유도하고, 이는 자바스크립트 개발자들이 언어를 있는 그대로 사용하고, 내부에서 무슨 일이 일어나는지에 대한 걱정을 하지 않고 사용하도록 합니다.
 
-Therein lies the paradox of JavaScript, the Achilles' Heel of the language, the challenge we are presently addressing. Because JavaScript *can* be used without understanding, the understanding of the language is often never attained.
+자바스크립트는 동시에 간단하고, 다양한 매력을 가진 사용하기 쉬운 언어이고, 자바스크립트에 익숙한 개발자일지라도 주의 깊은 학습 없이는 제대로 이해할 수 없는 복잡하고 미묘한 언어 역학 모음집입니다.
 
-## Mission
+이것이 자바스크립트의 역설이자 아킬레스건이고 우리가 현재 다뤄야 하는 도전과제입니다. 자바스크립트는 이해하지 않고도 사용할 수 있기 때문에, 자바스크립트를 제대로 이해하지 못하고 넘어가는 경우가 종종 발생합니다.
 
-If at every point that you encounter a surprise or frustration in JavaScript, your response is to add it to the blacklist, as some are accustomed to doing, you soon will be relegated to a hollow shell of the richness of JavaScript.
+## 미션
 
-While this subset has been famously dubbed "The Good Parts", I would implore you, dear reader, to instead consider it the "The Easy Parts", "The Safe Parts", or even "The Incomplete Parts".
+자바스크립트의 놀랍거나 불만스러운 점들을 마주할 때마다, 이런 일에 익숙한 사람처럼 자신의 블랙리스트에 추가한다면, 여러분은 곧 자바스크립트란 풍성함의 빈 껍데기에 머무르게 될 것입니다.
 
-This *You Don't Know JavaScript* book series offers a contrary challenge: learn and deeply understand *all* of JavaScript, even and especially "The Tough Parts".
+이 부분 집합이 "좋은 부분"으로 유명하지만, 대신에 독자 여러분, "쉬운 부분", "안전한 부분" 또는 "불완전한 부분"이라고 생각하기를 바랍니다.
 
-Here, we address head on the tendency of JS developers to learn "just enough" to get by, without ever forcing themselves to learn exactly how and why the language behaves the way it does. Furthermore, we eschew the common advice to *retreat* when the road gets rough.
+You Don't Know JavaScript 책 시리즈는 정반대 방향으로 접근합니다:
+자바스크립트의 모든 것, 특히 어려운 부분을 깊게 이해하고 학습합니다.
 
-I am not content, nor should you be, at stopping once something *just works*, and not really knowing *why*. I gently challenge you to journey down that bumpy "road less traveled" and embrace all that JavaScript is and can do. With that knowledge, no technique, no framework, no popular buzzword acronym of the week, will be beyond your understanding.
+여기서 우리는 자바스크립트 개발자들이 이 언어가 어떻게, 왜 이런 방식으로 작동하는지에 대해 정확하게 배우지 않고, 충분한 정도만 배우려는 자세에 대해 집중적으로 다룹니다. 우리는 험난한 길을 만났을 때, 뒤로 물러나라는 조언은 하지 않습니다.
 
-These books each take on specific core parts of the language which are most commonly misunderstood or under-understood, and dive very deep and exhaustively into them. You should come away from reading with a firm confidence in your understanding, not just of the theoretical, but the practical "what you need to know" bits.
+저는 코드가 작동만 하면 왜 그런지 이해하지 않고 멈추는 것에 대해 만족하지 않고 여러분도 그렇게 느낄 것이라고 생각합니다. 여러분이 험난한 '가시밭길'을 여행하면서 자바스크립트가 무엇이고, 무엇을 할 수 있는지에 대한 모든 것을 이해하길 바랍니다. 이 지식이 있으면, 어떠한 기술, 프레임워크, 금주의 인기 있는 유행어라도 여러분의 이해 수준을 벗어나지 않을 것입니다.
 
-The JavaScript you know *right now* is probably *parts* handed down to you by others who've been burned by incomplete understanding. *That* JavaScript is but a shadow of the true language. You don't *really* know JavaScript, *yet*, but if you dig into this series, you *will*. Read on, my friends. JavaScript awaits you.
+이 책들은 자바스크립트에 대해 가장 흔히 오해하거나 이해가 부족한 특정한 핵심 요소들을 매우 깊고, 철저하게 파헤칩니다. 여러분은 단지 이론적인 것이 아니라 실질적으로 알고 있어야 할 내용을 분명히 알고 간다는 확신을 갖고 넘어가야 합니다.
 
-## Summary
+아마 여러분이 지금 알고 있는 자바스크립트는 자바스크립트를 제대로 이해하지 못 한 사람들이 물려준 단편적인 지식일 것입니다. 이는 진정한 자바스크립트의 그림자에 불과합니다. 여러분은 아직 자바스크립트에 대해 제대로 알지 못하지만 이 시리즈를 파헤치면 여러분은 자바스크립트에 대해 제대로 알게 될 것입니다. 계속 읽으세요. 자바스크립트가 여러분을 기다립니다.
 
-JavaScript is awesome. It's easy to learn partially, and much harder to learn completely (or even *sufficiently*). When developers encounter confusion, they usually blame the language instead of their lack of understanding. These books aim to fix that, inspiring a strong appreciation for the language you can now, and *should*, deeply *know*.
+## 요약
 
-Note: Many of the examples in this book assume modern (and future-reaching) JavaScript engine environments, such as ES6. Some code may not work as described if run in older (pre-ES6) engines.
+자바스크립트는 엄청난 언어입니다. 부분적으로 배우기는 쉬워도, 완벽하게 또는 충분하게 배우기는 매우 어렵습니다. 개발자들은 난관에 봉착할 때, 일반적으로 자신들의 이해 부족 대신에 언어를 비난합니다. 이 책들은 그러한 생각을 바꾸고, 여러분이 지금 사용하는 이 언어에 대한 깊은 감사를 느끼며, 자바스크립트를 제대로, 깊이 이해하는 것을 목표로 합니다.
+
+주의: 이 책의 많은 예시들은 ES6와 같은 최신(미래 지향적인) 자바스크립트 엔진 환경을 전제로 합니다. 일부 코드를 구 엔진(ES6 이전)에서 실행하면 설명대로 작동하지 않을 수 있습니다.

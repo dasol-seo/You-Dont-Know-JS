@@ -36,7 +36,6 @@
 	* Pre-ES6 Generators
 * Chapter 5: Program Performance
 	* Web Workers
-	* Parallel JS
 	* SIMD
 	* asm.js
 * Chapter 6: Benchmarking & Tuning
@@ -48,5 +47,5 @@
 	* Tail Call Optimization (TCO)
 * Appendix A: *asynquence* Library
 * Appendix B: Advanced Async Patterns
-* Appendix C: Thank You's!
+* Appendix C: Acknowledgments
 

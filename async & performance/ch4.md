@@ -34,7 +34,7 @@ function bar() {
 foo();					// x: 3
 ```
 
-In this example, we know for sure that `bar()` runs in between `x++` and `console.log(x)`. But what if `bar()` wasn't there? Obviously the result would be `2` instead of `3`.
+In this example, we know for sure that `bar()` runs in between `x++` and `console.log(x)`. But what if `bar()` wasn't there? Obviously, the result would be `2` instead of `3`.
 
 Now let's twist your brain. What if `bar()` wasn't present, but it could still somehow run between the `x++` and `console.log(x)` statements? How would that be possible?
 
@@ -84,7 +84,7 @@ OK, there's quite a bit of new and potentially confusing stuff in those two code
 6. We inspect the value of `x` again, and it's now `3`.
 7. The final `it.next()` call resumes the `*foo()` generator from where it was paused, and runs the `console.log(..)` statement, which uses the current value of `x` of `3`.
 
-Clearly, `foo()` started, but did *not* run-to-completion -- it paused at the `yield`. We resumed `foo()` later, and let it finish, but that wasn't even required.
+Clearly, `*foo()` started, but did *not* run-to-completion -- it paused at the `yield`. We resumed `*foo()` later, and let it finish, but that wasn't even required.
 
 So, a generator is a special kind of function that can start and stop one or more times, and doesn't necessarily ever have to finish. While it won't be terribly obvious yet why that's so powerful, as we go throughout the rest of this chapter, that will be one of the fundamental building blocks we use to construct generators-as-async-flow-control as a pattern for our code.
 
@@ -214,7 +214,7 @@ These questions and answers -- the two-way message passing with `yield` and `nex
 
 ### Multiple Iterators
 
-It may appear from the syntactic usage that when you use an *iterator* to control a generator, you're controlling the declared generator function itself. But there's a subtlety that easy to miss: each time you construct an *iterator*, you are implicitly constructing an instance of the generator which that *iterator* will control.
+It may appear from the syntactic usage that when you use an *iterator* to control a generator, you're controlling the declared generator function itself. But there's a subtlety that's easy to miss: each time you construct an *iterator*, you are implicitly constructing an instance of the generator which that *iterator* will control.
 
 You can have multiple instances of the same generator running at the same time, and they can even interact:
 
@@ -299,7 +299,7 @@ function *bar() {
 }
 ```
 
-Depending on what respective order the *iterators* controlling `*foo()` and `*bar()` are called, the preceding program could produce several different results. In other words, we can actually illustrate (in a sort of fake-ish way) the theoretical "threaded race conditions" circumstances discussed in Chapter 1, by interleaving the two generator interations over the same shared variables.
+Depending on what respective order the *iterators* controlling `*foo()` and `*bar()` are called, the preceding program could produce several different results. In other words, we can actually illustrate (in a sort of fake-ish way) the theoretical "threaded race conditions" circumstances discussed in Chapter 1, by interleaving the two generator iterations over the same shared variables.
 
 First, let's make a helper called `step(..)` that controls an *iterator*:
 
@@ -757,7 +757,7 @@ Take a step back and consider the implications. We have totally synchronous-look
 
 **That's huge!** That's a nearly perfect solution to our previously stated problem with callbacks not being able to express asynchrony in a sequential, synchronous fashion that our brains can relate to.
 
-In essence, we are abstracting the asynchrony away as an implementation detail, so that we can reason synchronously/sequentially about our flow control: "Make an Ajax request, and when it finishes print out the response." And of course, we just expressed two steps in the flow control, but this same capabililty extends without bounds, to let us express however many steps we need to.
+In essence, we are abstracting the asynchrony away as an implementation detail, so that we can reason synchronously/sequentially about our flow control: "Make an Ajax request, and when it finishes print out the response." And of course, we just expressed two steps in the flow control, but this same capability extends without bounds, to let us express however many steps we need to.
 
 **Tip:** This is such an important realization, just go back and read the last three paragraphs again to let it sink in!
 
@@ -1168,12 +1168,12 @@ Hiding your Promise logic inside a function that you merely call from your gener
 
 ```js
 function bar() {
-	Promise.all( [
-		baz( .. )
-		.then( .. ),
-		Promise.race( [ .. ] )
-	] )
-	.then( .. )
+	return	Promise.all( [
+		  baz( .. )
+		  .then( .. ),
+		  Promise.race( [ .. ] )
+		] )
+		.then( .. )
 }
 ```
 
@@ -1566,8 +1566,8 @@ But how will we actually orchestrate this interaction? First, let's just do it m
 var it1 = reqData( "http://some.url.1" );
 var it2 = reqData( "http://some.url.2" );
 
-var p1 = it1.next();
-var p2 = it2.next();
+var p1 = it1.next().value;
+var p2 = it2.next().value;
 
 p1
 .then( function(data){
@@ -1600,8 +1600,8 @@ function *reqData(url) {
 var it1 = reqData( "http://some.url.1" );
 var it2 = reqData( "http://some.url.2" );
 
-var p1 = it.next();
-var p2 = it.next();
+var p1 = it1.next().value;
+var p2 = it2.next().value;
 
 p1.then( function(data){
 	it1.next( data );
@@ -2098,7 +2098,7 @@ Each state in our generator is represented by its own `case` in the `switch` sta
 
 For any generator-wide variable declarations (`val`), we move those to a `var` declaration outside of `process(..)` so they can survive multiple calls to `process(..)`. But the "block scoped" `err` variable is only needed for the `*3*` state, so we leave it in place.
 
-In state `*1*`, instead of `yield resolve(..)`, we did `return resolve(..)`. In terminal state `*2*`, there was no explicit `return`, so we just do a `return;` which is the same as `return undefined`. In terminal state `*3*`, there was a `return false`, so we preserve that.
+In state `*1*`, instead of `yield request(..)`, we did `return request(..)`. In terminal state `*2*`, there was no explicit `return`, so we just do a `return;` which is the same as `return undefined`. In terminal state `*3*`, there was a `return false`, so we preserve that.
 
 Now we need to define the code in the *iterator* functions so they call `process(..)` appropriately:
 
@@ -2175,7 +2175,7 @@ function foo(url) {
 
 How does this code work?
 
-1. The first call to the *iterator*'s `next()` call would move the generator from the unitialized state to state `1`, and then call `process()` to handle that state. The return value from `request(..)`, which is the promise for the Ajax response, is returned back as the `value` property from the `next()` call.
+1. The first call to the *iterator*'s `next()` call would move the generator from the uninitialized state to state `1`, and then call `process()` to handle that state. The return value from `request(..)`, which is the promise for the Ajax response, is returned back as the `value` property from the `next()` call.
 2. If the Ajax request succeeds, the second call to `next(..)` should send in the Ajax response value, which moves our state to `2`. `process(..)` is again called (this time with the passed in Ajax response value), and the `value` property returned from `next(..)` will be `undefined`.
 3. However, if the Ajax request fails, `throw(..)` should be called with the error, which would move the state from `1` to `3` (instead of `2`). Again `process(..)` is called, this time with the error value. That `case` returns `false`, which is set as the `value` property returned from the `throw(..)` call.
 

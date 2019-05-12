@@ -1,8 +1,10 @@
 # You Don't Know JS: Up & Going
 
+<img src="cover.jpg" width="300">
+
 -----
 
-**Purchase digital/print copy from O'Reilly**
+**[Purchase digital/print copy from O'Reilly](http://shop.oreilly.com/product/0636920039303.do)**
 
 -----
 

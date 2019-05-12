@@ -5,19 +5,19 @@ Welcome to the *You Don't Know JS* (*YDKJS*) series.
 
 *Up & Going* is an introduction to several basic concepts of programming -- of course we lean toward JavaScript (often abbreviated JS) specifically -- and how to approach and understand the rest of the titles in this series. Especially if you're just getting into programming and/or JavaScript, this book will briefly explore what you need to get *up and going*.
 
-This first chapter explains the basic principles of programming at a very high level. It's mostly intended if you are starting *YDKJS* with little to no prior programming experience, and are looking to these books to help get you started along a path to understanding programming through the lens of JavaScript.
+This book starts off explaining the basic principles of programming at a very high level. It's mostly intended if you are starting *YDKJS* with little to no prior programming experience, and are looking to these books to help get you started along a path to understanding programming through the lens of JavaScript.
 
 Chapter 1 should be approached as a quick overview of the things you'll want to learn more about and practice to get *into programming*. There are also many other fantastic programming introduction resources that can help you dig into these topics further, and I encourage you to learn from them in addition to this chapter.
 
 Once you feel comfortable with general programming basics, Chapter 2 will help guide you to a familiarity with JavaScript's flavor of programming. Chapter 2 introduces what JavaScript is about, but again, it's not a comprehensive guide -- that's what the rest of the *YDKJS* books are for!
 
-If you're already somewhat comfortable with JavaScript and are ready to get started with the rest of the series, check out Chapter 3 as a brief glimpse of what to expect from *YDKJS*.
+If you're already fairly comfortable with JavaScript, first check out Chapter 3 as a brief glimpse of what to expect from *YDKJS*, then jump right in!
 
 ## Code
 
 Let's start from the beginning.
 
-A program, often referred to as *code* or *source code*, is a set of special instructions to tell the computer what tasks to perform. Usually code is saved in a text file, although with JavaScript you can type code directly into a developer console in a browser, which we'll cover shortly.
+A program, often referred to as *source code* or just *code*, is a set of special instructions to tell the computer what tasks to perform. Usually code is saved in a text file, although with JavaScript you can also type code directly into a developer console in a browser, which we'll cover shortly.
 
 The rules for valid format and combinations of instructions is called a *computer language*, sometimes referred to as its *syntax*, much the same as English tells you how to spell words and how to create valid sentences using words and punctuation.
 
@@ -64,12 +64,12 @@ A general expression that stands alone is also called an *expression statement*,
 b * 2;
 ```
 
-This flavor of expression statement is not very common or useful, as generally it wouldn't have any affect on the running of the program -- it would retrive the value of `b` and multiply it by `2`, but then wouldn't do anything with that result.
+This flavor of expression statement is not very common or useful, as generally it wouldn't have any effect on the running of the program -- it would retrieve the value of `b` and multiply it by `2`, but then wouldn't do anything with that result.
 
 A more common expression statement is a *call expression* statement (see "Functions"), as the entire statement is the function call expression itself:
 
 ```js
-console.log( a );
+alert( a );
 ```
 
 ### Executing a Program
@@ -92,11 +92,9 @@ This chapter is going to introduce each programming concept with simple snippets
 
 It cannot be emphasized enough: while you go through this chapter -- and you may need to spend the time to go over it several times -- you should practice each of these concepts by typing the code yourself. The easiest way to do that is to open up the developer tools console in your nearest browser (Firefox, Chrome, IE, etc.).
 
-**Tip:** Typically, you can launch the developer console with a keyboard shortcut or from a menu item. For more detailed information about launching and using the console in your favorite browser, see "Mastering The Developer Tools Console" (http://blog.teamtreehouse.com/mastering-developer-tools-console).
+**Tip:** Typically, you can launch the developer console with a keyboard shortcut or from a menu item. For more detailed information about launching and using the console in your favorite browser, see "Mastering The Developer Tools Console" (http://blog.teamtreehouse.com/mastering-developer-tools-console). To type multiple lines into the console at once, use `<shift> + <enter>` to move to the next new line. Once you hit `<enter>` by itself, the console will run everything you've just typed.
 
 Let's get familiar with the process of running code in the console. First, I suggest opening up an empty tab in your browser. I prefer to do this by typing `about:blank` into the address bar. Then, make sure your developer console is open, as we just mentioned.
-
-**Tip:** To type multiple lines into the console at once, use `<shift> + <enter>` to move to the next new line. Once you hit `<enter>` by itself, the console will run everything you've just typed.
 
 Now, type this code and see how it runs:
 
@@ -148,7 +146,7 @@ age = prompt( "Please tell me your age:" );
 console.log( age );
 ```
 
-As you may have guessed, the message you pass to `prompt(..)`  (in this case, `"Please tell me your age:"`) is printed into the popup.
+As you may have guessed, the message you pass to `prompt(..)` -- in this case, `"Please tell me your age:"` -- is printed into the popup.
 
 This should look similar to the following:
 
@@ -166,7 +164,7 @@ Operators are how we perform actions on variables and values. We've already seen
 
 The `*` operator performs mathematic multiplication. Simple enough, right?
 
-The `=` equals operator is used for *assignment* -- we first calculate the value on the *righthand side* (source value) of the `=` and then put it into the variable that we specify on the *lefthand side* (target variable).
+The `=` equals operator is used for *assignment* -- we first calculate the value on the *right-hand side* (source value) of the `=` and then put it into the variable that we specify on the *left-hand side* (target variable).
 
 **Warning:** This may seem like a strange reverse order to specify assignment. Instead of `a = 42`, some might prefer to flip the order so the source value is on the left and the target variable is on the right, like `42 -> a` (this is not valid JavaScript!). Unfortunately, the `a = 42` ordered form, and similar variations, is quite prevalent in modern programming languages. If it feels unnatural, just spend some time rehearsing that ordering in your mind to get accustomed to it.
 
@@ -219,9 +217,9 @@ If you ask an employee at a phone store how much a certain phone costs, and they
 
 If that same employee picks up another similar phone but says it's "free" (perhaps with air quotes), they're not giving you a number, but instead another kind of representation of your expected cost ($0.00) -- the word "free."
 
-When you later ask if the phone includes a charger, and the employee says "yes," that answer could only have been either "yes" or "no."
+When you later ask if the phone includes a charger, that answer could only have been either "yes" or "no."
 
-In very similar ways, when you express values in a programs, you choose different representations for those values based on what you plan to do with them.
+In very similar ways, when you express values in a program, you choose different representations for those values based on what you plan to do with them.
 
 These different representations for values are called *types* in programming terminology. JavaScript has built-in types for each of these so called *primitive* values:
 
@@ -229,7 +227,7 @@ These different representations for values are called *types* in programming ter
 * When you need to print a value on the screen, you need a `string` (one or more characters, words, sentences).
 * When you need to make a decision in your program, you need a `boolean` (`true` or `false`).
 
-Values that are included directly in the source code are called *literals*. `string` literals are surrounded by double quotes (`"..."`)  or single quotes (`'...'`) -- the only difference is stylistic preference. `number` and `boolean` literals are just presented as is (i.e., `42`, `true`, etc.).
+Values that are included directly in the source code are called *literals*. `string` literals are surrounded by double quotes `"..."` or single quotes (`'...'`) -- the only difference is stylistic preference. `number` and `boolean` literals are just presented as is (i.e., `42`, `true`, etc.).
 
 Consider:
 
@@ -267,15 +265,13 @@ When comparing the string `"99.99"` to the number `99.99`, most people would agr
 
 To help you out in these common situations, JavaScript will sometimes kick in and *implicitly* coerce values to the matching types.
 
-//TODO Kyle: The preceding paras frequently italicized "types," but I think some of it was unnecessary.  Just calling to your attention in case you disagree.
-
-So if you use the `==` loose equals operator to make the comparison `"99.99" == 99.99`, JavaScript will convert the lefthand side `"99.99"` to its `number` equivalent `99.99`. The comparison then becomes `99.99 == 99.99`, which is of course `true`.
+So if you use the `==` loose equals operator to make the comparison `"99.99" == 99.99`, JavaScript will convert the left-hand side `"99.99"` to its `number` equivalent `99.99`. The comparison then becomes `99.99 == 99.99`, which is of course `true`.
 
 While designed to help you, implicit coercion can create confusion if you haven't taken the time to learn the rules that govern its behavior. Most JS developers never have, so the common feeling is that implicit coercion is confusing and harms programs with unexpected bugs, and should thus be avoided. It's even sometimes called a flaw in the design of the language.
 
 However, implicit coercion is a mechanism that *can be learned*, and moreover *should be learned* by anyone wishing to take JavaScript programming seriously. Not only is it not confusing once you learn the rules, it can actually make your programs better! The effort is well worth it.
 
-**Note:** For more information on coercion, see Chapter 4 of the *Types & Grammar* title of this series.
+**Note:** For more information on coercion, see Chapter 2 of this title and Chapter 4 of the *Types & Grammar* title of this series.
 
 ## Code Comments
 
@@ -283,7 +279,7 @@ The phone store employee might jot down some notes on the features of a newly re
 
 One of the most important lessons you can learn about writing code is that it's not just for the computer. Code is every bit as much, if not more, for the developer as it is for the compiler.
 
-Your computer only cares about machine code, binary 0s and 1s, that comes from *compilation*. There's a nearly infinite number of programs you could write that yield the same series of 0s and 1s. The choices you make about how to write your program matter -- not only to you, but to your other team members and even to your future self.
+Your computer only cares about machine code, a series of binary 0s and 1s, that comes from *compilation*. There's a nearly infinite number of programs you could write that yield the same series of 0s and 1s. The choices you make about how to write your program matter -- not only to you, but to your other team members and even to your future self.
 
 You should strive not just to write programs that work correctly, but programs that make sense when examined. You can go a long way in that effort by choosing good names for your variables (see "Variables") and functions (see "Functions").
 
@@ -381,7 +377,7 @@ In other words, *state* is tracking the changes to values as your program runs.
 
 Another common usage of variables is for centralizing value setting. This is more typically called *constants*, when you declare a variable with a value and intend for that value to *not change* throughout the program.
 
-You declare these *constants*, often at the top of a program, so that it's convenient for you to have one place to go to alter a value if you need to. By convention, JavaScript variables as constants are usually capitalized, with underscores (`_`)  between multiple words.
+You declare these *constants*, often at the top of a program, so that it's convenient for you to have one place to go to alter a value if you need to. By convention, JavaScript variables as constants are usually capitalized, with underscores `_` between multiple words.
 
 Here's a silly example:
 
@@ -423,7 +419,7 @@ By the way, that kind of "protection" against mistakes is similar to the static-
 
 The phone store employee must go through a series of steps to complete the checkout as you buy your new phone.
 
-Similarly, in code we often need to group a series of statements together, which we often call a *block*. In JavaScript, a block is defined by wrapping one or more statements inside a curly-brace pair (`{ .. }`). Consider:
+Similarly, in code we often need to group a series of statements together, which we often call a *block*. In JavaScript, a block is defined by wrapping one or more statements inside a curly-brace pair `{ .. }`. Consider:
 
 ```js
 var amount = 99.99;
@@ -460,23 +456,23 @@ There are quite a few ways we can express *conditionals* (aka decisions) in our 
 The most common one is the `if` statement. Essentially, you're saying, "*If* this condition is true, do the following...". For example:
 
 ```js
-var amount = 99.99;
 var bank_balance = 302.13;
+var amount = 99.99;
 
 if (amount < bank_balance) {
 	console.log( "I want to buy this phone!" );
 }
 ```
 
-The `if` statement requires an expression in between the parentheses  (`( )`) that can be treated as either `true` or `false`. In this program, we provided the expression `amount < bank_balance`, which indeed will either evaluate to `true` or `false` depending on the amount in the `bank_balance` variable.
+The `if` statement requires an expression in between the parentheses `( )` that can be treated as either `true` or `false`. In this program, we provided the expression `amount < bank_balance`, which indeed will either evaluate to `true` or `false` depending on the amount in the `bank_balance` variable.
 
 You can even provide an alternative if the condition isn't true, called an `else` clause. Consider:
 
 ```js
 const ACCESSORY_PRICE = 9.99;
 
-var amount = 99.99;
 var bank_balance = 302.13;
+var amount = 99.99;
 
 amount = amount * 2;
 
@@ -505,7 +501,7 @@ JavaScript defines a list of specific values that are considered "falsy" because
 
 During busy times, there's a waiting list for customers who need to speak to the phone store employee. While there's still people on that list, she just needs to keep serving the next customer.
 
-Repeating a set of actions until a certain condition is met is the job of programming loops; loops can take different forms, but they all satisfy this basic behavior.
+Repeating a set of actions until a certain condition fails -- in other words, repeating only while the condition holds -- is the job of programming loops; loops can take different forms, but they all satisfy this basic behavior.
 
 A loop includes the test condition as well as a block (typically as `{ .. }`). Each time the loop block executes, that's called an *iteration*.
 
@@ -550,15 +546,13 @@ var i = 0;
 
 // a `while..true` loop would run forever, right?
 while (true) {
-	// keep the loop going?
-	if (i <= 9) {
-		console.log( i );
-		i = i + 1;
-	}
-	// time to stop the loop!
-	else {
+	// stop the loop?
+	if ((i <= 9) === false) {
 		break;
 	}
+
+	console.log( i );
+	i = i + 1;
 }
 // 0 1 2 3 4 5 6 7 8 9
 ```
@@ -576,17 +570,25 @@ for (var i = 0; i <= 9; i = i + 1) {
 
 As you can see, in both cases the conditional `i <= 9` is `true` for the first 10 iterations (`i` of values `0` through `9`) of either loop form, but becomes `false` once `i` is value `10`.
 
-The `for` loop has three clauses: the declaration clause (`var i=0`), the conditional test clause (`i <= 9`), and the loop increment clause (`i = i + 1`). So if you're going to do counting with your loop iterations, `for` is a more compact and often easier form to understand and write.
+The `for` loop has three clauses: the initialization clause (`var i=0`), the conditional test clause (`i <= 9`), and the update clause (`i = i + 1`). So if you're going to do counting with your loop iterations, `for` is a more compact and often easier form to understand and write.
 
 There are other specialized loop forms that are intended to iterate over specific values, such as the properties of an object (see Chapter 2) where the implied conditional test is just whether all the properties have been processed. The "loop until a condition fails" concept holds no matter what the form of the loop.
 
 ## Functions
 
+<<<<<<< HEAD
 아마도 핸드폰 가게 직원은 세금과 최종 구매 금액을 알아내기 위해 계산기를 들고 다니지는 않을 것 입니다.그 일은 처음에 규칙을 정하고 반복해서 재사용 해야 할 일입니다. 회사에서 그러한 "기능들"이 내장되어 있는 계산기(컴퓨터, 태블릿 등)을 제공 할 것입니다.
 
 이와 유사하게, 프로그램은 코드 수행을 재사용 가능한 단위로 나눌 것입니다. 되풀이해서 반복되게 반복되는 대신에(말장난 입니다!). 이렇게 하는 방법이 함수를 정의하는 것입니다.
 
 함수는 일반적으로 이름으로 호출 가능한 코드의 고유한 부분입니다, 그리고 내부 코드는 매번 실행 될 것입니다. 생각 해 보세요:
+=======
+보통 회사는 처음에 규칙을 정하고 반복해서 재사용 해야하는 일들에 대해, 그러한 기능들이 내장되어 있는 기기(컴퓨터, 태블릿 등)들을 제공합니다. 기기를 제공받은 휴대폰 대리점 직원은 매번 세금과 최종 구매 금액의 계산을 위하여 계산기를 들고다닐 필요가 없어질 것입니다.
+
+이와 유사하게, 프로그램은 코드 수행을 재사용 가능한 단위로 나눌 것입니다. 되풀이해서 반복되게 반복되는 대신에(말장난 입니다!). 이렇게 하는 방법이 함수를 정의하는 것입니다.
+
+함수는 일반적으로 이름으로 호출 가능한 코드의 고유한 부분입니다, 그리고 내부 코드는 매번 실행 될 것입니다. 생각해보세요:
+>>>>>>> 152544bd2d24e73aa27ef923cb4dd2756e0556d8
 
 ```js
 function printAmount() {
@@ -602,7 +604,11 @@ amount = amount * 2;
 printAmount(); // "199.98"
 ```
 
+<<<<<<< HEAD
 함수는 추가로 인자들(매개변수라고도 하는)을 받을 수 있습니다. 그리고 그 함수들은 경우에따라 값을 반환할수 있습니다.
+=======
+함수는 추가로 인자들(매개변수라고도 하는)을 받을 수 있습니다. 그리고 그 함수들은 경우에 따라 값을 반환할수 있습니다.
+>>>>>>> 152544bd2d24e73aa27ef923cb4dd2756e0556d8
 
 ```js
 function printAmount(amt) {
@@ -610,7 +616,11 @@ function printAmount(amt) {
 }
 
 function formatAmount() {
+<<<<<<< HEAD
     return "$" + amount.toFixed( 2 );
+=======
+	return "$" + amount.toFixed( 2 );
+>>>>>>> 152544bd2d24e73aa27ef923cb4dd2756e0556d8
 }
 
 var amount = 99.99;
@@ -618,6 +628,7 @@ var amount = 99.99;
 printAmount( amount * 2 );      // "199.98"
 
 amount = formatAmount();
+<<<<<<< HEAD
 console.log( amount );          // "$99.99"
 ```
 
@@ -626,16 +637,34 @@ console.log( amount );          // "$99.99"
 반복되는 코드에 대해서 함수로 사용할 수 있습니다. 그리고 함수들을 한번만 호출 할지라도, 관련된 코드를 고유한 집합으로 묶어서 사용하기도 유용합니다
 
 생각 해 보세요:
+=======
+console.log( amount );			// "$99.99"
+```
+
+`printAmount(..)` 함수는 `amt` 매개변수를 가질 수 있고 `formatAmount()`함수는 값을 반환합니다. 이 두가지 형식은 당연히 한 함수에서 함께 사용 할 수 있습니다.
+
+반복되는 코드에 대해서 함수로 사용할 수 있습니다. 그리고 함수들을 한번만 호출 할지라도, 관련된 코드를 고유한 집합으로 묶어서 사용하기도 유용합니다
+
+생각해보세요:
+>>>>>>> 152544bd2d24e73aa27ef923cb4dd2756e0556d8
 
 ```js
 const TAX_RATE = 0.08;
 
 function calculateFinalPurchaseAmount(amt) {
+<<<<<<< HEAD
     // 세금을 포함한 금액 계산하기
     amt = amt + (amt * TAX_RATE);
 
     // 새롭게 계산된 금액 돌려주기
     return amt;
+=======
+	// 세금을 포함한 금액 계산하기
+	amt = amt + (amt * TAX_RATE);
+
+	// 새롭게 계산된 금액 돌려주기
+	return amt;
+>>>>>>> 152544bd2d24e73aa27ef923cb4dd2756e0556d8
 }
 
 var amount = 99.99;
@@ -649,14 +678,21 @@ console.log( amount.toFixed( 2 ) );     // "107.99"
 
 ### 스코프
 
+<<<<<<< HEAD
 핸드폰 대리점에 가서 점원에게 핸드폰 기종을 물어봤을 때 그 기종이 없다면 그 점원은 당신에게 핸드폰을 팔 수 없을 것 입니다. 그 점원은 그 가게의 재고만 판매 할 수 있기 때문입니다. 여러분은 다른 가게에 가서 당신이 원하는 기종의 핸드폰이 있는지 찾아봐야 합니다. 
 
 프로그래밍도 이와 같은 개념을 가지고 있습니다. *스코프(scope)* (기술적으로 말하자면 *lexical scope*). 자바스크립트 안에서 각각의 함수는 각자의 스코프를 가지고 있습니다. 스코프는 기본적으로 변수와 이름으로 어떤 방법으로 접근하는가에 대한 규칙들의 집합입니다. 함수의 스코프에 속한 변수만 접근 가능한 코드만 함수 안에 있습니다.
+=======
+핸드폰 대리점에 가서 점원에게 핸드폰 기종을 물어봤을 때 그 기종이 없다면 점원은 가게의 재고만 팔 수 있기 때문에 당신에게 핸드폰을 팔 수 없을 것 입니다. 그리고 여러분은 다른 가게에 가서 당신이 원하는 기종의 핸드폰이 있는지 찾아봐야 합니다.
+
+프로그래밍도 이와 같은 개념을 가지고 있습니다. *스코프(scope)* (기술적으로 말하자면 *lexical scope*). 자바스크립트 안에서 각각의 함수는 각자의 스코프를 가지고 있습니다. 스코프는 기본적으로 변수와 이름으로 어떤 방법으로 접근하는가에 대한 규칙들의 집합입니다. 함수의 스코프에서 작성되는 코드만이 그 함수의 변수에 접근할 수 있습니다.
+>>>>>>> 152544bd2d24e73aa27ef923cb4dd2756e0556d8
 
 변수 이름은 같은 스코프 안이라면 특별해야 합니다. 즉 각기 다른 변수 `a`는 같이 있을 수 없습니다. 하지만 같은 변수의 이름일지라도 다른 스코프에 속해 있다면 가능합니다.
 
 ```js
 function one() {
+<<<<<<< HEAD
     // `a`는 one 함수에만 속해 있습니다.
     var a = 1;
     console.log( a );
@@ -666,6 +702,17 @@ function two() {
     // `a`는 two 함수에만 속해 있습니다.
     var a = 2;
     console.log( a );
+=======
+	// `a`는 one 함수에만 속해 있습니다.
+	var a = 1;
+	console.log( a );
+}
+
+function two() {
+	// `a`는 two 함수에만 속해 있습니다.
+	var a = 2;
+	console.log( a );
+>>>>>>> 152544bd2d24e73aa27ef923cb4dd2756e0556d8
 }
 
 one();      // 1
@@ -674,7 +721,11 @@ two();      // 2
 
 또한 스코프는 다른 스코프 안에 겹쳐 질 수 있습니다. 마치 광대가 생일 파티에서 풍선 속에 풍선을 부는 것처럼요. 만약 한 스코프가 다른 스코프 안에 겹쳐진다면 가장 깊숙이 있는 스코프는 다른 스코프의 변수에 접근할 수 있습니다.
 
+<<<<<<< HEAD
 생각 해 보세요:
+=======
+생각해보세요:
+>>>>>>> 152544bd2d24e73aa27ef923cb4dd2756e0556d8
 
 ```js
 function outer() {
@@ -683,14 +734,25 @@ function outer() {
     function inner() {
         var b = 2;
 
+<<<<<<< HEAD
         // `a` and `b`에 접근이 가능합니다.
         console.log( a + b );   // 3
     }
+=======
+		// `a` and `b`에 접근이 가능합니다.
+		console.log( a + b );	// 3
+	}
+>>>>>>> 152544bd2d24e73aa27ef923cb4dd2756e0556d8
 
     inner();
 
+<<<<<<< HEAD
     // `a`만 접근 할수 있습니다.
     console.log( a );           // 1
+=======
+	// `a`만 접근 할수 있습니다.
+	console.log( a );			// 1
+>>>>>>> 152544bd2d24e73aa27ef923cb4dd2756e0556d8
 }
 
 outer();
@@ -700,28 +762,45 @@ outer();
 
 그래서 코드 안에 `inner()` 함수는 두 변수 `a`와 `b`에 접근이 가능하지만 `outer()`  함수내부에 코드는 `a`만 가능합니다. `b`에 접근이 안 되는 이유는 `inner()` 함수 안에만 있기 때문입니다.
 
+<<<<<<< HEAD
 이전 코드 스니펫에 다시 돌아 가봅시다: 
+=======
+이전 코드 스니펫으로 다시 돌아 가봅시다: 
+>>>>>>> 152544bd2d24e73aa27ef923cb4dd2756e0556d8
 
 ```js
 const TAX_RATE = 0.08;
 
 function calculateFinalPurchaseAmount(amt) {
+<<<<<<< HEAD
     // 세금이 포함된 새로운 금액을 계산
     amt = amt + (amt * TAX_RATE);
 
     // 새로운 금액을 반환
     return amt;
+=======
+	// 세금이 포함된 새로운 금액을 계산
+	amt = amt + (amt * TAX_RATE);
+
+	// 새로운 금액을 반환
+	return amt;
+>>>>>>> 152544bd2d24e73aa27ef923cb4dd2756e0556d8
 }
 ```
 
 비록 상수(변수) `TAX_RATE`값을 `calculateFinalPurchaseAmount(..)`함수안에 전달하지 않아도, 렉시컬 스코프에 의해서 함수 내부에서 접근이 가능합니다.
 
+<<<<<<< HEAD
 **참고:** 렉시컬 스코프에 관해 더 알고 싶으시면 시리즈 중 *Scope & Closures* 에 처음 세개의 장 을 참고하면 됩니다.
+=======
+**Note:** 렉시컬 스코프에 관해 더 알고 싶으시면 시리즈 중 *Scope & Closures* 에 처음 세개의 장 을 참고하면 됩니다.
+>>>>>>> 152544bd2d24e73aa27ef923cb4dd2756e0556d8
 
 ## 연습
 
 프로그래밍을 배우는데 있어서 연습 외에 좋은 대안은 없습니다. 제가 명확하게 글을 쓴다고 할지라도 그것이 당신을 프로그래머로 만들 수는 없습니다.
 
+<<<<<<< HEAD
 앞에 언급한 글을 되새기면서 이 장에서 우리가 배운 것들을 연습해봅시다. 제가 "필수 사항"을 제시하면 그걸 시도해 주세요. 그다음 아래의 코드들을 보면서 제가 어떻게 접근했는지를 참고해 보세요.
 
 * 핸드폰의 총 구매가격을 계산하는 코드를 써보세요. 당신이 은행 계좌에 가지고 있는 돈이 떨어질 때까지 핸드폰 구매를 계속할 것입니다(힌트: loop!) 각각의 핸드폰에 액세서리 또한 당신의 허용하는 구매 한계치까지 구매할 것입니다.
@@ -736,6 +815,22 @@ function calculateFinalPurchaseAmount(amt) {
 **참고:** 이 책은 자바스크립트 책이기 때문에, 저는 연습문제를 자바스크립트 언어로 풀 것입니다. 다른 언어가 편하다면 그 언어를 사용하셔도 됩니다!
 
 여기 해당 문제의 저의 솔루션입니다.
+=======
+앞에 언급한 글을 되새기면서 이 장에서 우리가 배운 것들을 연습해봅시다. 제가 제시하는 "필수 사항"을 먼저 여러분의 코드로 작성하고, 그 다음 아래의 코드들을 보면서 제가 어떻게 접근했는지를 참고하세요.
+
+* 휴대폰의 총 구매가격을 계산하는 코드를 써보세요. 당신이 은행 계좌에 가지고 있는 돈이 떨어질 때까지 휴대폰 구매를 계속할 것입니다(힌트: loop!) 각각의 휴대폰에 액세서리 또한 당신의 허용하는 구매 한계치까지 구매할 것입니다.
+* 구매 금액을 계산한후에, 세금을 더하고, 그리고 나서 적절한 형식으로 계산한 구매금액을 출력하세요.
+* 마지막으로 당신의 은행 잔액을 확인하며 더 구매를 할 수 있는지 확인합니다. 최종적으로, 여러분의 통장에 남은 잔액이 충분한지 확인을 합니다.
+* "tax rate(세율)", "phone price(휴대폰 가격)", "accessory price(액세서리 가격)", "spending threshold(한도 금액)," "bank account balance(은행 잔액)" 등의 변수를 설정합니다.
+* 세금을 계산하기 위한 함수를 정의합니다. 또한 금액은 "$"와 소수점 두 자리 까지 정도로 맞춥니다.
+* **보너스 챌린지:** input을 포함해 보세요. 이전 "Input"에서 다룬 prompt(..)를 가지고 input을 코드에 넣어보세요. 예를들어서, 사용자의 은행잔고를 바로 알려줄 수 있습니다. 창의력을 더한 즐거운 코딩을 해보세요!
+
+그럼 한번 해보세요! 단, 여러분이 직접 해볼 때까지 제 코드를 보지 마세요.
+
+**Note:** 이 책은 자바스크립트 책이기 때문에, 연습문제는 자바스크립트로 풀 것입니다. 다른 언어가 편하다면 그 언어를 사용하셔도 됩니다!
+
+아래는 제가 작성한 해당 문제의 솔루션입니다.
+>>>>>>> 152544bd2d24e73aa27ef923cb4dd2756e0556d8
 
 ```js
 const SPENDING_THRESHOLD = 200;
@@ -751,6 +846,7 @@ function calculateTax(amount) {
 }
 
 function formatAmount(amount) {
+<<<<<<< HEAD
     return "$" + amount.toFixed( 2 );
 }
 
@@ -763,6 +859,20 @@ while (amount < bank_balance) {
     if (amount < SPENDING_THRESHOLD) {
         amount = amount + ACCESSORY_PRICE;
     }
+=======
+	return "$" + amount.toFixed( 2 );
+}
+
+// 잔고가 있을 때 까지 휴대폰을 구입
+while (amount < bank_balance) {
+	// 새로운 폰을 구입!
+	amount = amount + PHONE_PRICE;
+
+	// 액세서리까지 구입하는 것이 충분할까?
+	if (amount < SPENDING_THRESHOLD) {
+		amount = amount + ACCESSORY_PRICE;
+	}
+>>>>>>> 152544bd2d24e73aa27ef923cb4dd2756e0556d8
 }
 
 // 세금 내는 것을 잊지말기!
@@ -782,18 +892,31 @@ if (amount > bank_balance) {
 // 구매를 하기에 현재 잔액이 충분하지 않습니다. :(
 ```
 
+<<<<<<< HEAD
 **참고:** 이 자바스크립트 프로그램을 실행시키는 가장 간단한 방법은 당신의 인터넷 브라우저 개발자 콘솔에 코드를 입력하는 것입니다. 
+=======
+**Note:** 이 자바스크립트 프로그램을 실행시키는 가장 간단한 방법은 당신의 인터넷 브라우저 개발자 콘솔에 코드를 입력하는 것입니다.
+
+>>>>>>> 152544bd2d24e73aa27ef923cb4dd2756e0556d8
 어떻게 했나요? 제 코드를 이미 보았기 때문에 그렇게 힘든 것은 아닐 것입니다. 또한 몇 개의 변수를 변경해서 다른 값으로 이 프로그램이 어떻게 실행되는지 시도해 보세요.
 
 ## 리뷰
 
 프로그래밍을 배우는 것은 복잡하거나 엄청난 과정이 있어야 하는 건 아닙니다. 몇 가지 기본개념만 가지고 있으면 됩니다.
 
+<<<<<<< HEAD
 이것은 마치 벽돌을 쌓는것과 같습니다. 높은 타워를 짓는다고 생각 해 보세요. 당신은 벽돌을 층층이 위로 쌓는 것부터 시작할 것입니다. 프로그래밍도 이와 같습니다. 여기 가장 기본이 되는 몇 개의 빌딩 블록이 있습니다.
 
 * 값에 대한 작업을 수행하는 *연산자*
 * `숫자` 나 `문자열`의 결괏값 등같이 다른 종류에 작업을 실행하는 값과 *타입*
 * 프로그램이 실행되는 동안 데이터를 저장 할 (*state*  라고도 한다.) *변수*
+=======
+이것은 마치 벽돌을 쌓는것과 같습니다. 높은 타워를 짓는다고 생각해보세요. 당신은 벽돌을 층층이 위로 쌓는 것부터 시작할 것입니다. 프로그래밍도 이와 같습니다. 여기 가장 기본이 되는 몇 개의 빌딩 블록이 있습니다.
+
+* 값에 대한 작업을 수행하는 *연산자*
+* `숫자` 나 `문자열`의 결괏값 등같이 다른 종류에 작업을 실행하는 값과 *타입*
+* 프로그램이 실행되는 동안 데이터를 저장 할 (*state(스테이트)*  라고도 한다.) *변수*
+>>>>>>> 152544bd2d24e73aa27ef923cb4dd2756e0556d8
 * `if` 조건문과 같은 결정을 할 수 있는 *조건*
 * 조건이 참이 될 때까지 반복해서 작업하는 *루프*
 * 논리적이고 재사용이 가능한 코드로 정리할 수 있는 *함수*
@@ -802,6 +925,12 @@ if (amount > bank_balance) {
 
 마지막으로 연습의 힘을 무시하지 마세요. 코드를 배우는 가장 좋은 방법은 직접 코드를 써보는 것 입니다.
 
+<<<<<<< HEAD
 여러분은 잘하고 있습니다.지금까지 여러분이 잘 따라와 주셔서 기쁩니다. 앞으로도 계속 열심히 하세요. 다른 초보자 프로그래밍 자료들(책, 블로그, 온라인 코스 등등) 또한 찾아보는 것도 잊지 마세요. 간단한 소개 정도 이지만 이 장과 이 책은 좋은 시작입니다.
 
 다음 장에서는, 이 장에서 다뤘던 많은 개념들을 설명 복습 할 것입니다. 나머지 시리즈 전체에 걸쳐 깊고 자세히 다뤄질 가장 주요한 토픽이 자바스크립트의 특유 관점에 대해서 다뤄질 것입니다.
+=======
+여러분은 잘하고 있습니다. 지금까지 여러분이 잘 따라와 주셔서 기쁩니다. 앞으로도 계속 열심히 하세요. 다른 초보자 프로그래밍 자료들(책, 블로그, 온라인 코스 등등) 또한 찾아보는 것도 잊지 마세요. 간단한 소개 정도 이지만 이 장과 이 책은 좋은 시작입니다. 
+
+다음 장에서는 이 장에서 다뤘던 많은 개념들을 리뷰하겠지만, 보다 자바스크립트 특유의 관점에서, 나머지 시리즈 전체에 걸쳐 더 자세히 다루어지는 주요 주제들을 대부분 강조할 것입니다.
+>>>>>>> 152544bd2d24e73aa27ef923cb4dd2756e0556d8

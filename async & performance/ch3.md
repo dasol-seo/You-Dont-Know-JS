@@ -31,7 +31,7 @@ With that in mind, let's look at two different analogies for what a Promise *is*
 
 Imagine this scenario: I walk up to the counter at a fast-food restaurant, and place an order for a cheeseburger. I hand the cashier $1.47. By placing my order and paying for it, I've made a request for a *value* back (the cheeseburger). I've started a transaction.
 
-But often, the chesseburger is not immediately available for me. The cashier hands me something in place of my cheeseburger: a receipt with an order number on it. This order number is an IOU ("I owe you") *promise* that ensures that eventually, I should receive my cheeseburger.
+But often, the cheeseburger is not immediately available for me. The cashier hands me something in place of my cheeseburger: a receipt with an order number on it. This order number is an IOU ("I owe you") *promise* that ensures that eventually, I should receive my cheeseburger.
 
 So I hold onto my receipt and order number. I know it represents my *future cheeseburger*, so I don't need to worry about it anymore -- aside from being hungry!
 
@@ -440,7 +440,7 @@ Let's start by reviewing the trust issues with callbacks-only coding. When you p
 * Call the callback too late (or never)
 * Call the callback too few or too many times
 * Fail to pass along any necessary environment/parameters
-* swallow any errors/exceptions that may happen
+* Swallow any errors/exceptions that may happen
 
 The characteristics of Promises are intentionally designed to provide useful, repeatable answers to all these concerns.
 
@@ -507,7 +507,7 @@ p2.then( function(v){
 // A B  <-- not  B A  as you might expect
 ```
 
-We'll cover this more later, but as you can see, `p1` is resolved not with an immediate value, but with another promise `p3` which is itself resolved with the value `"B"`. The specified behavior is to *unwrap* `p3` into `p1`, but asynchronously, so `p1`'s callback(s) are *behind* `p2`'s callback(s) in the asynchronus Job queue (see Chapter 1).
+We'll cover this more later, but as you can see, `p1` is resolved not with an immediate value, but with another promise `p3` which is itself resolved with the value `"B"`. The specified behavior is to *unwrap* `p3` into `p1`, but asynchronously, so `p1`'s callback(s) are *behind* `p2`'s callback(s) in the asynchronous Job queue (see Chapter 1).
 
 To avoid such nuanced nightmares, you should never rely on anything about the ordering/scheduling of callbacks across Promises. In fact, a good practice is not to code in such a way where the ordering of multiple callbacks matters at all. Avoid that if you can.
 
@@ -1355,7 +1355,7 @@ While `Promise.all([ .. ])` coordinates multiple Promises concurrently and assum
 
 This pattern is classically called a "latch," but in Promises it's called a "race."
 
-**Warning:** While the metaphor of "only the first across the finish line wins" fits the behavior well, unfortunately "race" is kind of a loaded term, because "race conditions" are generally taken as bugs in programs (see Chapter 1). Don't confuse `Promise.race([..])` with "race condition."
+**Warning:** While the metaphor of "only the first across the finish line wins" fits the behavior well, unfortunately "race" is kind of a loaded term, because "race conditions" are generally taken as bugs in programs (see Chapter 1). Don't confuse `Promise.race([ .. ])` with "race condition."
 
 `Promise.race([ .. ])` also expects a single `array` argument, containing one or more Promises, thenables, or immediate values. It doesn't make much practical sense to have a race with immediate values, because the first one listed will obviously win -- like a foot race where one runner starts at the finish line!
 
@@ -1483,7 +1483,7 @@ While native ES6 Promises come with built-in `Promise.all([ .. ])` and `Promise.
 
 * `none([ .. ])` is like `all([ .. ])`, but fulfillments and rejections are transposed. All Promises need to be rejected -- rejections become the fulfillment values and vice versa.
 * `any([ .. ])` is like `all([ .. ])`, but it ignores any rejections, so only one needs to fulfill instead of *all* of them.
-* `first([ .. ])` is a like a race with `any([ .. ])`, which is that it ignores any rejections and fulfills as soon as the first Promise fulfills.
+* `first([ .. ])` is like a race with `any([ .. ])`, which is that it ignores any rejections and fulfills as soon as the first Promise fulfills.
 * `last([ .. ])` is like `first([ .. ])`, but only the latest fulfillment wins.
 
 Some Promise abstraction libraries provide these, but you could also define them yourself using the mechanics of Promises, `race([ .. ])` and `all([ .. ])`.
@@ -1600,7 +1600,7 @@ var p1 = new Promise( function(resolve,reject){
 var p2 = Promise.reject( "Oops" );
 ```
 
-`Promise.resolve(..)` is usually used to create an already-fulfilled Promise in a similar way to `Promise.reject(..)`. However, `Promise.resolve(..)` also unwraps thenable values (as discusssed several times already). In that case, the Promise returned adopts the final resolution of the thenable you passed in, which could either be fulfillment or rejection:
+`Promise.resolve(..)` is usually used to create an already-fulfilled Promise in a similar way to `Promise.reject(..)`. However, `Promise.resolve(..)` also unwraps thenable values (as discussed several times already). In that case, the Promise returned adopts the final resolution of the thenable you passed in, which could either be fulfillment or rejection:
 
 ```js
 var fulfilledTh = {
@@ -2012,8 +2012,8 @@ Of course, while we're refactoring `foo(..)` to use our new `request(..)` promis
 Consider:
 
 ```js
-`foo(..)` is now also a promisory because it
-delegates to the `request(..)` promisory
+// `foo(..)` is now also a promisory because it
+// delegates to the `request(..)` promisory
 function foo(x,y) {
 	return request(
 		"http://some.url.1/?x=" + x + "&y=" + y
@@ -2031,7 +2031,7 @@ While ES6 Promises don't natively ship with helpers for such promisory wrapping,
 
 Once you create a Promise and register a fulfillment and/or rejection handler for it, there's nothing external you can do to stop that progression if something else happens to make that task moot.
 
-**Note:** Many Promise abstraction libraries provide facilities to cancel Promises, but this is a terrible idea! Many developers wish Promises had natively been designed with external cancelation capability, but the problem is that it would let one consumer/observer of a Promise affect some other consumer's ability to observe that same Promise. This violates the future-value's trustability (external immutability), but morever is the embodiment of the "action at a distance" anti-pattern (http://en.wikipedia.org/wiki/Action_at_a_distance_%28computer_programming%29). Regardless of how useful it seems, it will actually lead you straight back into the same nightmares as callbacks.
+**Note:** Many Promise abstraction libraries provide facilities to cancel Promises, but this is a terrible idea! Many developers wish Promises had natively been designed with external cancelation capability, but the problem is that it would let one consumer/observer of a Promise affect some other consumer's ability to observe that same Promise. This violates the future-value's trustability (external immutability), but moreover is the embodiment of the "action at a distance" anti-pattern (http://en.wikipedia.org/wiki/Action_at_a_distance_%28computer_programming%29). Regardless of how useful it seems, it will actually lead you straight back into the same nightmares as callbacks.
 
 Consider our Promise timeout scenario from earlier:
 

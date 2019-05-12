@@ -68,7 +68,7 @@ foo(); // 2
 
 The first thing to note, if you were not already aware, is that variables declared in the global scope, as `var a = 2` is, are synonymous with global-object properties of the same name. They're not copies of each other, they *are* each other. Think of it as two sides of the same coin.
 
-Secondly, we see that when `foo()` is called, `this.a` resolves to our global variable `a`. Why? Because in this case, the *default binding* for `this` applied to the function call, and so points `this` at the global object.
+Secondly, we see that when `foo()` is called, `this.a` resolves to our global variable `a`. Why? Because in this case, the *default binding* for `this` applies to the function call, and so points `this` at the global object.
 
 How do we know that the *default binding* rule applies here? We examine the call-site to see how `foo()` is called. In our snippet, `foo()` is called with a plain, un-decorated function reference. None of the other rules we will demonstrate will apply here, so the *default binding* applies instead.
 
@@ -283,11 +283,12 @@ var bar = function() {
 bar(); // 2
 setTimeout( bar, 100 ); // 2
 
-// hard-bound `bar` can no longer have its `this` overridden
+// `bar` hard binds `foo`'s `this` to `obj`
+// so that it cannot be overriden
 bar.call( window ); // 2
 ```
 
-Let's examine how this variation works. We create a function `bar()` which, internally, manually calls `foo.call(obj)`, thereby forcibly invoking `foo` with `obj` binding for `this`. No matter how you later invoke the function `bar`, he will always manually invoke `foo` with `obj`. This binding is both explicit and strong, so we call it *hard binding*.
+Let's examine how this variation works. We create a function `bar()` which, internally, manually calls `foo.call(obj)`, thereby forcibly invoking `foo` with `obj` binding for `this`. No matter how you later invoke the function `bar`, it will always manually invoke `foo` with `obj`. This binding is both explicit and strong, so we call it *hard binding*.
 
 The most typical way to wrap a function with a *hard binding* creates a pass-thru of any arguments passed and any return value received:
 
@@ -812,7 +813,7 @@ var obj = {
 foo.call( obj ); // 2
 ```
 
-While arrow-functions provide an alternative to using `bind(..)` on a function to ensure its `this`, which can seem attractive, it's important to note that they essentially are disabling the traditional `this` mechanism in favor of more widely-understood lexical scoping. Pre ES-6, we already have a fairly common pattern for doing so, which is basically almost indistinguishable from the spirit of ES6 arrow-functions:
+While arrow-functions provide an alternative to using `bind(..)` on a function to ensure its `this`, which can seem attractive, it's important to note that they essentially are disabling the traditional `this` mechanism in favor of more widely-understood lexical scoping. Pre-ES6, we already have a fairly common pattern for doing so, which is basically almost indistinguishable from the spirit of ES6 arrow-functions:
 
 ```js
 function foo() {

@@ -9,6 +9,7 @@
 	* Built-in Types
 	* Values as Types
 * Chapter 2: Values
+	* Arrays
 	* Strings
 	* Numbers
 	* Special Values
@@ -34,5 +35,5 @@
 	* `try..finally`
 	* `switch`
 * Appendix A: Mixed Environment JavaScript
-* Appendix B: Thank You's!
+* Appendix B: Acknowledgments
 
