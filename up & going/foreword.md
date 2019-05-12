@@ -1,5 +1,5 @@
 # You Don't Know JS: Up & Going
-# 서문
+# 머릿말
 
 여러분이 최근에 새롭게 배운 것은 무엇인가요?
 
