@@ -584,7 +584,7 @@ There are other specialized loop forms that are intended to iterate over specifi
 
 ```js
 function printAmount() {
-    console.log( amount.toFixed( 2 ) );
+	console.log( amount.toFixed( 2 ) );
 }
 
 var amount = 99.99;
@@ -636,7 +636,7 @@ var amount = 99.99;
 
 amount = calculateFinalPurchaseAmount( amount );
 
-console.log( amount.toFixed( 2 ) );     // "107.99"
+console.log( amount.toFixed( 2 ) );		// "107.99"
 ```
 
 비록 calculateFinalPurchaseAmount(..) 가 한번만 호출 되더라도, 기능을 고유한 함수로 나누는 것은 코드(the amount = calculateFinal... statement)를 더 명확하게 해줍니다. 만약 함수가 더 많은 문을 가지고 있으면, 그 장점이 훨씬 더 부각됩니다.
@@ -662,8 +662,8 @@ function two() {
 	console.log( a );
 }
 
-one();      // 1
-two();      // 2
+one();		// 1
+two();		// 2
 ```
 
 또한 스코프는 다른 스코프 안에 겹쳐 질 수 있습니다. 마치 광대가 생일 파티에서 풍선 속에 풍선을 부는 것처럼요. 만약 한 스코프가 다른 스코프 안에 겹쳐진다면 가장 깊숙이 있는 스코프는 다른 스코프의 변수에 접근할 수 있습니다.
@@ -741,7 +741,7 @@ var bank_balance = 303.91;
 var amount = 0;
 
 function calculateTax(amount) {
-    return amount * TAX_RATE;
+	return amount * TAX_RATE;
 }
 
 function formatAmount(amount) {
@@ -763,15 +763,15 @@ while (amount < bank_balance) {
 amount = amount + calculateTax( amount );
 
 console.log(
-    "Your purchase: " + formatAmount( amount )
+	"Your purchase: " + formatAmount( amount )
 );
 // 구매 금액: $334.76
 
 // 구매하기에 금액이 정말 충분한가?
 if (amount > bank_balance) {
-    console.log(
-        "You can't afford this purchase. :("
-    );
+	console.log(
+		"You can't afford this purchase. :("
+	);
 }
 // 구매를 하기에 현재 잔액이 충분하지 않습니다. :(
 ```
