@@ -274,81 +274,81 @@ However, implicit coercion is a mechanism that *can be learned*, and moreover *s
 
 **Note:** For more information on coercion, see Chapter 2 of this title and Chapter 4 of the *Types & Grammar* title of this series.
 
-## Code Comments
+## 코드 주석
 
-The phone store employee might jot down some notes on the features of a newly released phone or on the new plans her company offers. These notes are only for the employee -- they're not for customers to read. Nevertheless, these notes help the employee do her job better by documenting the hows and whys of what she should tell customers.
+휴대폰 대리점 직원은 최근에 배포된 핸드폰의 특징이나 회사에서 제공하는 새로운 계획들을 메모해둘지도 모릅니다. 이 메모들은 고객들이 읽기 위한 것이 아닌, 직원들을 위한 것입니다. 그렇지만, 직원이 고객에게 전달해야 할 말에 대한 방법과 이유를 문서로 남겨서 자기 일을 더 잘할 수 있도록 도와줍니다.
 
-One of the most important lessons you can learn about writing code is that it's not just for the computer. Code is every bit as much, if not more, for the developer as it is for the compiler.
+코드를 작성하면서 배울 수 있는 중요한 교훈 중 하나는 내가 지금 작성하는 코드가 컴퓨터에만 국한되지 않는다는 것입니다. 즉 컴파일러를 위한 코드를 작성하는 것만큼 개발자를 위한 코드를 작성하는 것도 중요합니다. 
 
-Your computer only cares about machine code, a series of binary 0s and 1s, that comes from *compilation*. There's a nearly infinite number of programs you could write that yield the same series of 0s and 1s. The choices you make about how to write your program matter -- not only to you, but to your other team members and even to your future self.
+여러분의 컴퓨터는 *컴파일*에서 온 이진수 0과 1로 이루어진 기계 코드에 대해서만 관심이 있습니다. 그리고 여러분은 0과 1로 이루어진 거의 무한한 수의 프로그램을 작성할 수 있습니다. 이러한 맥락에서 여러분이 프로그램을 어떻게 작성할지에 대한 선택은 여러분뿐만이 아닌 다른 팀 구성원, 미래의 여러분 자신을 위한 문제이기도 합니다.
 
-You should strive not just to write programs that work correctly, but programs that make sense when examined. You can go a long way in that effort by choosing good names for your variables (see "Variables") and functions (see "Functions").
+여러분은 정확하게 동작하는 프로그램을 작성해야 할 뿐만 아니라 테스트를 할 때도 의미 있는 프로그램을 작성해야 합니다. 여러분의 변수와 ("변수"를 참고하세요) 함수 ("함수" 참고하세요)를 위한 좋은 이름을 선택하는 노력은 여러분의 프로그램이 좋은 결과를 낼 수 있도록 만듭니다.
 
-But another important part is code comments. These are bits of text in your program that are inserted purely to explain things to a human. The interpreter/compiler will always ignore these comments.
+하지만 또 다른 중요한 부분은 코드 주석입니다. 여러분의 프로그램에는 단순히 여러분의 프로그램을 사람에게 설명하기 위해 삽입된 텍스트 비트들이 있습니다. 인터프리터/컴파일러는 이 주석들을 항상 무시할 것입니다.
 
-There are lots of opinions on what makes well-commented code; we can't really define absolute universal rules. But some observations and guidelines are quite useful:
+주석 처리가 잘 된 코드를 작성하는 것에 대한 많은 의견이 있습니다; 우리는 실제로 반드시 지켜야만 하는 공통된 규칙을 정의할 수 없습니다. 하지만 일부 발언과 가이드라인은 꽤 유용합니다:
 
-* Code without comments is suboptimal.
-* Too many comments (one per line, for example) is probably a sign of poorly written code.
-* Comments should explain *why*, not *what*. They can optionally explain *how* if that's particularly confusing.
+* 주석 없는 코드는 차선책입니다.
+* 너무 많은 주석 (예를 들어 한 줄에 하나씩)은 잘 못 작성된 코드라는 뜻입니다.
+* 주석은 *무엇*이 아닌 *왜*에 대해 설명해야 합니다. 물론 혼동의 여지가 있다면 부가적으로 *어떻게*에 대해 설명할 수 있습니다.
 
-In JavaScript, there are two types of comments possible: a single-line comment and a multiline comment.
+자바스크립트에서는, 주석을 작성하는 방법이 두 가지 있습니다: 한 줄 주석과 여러 줄 주석
 
-Consider:
+생각해보세요:
 
 ```js
-// This is a single-line comment
+// 이것은 한 줄 주석입니다.
 
-/* But this is
-       a multiline
-             comment.
+/* 그리고 이것은
+       여러 줄
+             주석입니다.
                       */
 ```
 
-The `//` single-line comment is appropriate if you're going to put a comment right above a single statement, or even at the end of a line. Everything on the line after the `//` is treated as the comment (and thus ignored by the compiler), all the way to the end of the line. There's no restriction to what can appear inside a single-line comment.
+`//`한 줄 주석은 단일 문장 바로 위에 주석을 달거나 줄의 끝 부분에 주석을 넣을 때 적절합니다. `//`이후에 그 줄에 있는 모든 것은 주석으로 처리됩니다(따라서 컴파일러에 의해 무시됩니다). 한 줄 주석 안에 표현할 수 있는 것에 대한 제한은 없습니다.
 
-Consider:
+생각해보세요:
 
 ```js
-var a = 42;		// 42 is the meaning of life
+var a = 42;		// 42는 삶의 의미입니다.
 ```
 
-The `/* .. */` multiline comment is appropriate if you have several lines worth of explanation to make in your comment.
+`/* .. */` 여러 줄 주석은 여러분의 생각을 여러 줄로 설명할 때 적절합니다.
 
-Here's a common usage of multiline comments:
+다음은 여러 줄 주석의 일반적인 사용법입니다:
 
 ```js
-/* The following value is used because
-   it has been shown that it answers
-   every question in the universe. */
+/* 다음의 값은 우주의 모든 질문에 대해
+   답을 한다고 여겨지기 때문에 
+   사용됩니다. */
 var a = 42;
 ```
 
-It can also appear anywhere on a line, even in the middle of a line, because the `*/` ends it. For example:
+`*/`이 주석의 끝이기 때문에 한 줄의 어디에서든, 심지어 줄의 중간에서도 나타날 수 있습니다. 예를 들어:
 
 ```js
-var a = /* arbitrary value */ 42;
+var a = /* 임의의 값 */ 42;
 
 console.log( a );	// 42
 ```
 
-The only thing that cannot appear inside a multiline comment is a `*/`, because that would be interpreted to end the comment.
+여러 줄 주석 안에서 */은 주석의 끝으로 해석되기 때문에, 주석의 중간에 사용할 수 없는 유일한 값입니다.
 
-You will definitely want to begin your learning of programming by starting off with the habit of commenting code. Throughout the rest of this chapter, you'll see I use comments to explain things, so do the same in your own practice. Trust me, everyone who reads your code will thank you!
+여러분은 주석 코드를 작성하는 습관을 시작으로 프로그래밍을 배우고 싶을 것입니다. 이 장의 나머지 부분에서는 제가 뭔가를 설명하기 위해 주석을 사용하는 것을 보실 수 있을 것입니다. 그리고 연습할 때 똑같이 적용하세요. 저를 믿으세요, 여러분이 작성한 코드를 읽는 모든 사람들은 여러분에게 감사할 것입니다!
 
-## Variables
+## 변수
 
-Most useful programs need to track a value as it changes over the course of the program, undergoing different operations as called for by your program's intended tasks.
+대부분의 유용한 프로그램들은 프로그램의 진행 과정에서 값이 변경될 때마다 추적해야 하며, 여러분의 프로그램이 요구하는 다양한 작업을 수행해야 합니다.
 
-The easiest way to go about that in your program is to assign a value to a symbolic container, called a *variable* -- so called because the value in this container can *vary* over time as needed.
+여러분의 프로그램에서 그 일을 가장 쉽게 하는 방법은 *변수*라고 불리는 상징적인 컨테이너에 값을 할당하는 것입니다. -- 이 컨테이너에 있는 값은 필요하다면 시간이 지남에 따라 *변경*할 수 있기 때문에 그렇게 불립니다.
 
-In some programming languages, you declare a variable (container) to hold a specific type of value, such as `number` or `string`. *Static typing*, otherwise known as *type enforcement*, is typically cited as a benefit for program correctness by preventing unintended value conversions.
+일부 프로그래밍 언어에서, 여러분은 `숫자` 또는 `문자열`과 같은 구체적인 값의 타입을 유지하기 위해 변수 (컨테이너)를 선언합니다. *타입 강제*라고 불리기도 하는 *정적 타이핑*은 일반적으로 의도하지 않은 값의 변환을 방지하여 프로그램 정확성에 대한 이점으로 인용됩니다.
 
-Other languages emphasize types for values instead of variables. *Weak typing*, otherwise known as *dynamic typing*, allows a variable to hold any type of value at any time. It's typically cited as a benefit for program flexibility by allowing a single variable to represent a value no matter what type form that value may take at any given moment in the program's logic flow.
+다른 언어들은 변수 대신에 값에 대한 타입을 강조합니다. *동적 타이핑*이라고 불리기도 하는 *약한 타이핑*은, 변수가 언제든지 모든 타입의 값을 유지할 수 있게 합니다. 일반적으로 프로그램의 논리 흐름에서 특정 순간에 값이 가질 수 있는 타입 형식이 무엇이든지 상관없이 하나의 변수가 하나의 값을 나타낼 수 있게 함으로써 프로그램의 유연성에 대한 이점으로 인용됩니다.
 
-JavaScript uses the latter approach, *dynamic typing*, meaning variables can hold values of any *type* without any *type* enforcement.
+자바스크립트는 변수들이 어떠한 *타입* 강제 없이 어떤 *타입*의 값이던 가질 수 있는 후자의 접근법(*동적 타이핑*)을 사용합니다.
 
-As mentioned earlier, we declare a variable using the `var` statement -- notice there's no other *type* information in the declaration. Consider this simple program:
+앞서 언급했듯이, 우리는 `var` 선언문을 사용해 변수를 선언합니다 -- 이 선언문에서는 *타입*에 대한 다른 정보가 없다는 것에 주목하세요. 이 간단한 프로그램을 생각해보세요:
 
 ```js
 var amount = 99.99;
@@ -357,33 +357,33 @@ amount = amount * 2;
 
 console.log( amount );		// 199.98
 
-// convert `amount` to a string, and
-// add "$" on the beginning
+// `amount`를 문자열로 변환하고
+// 시작 부분에 "$"를 추가하세요.
 amount = "$" + String( amount );
 
 console.log( amount );		// "$199.98"
 ```
 
-The `amount` variable starts out holding the number `99.99`, and then holds the `number` result of `amount * 2`, which is `199.98`.
+`amount` 변수는 숫자 `99.99`를 갖고 시작해, `amount * 2`의 `숫자` 결과인 `199.98`을 저장합니다.
 
-The first `console.log(..)` command has to *implicitly* coerce that `number` value to a `string` to print it out.
+첫 번째 `console.log(..)` 명령어는 *암시적으로* `숫자`값을 `문자열`로 출력하도록 강제합니다.
 
-Then the statement `amount = "$" + String(amount)` *explicitly* coerces the `199.98` value to a `string` and adds a `"$"` character to the beginning. At this point, `amount` now holds the `string` value `"$199.98"`, so the second `console.log(..)` statement doesn't need to do any coercion to print it out.
+그리고 `amount = "$" + String(amount)`선언문은 *명시적으로* `199.98`값을 `문자열`로 강제하고 시작 부분에 `"$"`문자를 추가합니다. 이때, `amount`에는 문자열 값 `"$199.98"`이 저장되어 있고, 따라서 두 번째 `console.log(..)` 선언문은 출력하기 위해 어떠한 강제 변환을 할 필요가 없습니다.
 
-JavaScript developers will note the flexibility of using the `amount` variable for each of the `99.99`, `199.98`, and the `"$199.98"` values. Static-typing enthusiasts would prefer a separate variable like `amountStr` to hold the final `"$199.98"` representation of the value, because it's a different type.
+자바스크립트 개발자들은 `99.99`, `199.98`, 그리고 `"$199.98"` 각각에 대한 `amount`변수 사용에 대한 유연성에 주목할 것입니다. 정적 타이핑 애호가들은 `amountStr`와 같은 별도의 변수를 사용해 최종적인 값을 나타내는 `"$199.98"`를 저장하는 것을 선호합니다. 왜냐하면 다른 타입이기 때문입니다.
 
-Either way, you'll note that `amount` holds a running value that changes over the course of the program, illustrating the primary purpose of variables: managing program *state*.
+어느 쪽이든, 여러분은 변수의 주된 목적을 설명하면서 프로그램의 진행 과정에서 변하는 실행 값을 저장하는 `amount`에 주목할 것입니다: 프로그램의 *상태*를 관리하는 것
 
-In other words, *state* is tracking the changes to values as your program runs.
+즉, *상태*는 여러분의 프로그램이 실행될 때 값의 변화를 추적합니다.
 
-Another common usage of variables is for centralizing value setting. This is more typically called *constants*, when you declare a variable with a value and intend for that value to *not change* throughout the program.
+또 다른 변수의 일반적인 사용법은 값 설정을 집중시키는 것입니다. 변수를 선언하고 그 값을 프로그램 전체에서 *변경하지 않으려고* 할 때 일반적으로 *상수*라고 합니다.
 
-You declare these *constants*, often at the top of a program, so that it's convenient for you to have one place to go to alter a value if you need to. By convention, JavaScript variables as constants are usually capitalized, with underscores `_` between multiple words.
+종종 프로그램의 맨 위에 이러한 *상수*들을 선언해, 필요한 경우 한 곳에서 값을 변경하는 것이 편리합니다. 일반적으로 상수로 사용되는 자바스크립트 변수는 대문자로 표시되며, 여러 단어 사이에서는 밑줄 `_`과 함께 사용됩니다.
 
-Here's a silly example:
+다음은 좋지 않은 예시입니다:
 
 ```js
-var TAX_RATE = 0.08;	// 8% sales tax
+var TAX_RATE = 0.08;	// 8% 판매 세율
 
 var amount = 99.99;
 
@@ -395,14 +395,14 @@ console.log( amount );				// 215.9784
 console.log( amount.toFixed( 2 ) );	// "215.98"
 ```
 
-**Note:** Similar to how `console.log(..)` is a function `log(..)` accessed as an object property on the `console` value, `toFixed(..)` here is a function that can be accessed on `number` values. JavaScript `number`s aren't automatically formatted for dollars -- the engine doesn't know what your intent is and there's no type for currency. `toFixed(..)` lets us specify how many decimal places we'd like the `number` rounded to, and it produces the `string` as necessary.
+**참고:** `console.log(..)`가 `console`값에 객체 속성으로 접근한 함수 `log(..)`인 것과 비슷하게 `숫자`값에 접근할 수 있는 `toFixed(..)` 함수가 있습니다. 자바스크립트 `숫자`는 자동으로 달러 형식을 지원하지 않습니다 -- 엔진은 여러분의 의도가 무엇이고 알지 못하고 통화에 대한 타입이 없습니다. `toFixed(..)`는 반올림하고 싶은 `숫자`의 위치에 소수점 이하 자릿수를 지정할 수 있게 하고 필요에 따라 `문자열`을 생성합니다.
 
-The `TAX_RATE` variable is only *constant* by convention -- there's nothing special in this program that prevents it from being changed. But if the city raises the sales tax rate to 9%, we can still easily update our program by setting the `TAX_RATE` assigned value to `0.09` in one place, instead of finding many occurrences of the value `0.08` strewn throughout the program and updating all of them.
+`TAX_RATE`변수는 일반적으로 *상수*에 해당합니다 -- 이 프로그램에서 `TAX_RATE` 변수가 변경되지 못한다는 것 외에 특별한 것이 없습니다. 하지만 도시가 판매 세율을 9%로 인상하면, 우리는 프로그램 전체에 `0.08` 값이 여러 번 나오는 것을 발견하고 그 모두를 업데이트하는 대신 한 곳에서 `TAX_RATE`값을 `0.09`로 설정해 여전히 쉽게 프로그램을 업데이트할 수 있습니다.
 
-The newest version of JavaScript at the time of this writing (commonly called "ES6") includes a new way to declare *constants*, by using `const` instead of `var`:
+이 글을 쓸 당시의 최신 버전의 자바스크립트 (일반적으로 "ES6"라고 불리는)에는 `var` 대신 `const`를 사용하여 *상수*를 선언하는 새로운 방법이 포함되어 있습니다:
 
 ```js
-// as of ES6:
+// ES6:
 const TAX_RATE = 0.08;
 
 var amount = 99.99;
@@ -410,11 +410,11 @@ var amount = 99.99;
 // ..
 ```
 
-Constants are useful just like variables with unchanged values, except that constants also prevent accidentally changing value somewhere else after the initial setting. If you tried to assign any different value to `TAX_RATE` after that first declaration, your program would reject the change (and in strict mode, fail with an error -- see "Strict Mode" in Chapter 2).
+상수는 초기 설정 후에 실수로 다른 곳에서 값이 변경되는 것을 방지하는 것을 제외하고, 변경되지 않은 값을 가진 변수와 마찬가지로 유용합니다. 초기 선언 후에 다른 값을 `TAX_RATE`에 할당하려고 하면 여러분의 프로그램은 변경을 거부할 것입니다(그리고 엄격 모드에서는 오류와 함께 실패합니다 -- 2장의 "엄격 모드"를 참고하세요).
 
-By the way, that kind of "protection" against mistakes is similar to the static-typing type enforcement, so you can see why static types in other languages can be attractive!
+그런데, 실수를 방지하기 위한 보호는 정적 유형 타입 강제와 유사하므로, 여러분은 왜 정적 타입이 다른 언어에서 매력적일 수 있는지 알 수 있습니다!
 
-**Note:** For more information about how different values in variables can be used in your programs, see the *Types & Grammar* title of this series.
+**참고:** 변수에서 여러분의 프로그램에서 사용될 수 있는 다양한 값에 대한 자세한 내용은, 시리즈의 *Types & Grammar* 제목을 참고하세요.
 
 ## 블록
 
