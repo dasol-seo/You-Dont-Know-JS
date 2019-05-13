@@ -574,7 +574,7 @@ The `for` loop has three clauses: the initialization clause (`var i=0`), the con
 
 There are other specialized loop forms that are intended to iterate over specific values, such as the properties of an object (see Chapter 2) where the implied conditional test is just whether all the properties have been processed. The "loop until a condition fails" concept holds no matter what the form of the loop.
 
-## Functions
+## 함수
 
 보통 회사는 처음에 규칙을 정하고 반복해서 재사용 해야하는 일들에 대해, 그러한 기능들이 내장되어 있는 기기(컴퓨터, 태블릿 등)들을 제공합니다. 기기를 제공받은 휴대폰 대리점 직원은 매번 세금과 최종 구매 금액의 계산을 위하여 계산기를 들고다닐 필요가 없어질 것입니다.
 
