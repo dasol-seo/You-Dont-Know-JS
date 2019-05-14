@@ -159,28 +159,28 @@ console.log( age );
 
 기초 프로그래밍에 대한 개념을 배우는 것을 쉽게 하기 위하여 이 책의 예제들은 입력값을 필요로 하지 않습니다. 하지만 여러분에게 실습이 필요하다고 생각된다면 예제의 input을 `prompt(..)`와 함께 사용해보세요.
 
-## Operators
+## 연산자
 
-Operators are how we perform actions on variables and values. We've already seen two JavaScript operators, the `=` and the `*`.
+연산자는 변수와 값에 대해 어떠한 행동을 수행하는 방법입니다. 우리는 이미 `=` 와 `*`, 두 개의 자바스크립트 연산자를 보았습니다.
 
-The `*` operator performs mathematic multiplication. Simple enough, right?
+`*` 연산자는 수학적으로 곱셈 연산을 수행합니다. 간단하죠?
 
-The `=` equals operator is used for *assignment* -- we first calculate the value on the *right-hand side* (source value) of the `=` and then put it into the variable that we specify on the *left-hand side* (target variable).
+`=` 동등 연산자는 *할당*에 사용합니다. 첫 번째로 우리는 `=` 연산자의 *오른쪽 부분*부터(값) 계산한 후 왼편(변수)에서 미리 정해놓은 변수에 할당합니다.
 
-**Warning:** This may seem like a strange reverse order to specify assignment. Instead of `a = 42`, some might prefer to flip the order so the source value is on the left and the target variable is on the right, like `42 -> a` (this is not valid JavaScript!). Unfortunately, the `a = 42` ordered form, and similar variations, is quite prevalent in modern programming languages. If it feels unnatural, just spend some time rehearsing that ordering in your mind to get accustomed to it.
+**주의:** 여러분 중 몇몇은 `a = 42` 대신 `42 -> a`(이 형식은 자바스크립트에서는 사용할 수 없습니다.)처럼 순서를 뒤집어서 왼편에는 값, 오른편에는 변수를 넣는 형식이 익숙해서, 할당을 역순으로 표현하는 것이 이상하게 보일 수 있습니다. 안타깝지만, 현대의 여러 프로그래밍 언어는 `a = 42`와 같은 비슷한 형식을 주로 사용하고 있습니다. 만약 이러한 할당 방식이 자연스럽지 않다고 느낀다면, 시간을 들여 연습하고 익숙해져야 합니다.
 
-Consider:
+생각해보세요:
 
 ```js
 a = 2;
 b = a + 1;
 ```
 
-Here, we assign the `2` value to the `a` variable. Then, we get the value of the `a` variable (still `2`), add `1` to it resulting in the value `3`, then store that value in the `b` variable.
+위 코드에서, 우리는 변수 `a`에 `2` 값을 할당합니다. 그런 다음 변숫값 `a`(아직은 `2`)를 갖고 여기에 `1`을 추가하여 값 `3`을 만든 다음 그 값을 `b` 변수에 저장합니다.
 
-While not technically an operator, you'll need the keyword `var` in every program, as it's the primary way you *declare* (aka *create*) *var*iables (see "Variables").
+엄밀히 말하자면 연산자는 아니지만, 여러분은 모든 프로그램에서 *변수*("Variables"을 참고하세요)를 *선언*(혹은 *생성*)하려는 방법으로 보통 `var` 키워드가 필요할 것입니다. 
 
-You should always declare the variable by name before you use it. But you only need to declare a variable once for each *scope* (see "Scope"); it can be used as many times after that as needed. For example:
+여러분은 변수를 사용하기 전에 항상 이름과 함께 선언해야 합니다. 물론 각 *스코프*("Scope"을 참고하세요)에서 한 번만 선언하고 그 후에는 얼마든지 그 변수를 사용할 수 있습니다. 예를 들어:
 
 ```js
 var a = 20;
@@ -191,46 +191,46 @@ a = a * 2;
 console.log( a );	// 42
 ```
 
-Here are some of the most common operators in JavaScript:
+아래는 자바스크립트에서 흔하게 사용하는 연산자들입니다:
 
-* Assignment: `=` as in `a = 2`.
-* Math: `+` (addition), `-` (subtraction), `*` (multiplication), and `/` (division), as in `a * 3`.
-* Compound Assignment: `+=`, `-=`, `*=`, and `/=` are compound operators that combine a math operation with assignment, as in `a += 2` (same as `a = a + 2`).
-* Increment/Decrement: `++` (increment), `--` (decrement), as in `a++` (similar to `a = a + 1`).
-* Object Property Access: `.` as in `console.log()`.
+* 할당(Assignment): `=`는 `a = 2`와 같이 사용한다.
+* 수학적 계산: `+` 덧셈, `-` 뺄셈, `*` 곱셈, 그리고 `/` 나눗셈, 이는 `a * 3`과 같이 사용합니다.
+* 혼합 할당(Compound Assignment): `+=`, `-=`, `*=`, 그리고 `/=`는 수학적 연산자와 할당 연산자를 결합하여 사용하는 혼합 연산자입니다. 이는 `a += 2`와 같이 사용합니다. (`a = a + 2`와 같은 의미입니다.)
+* 증가(Increment)/감소(Decrement): `++` (증가), `--` (감소), 이는 `a++`와 같이 사용합니다.(`a = a + 1`와 같은 의미입니다.)
+* 객체 속성 접근자(Object Property Access): `.` 이는 `console.log()`와 같이 사용합니다.
 
-   Objects are values that hold other values at specific named locations called properties. `obj.a` means an object value called `obj` with a property of the name `a`. Properties can alternatively be accessed as `obj["a"]`. See Chapter 2.
-* Equality: `==` (loose-equals), `===` (strict-equals), `!=` (loose not-equals), `!==` (strict not-equals), as in `a == b`.
+    객체는 속성이라고 불리는 위치에 특정한 이름과 함께 저장된 값들을 가지고 있는 값입니다. `obj.a`는 `obj`라고 불리는 객체의 `a`라는 속성을 값을 의미합니다. 또한 속성들은 `obj["a"]`으로도 접근이 가능합니다. 이는 2장에서 더 다루겠습니다.
+* 동등(Equality): `==` 느슨한 동등(loose-equals), `===` 엄격한 동등(strict-equals), `!=` 느슨한 동등하지 않음(loose not-equals), `!==` 엄격한 동등하지 않음(strict not-equals), 이는 `a == b`와 같이 사용합니다. 
 
-   See "Values & Types" and Chapter 2.
-* Comparison: `<` (less than), `>` (greater than), `<=` (less than or loose-equals), `>=` (greater than or loose-equals), as in `a <= b`.
+	2장과 "값 & 타입"을 참고해주세요.
+* 비교(Comparison): `<` 미만(less than), `>` 초과(greater than), `<=` 이하(less than or loose-equals), `>=` 이상(greater than or loose-equals), 이는 `a <= b`와 같이 사용합니다. 
 
-   See "Values & Types" and Chapter 2.
-* Logical: `&&` (and), `||` (or), as in `a || b` that selects either `a` *or* `b`.
+	2장과 "값 & 타입"을 참고해주세요.
+* 논리(Logical): `&&` 그리고(and), `||` 또는(or), 이는 `a || b`와 같이 사용하며 `a` 또는 `b`를 선택합니다. 
 
-   These operators are used to express compound conditionals (see "Conditionals"), like if either `a` *or* `b` is true.
+    이 연산자들은 `a` 또는 `b` 중 true를 구하기 위한 식처럼 복합적인 조건("Conditionals"을 참고하세요)을 표현하기 위하여 사용합니다.
 
-**Note:** For much more detail, and coverage of operators not mentioned here, see the Mozilla Developer Network (MDN)'s "Expressions and Operators" (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators).
+**참고:** 더 자세한 내용과, 여기서 언급하지 않은 연산자에 대한 얘기는, Mozilla Developer Network (MDN)의 "Expressions and Operators" (https://developer.mozilla.org/en-US/docs/Web/자바스크립트/Guide/Expressions_and_Operators)대한 항목을 보는 것이 좋습니다.
 
-## Values & Types
+## 값 & 타입
 
-If you ask an employee at a phone store how much a certain phone costs, and they say "ninety-nine, ninety-nine" (i.e., $99.99), they're giving you an actual numeric dollar figure that represents what you'll need to pay (plus taxes) to buy it. If you want to buy two of those phones, you can easily do the mental math to double that value to get $199.98 for your base cost.
+만약 여러분이 휴대폰 대리점의 직원에게 어떤 휴대폰의 가격을 물어봤다고 가정해봅시다. 이때 직원은 여러분에게 휴대폰을 구입하기 위해 지불해야할 금액(세금을 포함한) $99.99라는 숫자(금액)를 말해줄 것입니다. 여러분이 휴대폰 두개를 구매한다고 생각했을 때 이러한 직접적인 숫자는 $199.98이란 금액을 쉽게 암산할 수 있게 합니다.
 
-If that same employee picks up another similar phone but says it's "free" (perhaps with air quotes), they're not giving you a number, but instead another kind of representation of your expected cost ($0.00) -- the word "free."
+또 어떤상황에서는 같은 직원이 비슷한 다른 폰을 보여주면서 방금과는 다르게 직접적인 숫자로 금액을 말하지 않고 여러분이 지불해야 하는 예상 비용이 $0.00이라는 의미로써 "무료"라는 단어를 사용할 것입니다. 
 
-When you later ask if the phone includes a charger, that answer could only have been either "yes" or "no."
+후에 충전기가 포함이냐는 물음에는 "예" 또는 "아니오"로 답하게 될 것입니다.
 
-In very similar ways, when you express values in a program, you choose different representations for those values based on what you plan to do with them.
+마찬가지로 여러분이 프로그램안에서 값을 표현할 때, 그 값들을 어떻게 사용할지에 따라 나타내는 방식이 다를 것입니다.
 
-These different representations for values are called *types* in programming terminology. JavaScript has built-in types for each of these so called *primitive* values:
+아래의 값에 대한 서로 다른 표현들을 프로그래밍 용어로 *타입*이라고 합니다. 자바스크립트는 *원시값*이라고 불리는 아래 각각의 값에 대한 타입을 내장하고 있습니다.
 
-* When you need to do math, you want a `number`.
-* When you need to print a value on the screen, you need a `string` (one or more characters, words, sentences).
-* When you need to make a decision in your program, you need a `boolean` (`true` or `false`).
+* 여러분에게 수학적인 계산이 필요할때, `number` 타입이 필요할 것입니다.
+* 여러분이 값을 화면에 출력하고 싶을 때, `string` 타입이 필요할 것입니다. (한 개 이상의 문자, 단어, 문장을 표현하기 위해서).
+* 여러분이 프로그램에서 어떠한 결정을 사용해야하는 로직을 만들 때, 여러분은 `boolean` 타입을 필요로 할 것입니다. (`true` 혹은 `false`를 표현하기 위하여)
 
-Values that are included directly in the source code are called *literals*. `string` literals are surrounded by double quotes `"..."` or single quotes (`'...'`) -- the only difference is stylistic preference. `number` and `boolean` literals are just presented as is (i.e., `42`, `true`, etc.).
+소스코드에 직접적으로 포함되어 있는 값들을 우리는 *literals*(이하 리터럴)이라고 말합니다. `string` 리터럴은 큰 따옴표`"..."` 혹은 작은 따옴표`'...'`로 둘러싸서 표현하는데, 이는 문체상의 차이만 존재합니다. `number` 와 `boolean` 리터럴은 단순하게 `42`, `true` 등으로 표현하곤합니다.
 
-Consider:
+생각해보세요:
 
 ```js
 "I am a string";
@@ -242,13 +242,13 @@ true;
 false;
 ```
 
-Beyond `string`/`number`/`boolean` value types, it's common for programming languages to provide *arrays*, *objects*, *functions*, and more. We'll cover much more about values and types throughout this chapter and the next.
+일반적인 프로그래밍언어에서는 `string`/`number`/`boolean` 외에도 *arrays*, *objects*, *functions* 타입 들을 제공합니다. 우리는 이 장과 다음 장에 걸쳐 값과 타입에 대해 더 많이 알게 될 것 입니다.
 
-### Converting Between Types
+### 각 타입 사이에서의 변환
 
-If you have a `number` but need to print it on the screen, you need to convert the value to a `string`, and in JavaScript this conversion is called "coercion." Similarly, if someone enters a series of numeric characters into a form on an ecommerce page, that's a `string`, but if you need to then use that value to do math operations, you need to *coerce* it to a `number`.
+여러분이 `number`타입을 가지고 있고 이를 화면에 출력하기 위해서는 `string`타입으로 변환을 해야합니다. 이 변환을 자바스크립트에서는 "강제변환"이라고 합니다. 비슷한 예로, 어떤 사람이 쇼핑몰 페이지에서 금액을 입력하는 칸에 일련의 숫자를 입력했을 때, 그 일련의 숫자는 `string`타입으로 여겨지는데, 여러분이 만약 그 일련의 숫자를 이용하여 수학적인 계산을 해야할 때 이를 `number`타입으로 만들기 위해서 필요한 변환은 *강제변환*이라고 얘기합니다.
 
-JavaScript provides several different facilities for forcibly coercing between *types*. For example:
+자바스크립트는 이러한 *타입*들간의 변환을 강제적으로 하게하는 몇가지 기능을 제공합니다. 예를들어:
 
 ```js
 var a = "42";
@@ -258,21 +258,21 @@ console.log( a );	// "42"
 console.log( b );	// 42
 ```
 
-Using `Number(..)` (a built-in function) as shown is an *explicit* coercion from any other type to the `number` type. That should be pretty straightforward.
+보시다시피 자바스크립트에 내장된 `Number(..)`함수를 사용하면 다른 타입들을 `number`타입으로 *명시적으로* 강제변환합니다.
 
-But a controversial topic is what happens when you try to compare two values that are not already of the same type, which would require *implicit* coercion.
+하지만 생각해봐야 할 점은 *암시적인* 강제 변환을 필요로 하는 서로 다른 타입의 두 값을 비교할 때 발생하는 현상입니다.
 
-When comparing the string `"99.99"` to the number `99.99`, most people would agree they are equivalent. But they're not exactly the same, are they? It's the same value in two different representations, two different *types*. You could say they're "loosely equal," couldn't you?
+문자열 "99.99"와 숫자 99.99를 비교할 때, 대부분의 사람들은 서로 같다고 생각할 겁니다. 하지만 이 둘은 같은 값을 두 개의 서로 다른 타입과 표현으로 나타냈기 때문에 정확히 같지는 않습니다, 동의하나요? 만약 같다고 한다면, "느슨한 동등"으로 볼 수 는 있겠죠.
 
-To help you out in these common situations, JavaScript will sometimes kick in and *implicitly* coerce values to the matching types.
+위와 같은 상황에서 오는 혼란을 없애기 위해 자바스크립트는 때때로 타입을 강제로 변환시키기도 합니다.
 
-So if you use the `==` loose equals operator to make the comparison `"99.99" == 99.99`, JavaScript will convert the left-hand side `"99.99"` to its `number` equivalent `99.99`. The comparison then becomes `99.99 == 99.99`, which is of course `true`.
+만약 여러분이 `"99.99" == 99.99`의 상황에서 `==`와 같은 느슨한 동등 연산자를 사용한다면, 자바스크립트는 왼쪽의 `"99.99"`의 타입을 오른쪽 `99.99`의 타입인 `number`로 강제로 변환 시킵니다. 그리고 이에 대한 결과로 `99.99 == 99.99`는 `true`를 나타내게 됩니다.
 
-While designed to help you, implicit coercion can create confusion if you haven't taken the time to learn the rules that govern its behavior. Most JS developers never have, so the common feeling is that implicit coercion is confusing and harms programs with unexpected bugs, and should thus be avoided. It's even sometimes called a flaw in the design of the language.
+강제변환은 우리를 돕기위해 존재하지만, 이 기능이 어떻게 동작하는 지에 대한 이해가 없다면 우리에게 혼란을 야기할 수 있습니다. 대부분의 자바스크립트 개발자들이 이러한 이해의 과정을 겪지 않습니다. 그렇다보니 강제변환 기능이 프로그램에 예상하지 못한 버그를 만들어내기 때문에, 오히려 이를 피해야 한다고 생각합니다. 더 황당한건 이를 언어적 흠이라고 얘기하는 사람들도 있습니다. 
 
-However, implicit coercion is a mechanism that *can be learned*, and moreover *should be learned* by anyone wishing to take JavaScript programming seriously. Not only is it not confusing once you learn the rules, it can actually make your programs better! The effort is well worth it.
+그러나 강제변환은 *공부할 수 있는 부분*입니다. 좀 더 얘기해보자면 자바스크립트 프로그래밍을 심오하게 접근하고 싶은 사람이라면 당연하게 *공부해야할 부분*입니다. 이러한 탐구는 강제변환에 대한 혼란을 없애줄 뿐만 아니라, 실제로 당신의 프로그램을 더 좋게 만들어 줄 것입니다. 즉 노력을 들여서 공부해볼만한 일이라는 말입니다.
 
-**Note:** For more information on coercion, see Chapter 2 of this title and Chapter 4 of the *Types & Grammar* title of this series.
+**참고:** 강제변환에 대해 정보가 더 필요하다면 이 책의 2장, 혹은 이 시리즈의 *Types & Grammar*의 4장을 참고해주세요.
 
 ## 코드 주석
 
