@@ -57,9 +57,9 @@ Notice how in this snippet the `a` variable holds every different type of value,
 
 Also, note `a = undefined`. We're explicitly setting `a` to the `undefined` value, but that is behaviorally no different from a variable that has no value set yet, like with the `var a;` line at the top of the snippet. A variable can get to this "undefined" value state in several different ways, including functions that return no values and usage of the `void` operator.
 
-### Objects
+### 객체
 
-The `object` type refers to a compound value where you can set properties (named locations) that each hold their own values of any type. This is perhaps one of the most useful value types in all of JavaScript.
+`object` 타입은 여러분이 원하는 이름으로 속성들을 만들 수 있는 복합값을 의미합니다. 이때 속성들은 각각 자신의 값을 갖고 있고, 그 값의 타입에는 제한이 없습니다. `object` 타입은 자바스크립트 전반적으로 봤을 때, 가장 유용하게 사용할 수 있는 타입 중 하나입니다.
 
 ```js
 var obj = {
@@ -77,15 +77,15 @@ obj["b"];	// 42
 obj["c"];	// true
 ```
 
-It may be helpful to think of this `obj` value visually:
+아래 그림은 여러분이 위의 `obj`에 대해 더 잘 이해할 수 있게 도식화 하였습니다:
 
 <img src="fig4.png">
 
-Properties can either be accessed with *dot notation* (i.e., `obj.a`) or *bracket notation* (i.e., `obj["a"]`). Dot notation is shorter and generally easier to read, and is thus preferred when possible.
+속성들에는 *점 방식* (i.e., `obj.a`)와 *대괄호 방식* (i.e., `obj["a"]`) 방법으로 접근이 가능합니다. 점 방식은 짧고, 일반적으로 가독성이 좋기 때문에 객체에 접근할 때 점 방식이 주로 사용됩니다.
 
-Bracket notation is useful if you have a property name that has special characters in it, like `obj["hello world!"]` -- such properties are often referred to as *keys* when accessed via bracket notation. The `[ ]` notation requires either a variable (explained next) or a `string` *literal* (which needs to be wrapped in `" .. "` or `' .. '`).
+대괄호 방식은 만약 여러분이 지정한 속성의 이름이 특수 문자등을 포함하고 있을때 (ex. `obj["hello world!"]` --) 유용하게 사용할 수 있습니다. 이러한 속성들은 대괄호 방식으로 접근할 때 보통 *keys*라고 불립니다. `[ ]` 방식은 변수(다음에 설명합니다.)나 `string` *literal*(`" .. "` 나 `' .. '`로 감싸져 있는)을 필요로 합니다.
 
-Of course, bracket notation is also useful if you want to access a property/key but the name is stored in another variable, such as:
+물론 대괄호 방식 또한 여러분이 속성/키에 접근할 때 유용하지만, 어떤 변수에, 키값에 해당하는 문자열이 저장되었을 때는 아래와 같이 동작하기때문에 혼란이 있을 수 있습니다.
 
 ```js
 var obj = {
@@ -99,13 +99,13 @@ obj[b];			// "hello world"
 obj["b"];		// 42
 ```
 
-**Note:** For more information on JavaScript `object`s, see the *this & Object Prototypes* title of this series, specifically Chapter 3.
+**참고:** 자바스크립트 `object`에 대해 더 많은 정보를 알고 싶다면, 이 시리즈의 *this & Object Prototypes*(특히 3장)을 참고하세요. 
 
-There are a couple of other value types that you will commonly interact with in JavaScript programs: *array* and *function*. But rather than being proper built-in types, these should be thought of more like subtypes -- specialized versions of the `object` type.
+자바스크립트 프로그램에서 일반적으로 상호작용하는 몇 가지 다른 값 타입들이 있습니다: *array*와 *function*. 하지만 이 두 타입은 자바스크립트에 내장된 타입이라고 하기보단, `object` 타입에서 조금 더 전문화 되어 만들어진 버전, 일종의 서브타입이라고 생각하는 것이 좋습니다.
 
-#### Arrays
+#### 배열
 
-An array is an `object` that holds values (of any type) not particularly in named properties/keys, but rather in numerically indexed positions. For example:
+배열은 속성/키를 원하는 이름이 아닌 숫자의 순서를 사용하고 이를 색인화하여 사용하는 하나의 `object`입니다. 예를들어:
 
 ```js
 var arr = [
@@ -122,17 +122,17 @@ arr.length;		// 3
 typeof arr;		// "object"
 ```
 
-**Note:** Languages that start counting at zero, like JS does, use `0` as the index of the first element in the array.
+**참고:** JS와 같이 0에서 숫자를 세기 시작하는 언어는 배열의 첫번째 요소를 찾기 위해서 0을 사용합니다.
 
-It may be helpful to think of `arr` visually:
+아래 그림은 여러분이 위의 `arr`에 대해 더 잘 이해할 수 있게 도식화 하였습니다:
 
 <img src="fig5.png">
 
-Because arrays are special objects (as `typeof` implies), they can also have properties, including the automatically updated `length` property.
+배열이 특별한 객체(`typeof`과 의미하는 것 과 같이)인 이유는 객체와 같이 속성들을 가질 수 있고, 자동적으로 배열의 `length` 속성을 갱신하기 때문입니다.
 
-You theoretically could use an array as a normal object with your own named properties, or you could use an `object` but only give it numeric properties (`0`, `1`, etc.) similar to an array. However, this would generally be considered improper usage of the respective types.
+여러분은 이론적으로는 배열을 여러분이 원하는 이름으로 작성된 속성을 갖는 하나의 객체로써 사용할 수 있습니다. 또 여러분은 `object`를 숫자로 된 속성(`0`, `1`, etc.)값을 갖는 배열과 같은 형태로 사용할 수 도 있습니다. 그러나 이런 방법들은 일반적으로 각각의 타입의 관점에서 봤을 때 부적절한 사용법으로 생각되어집니다.
 
-The best and most natural approach is to use arrays for numerically positioned values and use `object`s for named properties.
+위와 같은 이유로, 배열은 숫자로 색인화하여(키 값으로 주어) 각각의 값들을 위치하게 하고, 그리고 `object`는 이름을 갖는 속성들을 사용하는 것이 가장 자연스럽고 좋은 방법입니다.
 
 #### Functions
 
