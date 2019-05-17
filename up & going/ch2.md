@@ -1,15 +1,15 @@
 # You Don't Know JS: Up & Going
 # Chapter 2: Into JavaScript
 
-In the previous chapter, I introduced the basic building blocks of programming, such as variables, loops, conditionals, and functions. Of course, all the code shown has been in JavaScript. But in this chapter, we want to focus specifically on things you need to know about JavaScript to get up and going as a JS developer.
+이전 장에서는 변수, 반복문, 조건문, 함수와 같은 프로그래밍의 기본적인 구성 요소를 소개했습니다. 물론, 그동안의 모든 예제 코드는 자바스크립트로 작성되었습니다. 하지만 이 장에서는, 여러분이 JS 개발자로서 시작하기 위해 자바스크립트에 대해 알아야 할 것들에 중점을 두려고 합니다.
 
-We will introduce quite a few concepts in this chapter that will not be fully explored until subsequent *YDKJS* books. You can think of this chapter as an overview of the topics covered in detail throughout the rest of this series.
+이 장에서는 나머지 *YDKJS* 시리즈에서 충분히 다뤄지지 않을 꽤 많은 개념들을 소개할 것 입니다. 이 장을 이 시리즈의 나머지부분에 걸쳐 자세히 다루는 주제들의 개요로 생각하셔도 좋습니다.
 
-Especially if you're new to JavaScript, you should expect to spend quite a bit of time reviewing the concepts and code examples here multiple times. Any good foundation is laid brick by brick, so don't expect that you'll immediately understand it all the first pass through.
+특히 자바스크립트가 처음이라면, 이 장에서 여러번 개념과 코드 예제를 검토하는 데 꽤 많은 시간을 할애해야 합니다. 좋은 기초는 차근 차근 쌓아올려집니다. 처음부터 모든 것을 즉시 이해할 것 이라고 기대하지 마세요.
 
-Your journey to deeply learn JavaScript starts here.
+자바스크립트를 깊이있게 배우기 위한 여정은 여기에서 시작됩니다.
 
-**Note:** As I said in Chapter 1, you should definitely try all this code yourself as you read and work through this chapter. Be aware that some of the code here assumes capabilities introduced in the newest version of JavaScript at the time of this writing (commonly referred to as "ES6" for the 6th edition of ECMAScript -- the official name of the JS specification). If you happen to be using an older, pre-ES6 browser, the code may not work. A recent update of a modern browser (like Chrome, Firefox, or IE) should be used.
+**참고:** As I said in Chapter 1, you should definitely try all this code yourself as you read and work through this chapter. Be aware that some of the code here assumes capabilities introduced in the newest version of JavaScript at the time of this writing (commonly referred to as "ES6" for the 6th edition of ECMAScript -- the official name of the JS specification). If you happen to be using an older, pre-ES6 browser, the code may not work. A recent update of a modern browser (like Chrome, Firefox, or IE) should be used.
 
 ## Values & Types
 
