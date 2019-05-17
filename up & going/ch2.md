@@ -49,13 +49,13 @@ typeof a;				// "object"
 
 `typeof` 연산자의 반환값은 항상 여섯개(ES6에서는 "symbol" 타입이 추가된 일곱개!)의 문자열 값 중 하나입니다. 즉, `typeof "abc"`는 `string`이 아니라 `"string"`을 반환합니다.
 
-Notice how in this snippet the `a` variable holds every different type of value, and that despite appearances, `typeof a` is not asking for the "type of `a`", but rather for the "type of the value currently in `a`." Only values have types in JavaScript; variables are just simple containers for those values.
+이 스니펫에서 `a` 변수가 모든 다른 타입의 값을 갖고 있으며, 모양에도 불구하고 `typeof a`가 "`a`의 타입"이 아니라 "현재 `a`에 있는 값의 타입"을 물어본다는 점에 주목하세요.
 
 `typeof null`은 흥미로운 경우입니다, 왜냐하면 `"null"`을 반환해야한다고 예상하지만 `"object"`를 반환하기 때문입니다.
 
 **주의:** 이것은 JS의 오래된 버그지만 절대 고쳐지지 않을 것 같습니다. 웹 상의 너무 많은 코드가 버그에 의존하고 있고, 따라서 이것을 고치는 게 더 많은 버그를 양산할 것입니다!
 
-또한 `a = undefined`에도 유의하세요. 명시적으로 `a`에 `undefined`값을 할당했지만, 스니펫의 가장 윗 줄에 있는 `var a;`와 같이 값이 설정되지 않은 변수(초기화 되지 않은 변수)와 동작상으로 다를 바가 없습니다. A variable can get to this "undefined" value state in several different ways, including functions that return no values and usage of the `void` operator.
+또한 `a = undefined`에도 유의하세요. 명시적으로 `a`에 `undefined`값을 할당했지만, 스니펫의 가장 윗 줄에 있는 `var a;`와 같이 값이 설정되지 않은 변수(초기화 되지 않은 변수)와 동작상으로 다를 바가 없습니다. 변수는 여러가지 방법으로 "undefined"값 상태가 될 수 있습니다. 아무 값도 반환하지 않는 함수나 `void` 연산자를 사용하는 방법을 포함합니다.
 
 ### Objects
 
