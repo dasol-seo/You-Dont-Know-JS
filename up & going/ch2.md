@@ -9,20 +9,20 @@
 
 자바스크립트를 깊이있게 배우기 위한 여정은 여기에서 시작됩니다.
 
-**참고:** As I said in Chapter 1, you should definitely try all this code yourself as you read and work through this chapter. Be aware that some of the code here assumes capabilities introduced in the newest version of JavaScript at the time of this writing (commonly referred to as "ES6" for the 6th edition of ECMAScript -- the official name of the JS specification). If you happen to be using an older, pre-ES6 browser, the code may not work. A recent update of a modern browser (like Chrome, Firefox, or IE) should be used.
+**참고:** 1장에서 말했듯이, 이 장에서도 모든 예제 코드를 직접 실행해봐야 합니다. 여기에 있는 코드 중 일부는 이 문서를 작성하는 시점의 자바스크립트의 새로운 버전에 소개된 기능을 가정한다는 점에 유의해주세요. (JS 사양의 공식 명칙인 ECMAScript라 합니다. ECMAScript의 6번째 버전에 대해서는 일반적으로 "ES6"라고 합니다.). 오래된 pre-ES6 브라우저를 사용한다면 코드가 작동하지 않을 수도 있습니다. 최신 업데이트가 된 모던 브라우저(Chrome, Firefox, or IE)를 사용해주세요.
 
-## Values & Types
+## 값 & 타입
 
-As we asserted in Chapter 1, JavaScript has typed values, not typed variables. The following built-in types are available:
+1장에서 주장한 것 처럼, 자바스크립트는 타입이 지정된 변수가 아니라, 타입이 지정된 값을 가집니다. 다음과 같은 기본으로 제공되는 타입들을 사용할 수 있습니다:
 
 * `string`
 * `number`
 * `boolean`
 * `null` and `undefined`
 * `object`
-* `symbol` (new to ES6)
+* `symbol` (ES6에서 추가됨)
 
-JavaScript provides a `typeof` operator that can examine a value and tell you what type it is:
+자바스크립트에는 값을 검사하고 어떤 타입인지 알려주는 `typeof` 연산자가 있습니다:
 
 ```js
 var a;
@@ -47,15 +47,15 @@ a = { b: "c" };
 typeof a;				// "object"
 ```
 
-The return value from the `typeof` operator is always one of six (seven as of ES6! - the "symbol" type) string values. That is, `typeof "abc"` returns `"string"`, not `string`.
+`typeof` 연산자의 반환값은 항상 여섯개(ES6에서는 "symbol" 타입이 추가된 일곱개!)의 문자열 값 중 하나입니다. 즉, `typeof "abc"`는 `string`이 아니라 `"string"`을 반환합니다.
 
 Notice how in this snippet the `a` variable holds every different type of value, and that despite appearances, `typeof a` is not asking for the "type of `a`", but rather for the "type of the value currently in `a`." Only values have types in JavaScript; variables are just simple containers for those values.
 
-`typeof null` is an interesting case, because it errantly returns `"object"`, when you'd expect it to return `"null"`.
+`typeof null`은 흥미로운 경우입니다, 왜냐하면 `"null"`을 반환해야한다고 예상하지만 `"object"`를 반환하기 때문입니다.
 
-**Warning:** This is a long-standing bug in JS, but one that is likely never going to be fixed. Too much code on the Web relies on the bug and thus fixing it would cause a lot more bugs!
+**주의:** 이것은 JS의 오래된 버그지만 절대 고쳐지지 않을 것 같습니다. 웹 상의 너무 많은 코드가 버그에 의존하고 있고, 따라서 이것을 고치는 게 더 많은 버그를 양산할 것입니다!
 
-Also, note `a = undefined`. We're explicitly setting `a` to the `undefined` value, but that is behaviorally no different from a variable that has no value set yet, like with the `var a;` line at the top of the snippet. A variable can get to this "undefined" value state in several different ways, including functions that return no values and usage of the `void` operator.
+또한 `a = undefined`에도 유의하세요. 명시적으로 `a`에 `undefined`값을 할당했지만, 스니펫의 가장 윗 줄에 있는 `var a;`와 같이 값이 설정되지 않은 변수(초기화 되지 않은 변수)와 동작상으로 다를 바가 없습니다. A variable can get to this "undefined" value state in several different ways, including functions that return no values and usage of the `void` operator.
 
 ### Objects
 
