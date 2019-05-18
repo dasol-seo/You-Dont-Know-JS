@@ -237,13 +237,13 @@ Any value that's not on this "falsy" list is "truthy." Here are some examples of
 
 It's important to remember that a non-`boolean` value only follows this "truthy"/"falsy" coercion if it's actually coerced to a `boolean`. It's not all that difficult to confuse yourself with a situation that seems like it's coercing a value to a `boolean` when it's not.
 
-#### Equality
+#### 동등
 
-There are four equality operators: `==`, `===`, `!=`, and `!==`. The `!` forms are of course the symmetric "not equal" versions of their counterparts; *non-equality* should not be confused with *inequality*.
+`==`, `===`, `!=`, `!==`와 같은 네 개의 동등 연산자가 있습니다. `!` 형식은 대칭적으로 양쪽이 "같지않음"을 나타냅니다. *비동등*과 *불일치*를 혼동하지 마십시오.
 
-The difference between `==` and `===` is usually characterized that `==` checks for value equality and `===` checks for both value and type equality. However, this is inaccurate. The proper way to characterize them is that `==` checks for value equality with coercion allowed, and `===` checks for value equality without allowing coercion; `===` is often called "strict equality" for this reason.
+일반적으로 `==`는 값의 동등을 확인하고 `===`는 값과 타입의 동등을 확인한다는 차이가 있지만 정확한 표현은 아닙니다. 정확하게 말하면, `==`는 강제 변환으로 값의 동등을 확인하고, `===`는 강제 변환 없이 값의 동등을 확인합니다. 이 때문에 `===`는 "엄격한 동등"이라고 불리기도 합니다.
 
-Consider the implicit coercion that's allowed by the `==` loose-equality comparison and not allowed with the `===` strict-equality:
+`==`로 느슨한 동등 비교를 허용한 암시적 강제 변환과 `===`를 사용한 엄격한 동등 비교를 생각해보세요:
 
 ```js
 var a = "42";
@@ -253,29 +253,29 @@ a == b;			// true
 a === b;		// false
 ```
 
-In the `a == b` comparison, JS notices that the types do not match, so it goes through an ordered series of steps to coerce one or both values to a different type until the types match, where then a simple value equality can be checked.
+`a == b` 비교에서, 자바스크립트는 맞지 않다고 알려줄 것입니다. 일련의 순서를 거치면서 하나 혹은 두 개의 값이 부합될 때까지 강제로 다른 타입으로 강제 변환을 합니다. 그러고 나서 간단값동등을 확인합니다.
 
-If you think about it, there's two possible ways `a == b` could give `true` via coercion. Either the comparison could end up as `42 == 42` or it could be `"42" == "42"`. So which is it?
+잘 생각해보면, `a == b`가 강제 변환을 통하여 `true`를 반환하는 두 가지 경우가 있습니다. `42 == 42`가 되거나 혹은 `"42" == "42"`로 되는 것입니다. 그럼 어떤 경우로 강제 변환을 할까요?
 
-The answer: `"42"` becomes `42`, to make the comparison `42 == 42`. In such a simple example, it doesn't really seem to matter which way that process goes, as the end result is the same. There are more complex cases where it matters not just what the end result of the comparison is, but *how* you get there.
+정답은: `42 == 42`비교를 수행하기 위해 `"42"`가 `42`로 됩니다. 이와 같은 간단한 예제에서는 결과 값이 같기 때문에 어떤 경우던지 크게 문제가 없어 보입니다. 더욱 복잡한 경우에서는 결괏값 비교가 무엇인지 문제가 되는 것이 아니라, *어떻게* 접근하는 것이 문제가 됩니다.
 
-The `a === b` produces `false`, because the coercion is not allowed, so the simple value comparison obviously fails. Many developers feel that `===` is more predictable, so they advocate always using that form and staying away from `==`. I think this view is very shortsighted. I believe `==` is a powerful tool that helps your program, *if you take the time to learn how it works.*
+`a === b`는 `false`를 돌려줍니다, 왜냐하면 강제 변환이 허용되지 않기 때문에 간단값비교는 분명히 실패 할 것입니다. 많은 개발자들이  `===`가 더 예측가능하다고 느낄 것 입니다. 그래서 많은 사람들이 엄격한 비교를 지향하고 `==`를 지양합니다. 제 생각에는 이것은 아주 짧은 생각입니다. `==`는 여러분의 프로그램을 용이하게 해주는 아주 강력한 도구입니다. *동작방법을 익힌다면*
 
-We're not going to cover all the nitty-gritty details of how the coercion in `==` comparisons works here. Much of it is pretty sensible, but there are some important corner cases to be careful of. You can read section 11.9.3 of the ES5 specification (http://www.ecma-international.org/ecma-262/5.1/) to see the exact rules, and you'll be surprised at just how straightforward this mechanism is, compared to all the negative hype surrounding it.
+우리는 여기서 강제 변환이 `==`비교에서 어떻게 작동하는지에 대한 모든 본질적인 세부사항까지 다루지 않을 것입니다. 대부분은 이해할 수 있을 것입니다. 하지만 조심해야 할 아주 중요한 코너 케이스가 있습니다. 여러분은 정확한 규칙을 확인하기 위해 ES5 기술 명세서 섹션 11.9.3(http://www.ecma-international.org/ecma-262/5.1/)를 보실 수 있습니다. 아마도 주위의 부정적인 의견들을 비교하면서 이 메커니즘이 얼마나 명확한지 깜짝 놀라실 겁니다.
 
-To boil down a whole lot of details to a few simple takeaways, and help you know whether to use `==` or `===` in various situations, here are my simple rules:
+많은 세부사항을 간단하게 요약하고 어떠한 경우에 `==`와 `===`를 사용해야 하는지 이해를 도와드리기 위해 간단한 규칙을 알려드리겠습니다:
 
-* If either value (aka side) in a comparison could be the `true` or `false` value, avoid `==` and use `===`.
-* If either value in a comparison could be of these specific values (`0`, `""`, or `[]` -- empty array), avoid `==` and use `===`.
-* In *all* other cases, you're safe to use `==`. Not only is it safe, but in many cases it simplifies your code in a way that improves readability.
+만약 비교에서 둘 중 한쪽 값이 `true`나 `false`값이면, `==`보다는 `===`를 사용하세요.
+만약 비교에서 둘 중 한쪽 값이 특정 값(`0`, `""`, 혹은 `[]` -- 빈 배열)이면, `==`보다는 `===`를 사용하세요.
+위에 두 경우를 제외하고 모든 경우에서는, `==`를 사용하는 것이 안전합니다. 그뿐만 아니라, 이는 많은 경우에서 가독성을 늘릴 수 있도록 여러분의 코드를 간단하게 줄여줍니다.
 
-What these rules boil down to is requiring you to think critically about your code and about what kinds of values can come through variables that get compared for equality. If you can be certain about the values, and `==` is safe, use it! If you can't be certain about the values, use `===`. It's that simple.
+이러한 규칙을 이용하는 것은 코드와 비교를 위해 어떤 값들이 변수에 들어와야 하는지와 같이 여러분을 비판적으로 생각하게 합니다. 만약 여러분이 값에 대한 확신을 할 수 있으면 `==`는 안전합니다. 사용하세요! 만약 값에 대한 확신이 없다면, `===`를 사용하세요. 아주 간단합니다.
 
-The `!=` non-equality form pairs with `==`, and the `!==` form pairs with `===`. All the rules and observations we just discussed hold symmetrically for these non-equality comparisons.
+비동등 `!=`는 `==`와 짝을 이루고, `!==`는 `===`와 짝을 이룹니다. 방금 이야기한 모든 규칙과 의견은 대칭적으로 비동등 비교에도 적용이 됩니다.
 
-You should take special note of the `==` and `===` comparison rules if you're comparing two non-primitive values, like `object`s (including `function` and `array`). Because those values are actually held by reference, both `==` and `===` comparisons will simply check whether the references match, not anything about the underlying values.
+`객체`(`함수`과 `배열`을 포함하여)와 같이 만약 두 비원시 값을 비교한다면, `==`와 `===`비교를 각별히 신경 쓰셔야 합니다. 왜냐하면 이와 같은 값들은 실제로 참조 값이기 때문입니다, `==`와 `===`비교는 참조 값이 일치하는지 비교를 하고 하위 값들에 대해서는 어떠한 비교도 하지 않기 때문입니다.
 
-For example, `array`s are by default coerced to `string`s by simply joining all the values with commas (`,`) in between. You might think that two `array`s with the same contents would be `==` equal, but they're not:
+예를 들면, 초기설정으로 `배열`은 모든 값 사이에 쉼표(`,`)를 넣어 합친 `문자열`로 강제됩니다. 여러분은 아마도 같은 내용을 가진 두 `배열`은 `==`비교로 같다고 생각할 것입니다. 하지만 그렇지 않습니다:
 
 ```js
 var a = [1,2,3];
@@ -287,7 +287,7 @@ b == c;		// true
 a == b;		// false
 ```
 
-**Note:** For more information about the `==` equality comparison rules, see the ES5 specification (section 11.9.3) and also consult Chapter 4 of the *Types & Grammar* title of this series; see Chapter 2 for more information about values versus references.
+**참고:** `==`동등 비교 규칙에 대한 더 자세한 사항은, ES5 기술 명세서(section 11.9.3)를 보거나 *Types & Grammar* 시리즈의 4장을 참고하시고 값과 참조에 대해서는 2장을 참고하세요.
 
 #### Inequality
 
