@@ -136,7 +136,7 @@ The best and most natural approach is to use arrays for numerically positioned v
 
 #### 함수
 
-함수는 여러분이 자바스크립트 프로그램을 작성할 때 사용하게 될 `object`의 다른 하위타입입니다:
+함수는 여러분이 자바스크립트 프로그램을 작성할 때 사용하게 될 `object`의 다른 하위 타입입니다:
 
 ```js
 function foo() {
@@ -150,13 +150,13 @@ typeof foo();		// "number"
 typeof foo.bar;		// "string"
 ```
 
-다시 말하지만, 함수는 `objects`의 하위타입입니다. — `typeof`는 함수에 대해서 `"function"`을 반환하는데 이는 `function`이 주요 타입임을 의미합니다 -- 일반적으로 제한적인 경우에만 `foo.bar`와 같은 함수 객체 속성을 사용할 것입니다.
+다시 말하지만, 함수는 `objects`의 하위 타입입니다. — `typeof`는 함수에 대해서 `"function"`을 반환하는데 이는 `function`이 주요 타입임을 의미합니다 -- 일반적으로 제한적인 경우에만 `foo.bar`와 같은 함수 객체 속성을 사용할 것입니다.
 
 **참고:** 자바스크립트의 값과 타입에 대한 자세한 내용은, *Types & Grammar*시리즈의 처음 두 장을 참고하세요.
 
 ### 내장타입 메소드
 
-앞서 말한 내장타입과 하위타입은 매우 강력하고 유용한 속성과 메소드를 갖고 있습니다.
+앞서 말한 내장타입과 하위 타입은 매우 강력하고 유용한 속성과 메소드를 갖고 있습니다.
 
 예를 들어:
 
