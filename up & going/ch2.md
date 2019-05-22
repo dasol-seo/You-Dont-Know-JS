@@ -215,27 +215,27 @@ a;				// "42"
 b;				// 42 -- 숫자!
 ```
 
-#### Truthy & Falsy
+#### 참 추정 & 거짓 추정
 
-In Chapter 1, we briefly mentioned the "truthy" and "falsy" nature of values: when a non-`boolean` value is coerced to a `boolean`, does it become `true` or `false`, respectively?
+1장에서 "참 추정"과 "거짓 추정"값의 성질에 대해 간략하게 언급했습니다 : `boolean`이 아닌 값을 `boolean`값으로 강제 변환할 때 그 값은 `true` 와 `false` 중 무엇이 될까요?
 
-The specific list of "falsy" values in JavaScript is as follows:
+자바스크립트에서 “거짓 추정”값들은 아래와 같습니다:
 
-* `""` (empty string)
-* `0`, `-0`, `NaN` (invalid `number`)
+* `""` (빈 문자열)
+* `0`, `-0`, `NaN` (유효하지 않은 `number`)
 * `null`, `undefined`
 * `false`
 
-Any value that's not on this "falsy" list is "truthy." Here are some examples of those:
+“거짓 추정”목록에 없는 값은 모두 “참 추정”값입니다. 예시는 아래와 같습니다:
 
 * `"hello"`
 * `42`
 * `true`
-* `[ ]`, `[ 1, "2", 3 ]` (arrays)
-* `{ }`, `{ a: 42 }` (objects)
-* `function foo() { .. }` (functions)
+* `[ ]`, `[ 1, "2", 3 ]` (배열)
+* `{ }`, `{ a: 42 }` (객체)
+* `function foo() { .. }` (함수)
 
-It's important to remember that a non-`boolean` value only follows this "truthy"/"falsy" coercion if it's actually coerced to a `boolean`. It's not all that difficult to confuse yourself with a situation that seems like it's coercing a value to a `boolean` when it's not.
+여러분이 기억해야 할 것은 `boolean`이 아닌 값들이 `boolean`으로 강제 변환 될 때 오직 "참 추정"/"거짓 추정" 강제 변환을 따르게 된다는 것입니다. 이것을 명심 한다면 `boolean`이 아닌 값이 강제변환이 될때 혼동 될 만큼 어렵게 느껴지지 않을 것입니다.
 
 #### Equality
 
@@ -289,15 +289,15 @@ a == b;		// false
 
 **Note:** For more information about the `==` equality comparison rules, see the ES5 specification (section 11.9.3) and also consult Chapter 4 of the *Types & Grammar* title of this series; see Chapter 2 for more information about values versus references.
 
-#### Inequality
+#### 비동등
 
-The `<`, `>`, `<=`, and `>=` operators are used for inequality, referred to in the specification as "relational comparison." Typically they will be used with ordinally comparable values like `number`s. It's easy to understand that `3 < 4`.
+ `<`, `>`, `<=`, `>=` 연산자는 비동등에 사용됩니다, 기술 명세서에 "관계 비교"라고 언급되어 있습니다. 일반적으로 `number`와 같은 서수 비교에 사용되므로, `3 < 4`를 쉽게 이해할 수 있을 것입니다.
 
-But JavaScript `string` values can also be compared for inequality, using typical alphabetic rules (`"bar" < "foo"`).
+하지만 자바스크립트의 `string`값은 일반적인 알파벳 규칙을 사용하므로 비동등으로도 비교가 가능합니다 (`"bar" < "foo"`).
 
-What about coercion? Similar rules as `==` comparison (though not exactly identical!) apply to the inequality operators. Notably, there are no "strict inequality" operators that would disallow coercion the same way `===` "strict equality" does.
+그렇다면 강제 변환은 어떻게 될까요? `==` 비교(완벽하게 같진 않습니다!)와 비슷한 규칙이 비동등 연산자에도 적용됩니다. 특히 "엄격한 비동등" 연산자는 `===` "엄격한 동등"과 마찬가지로 강제변환을 허용하지 않습니다.
 
-Consider:
+생각해보세요:
 
 ```js
 var a = 41;
@@ -308,9 +308,9 @@ a < b;		// true
 b < c;		// true
 ```
 
-What happens here? In section 11.8.5 of the ES5 specification, it says that if both values in the `<` comparison are `string`s, as it is with `b < c`, the comparison is made lexicographically (aka alphabetically like a dictionary). But if one or both is not a `string`, as it is with `a < b`, then both values are coerced to be `number`s, and a typical numeric comparison occurs.
+무슨 일이 일어난 걸까요? ES5의 기술 명세서 중 11.8.5부분에 보면, `<`로 비교하는 두 값이 `string`이면 `b < c`처럼 비교는 사전적으로 (사전에 있는 알파벳정렬처럼) 됩니다. 하지만 `a < b`비교처럼 하나 또는 두 개의 값이 `string`이 아니면, 두 값 모두가 `number`로 강제 변환되어 일반적인 서수 비교를 하게 됩니다.
 
-The biggest gotcha you may run into here with comparisons between potentially different value types -- remember, there are no "strict inequality" forms to use -- is when one of the values cannot be made into a valid number, such as:
+잠재적으로 타입이 다른 값들을 비교할 때 실수할 수 있는것은 둘 중 하나의 값이 유효한 숫자로 변환할 수 없는 경우 입니다 -- "엄격한 비동등"형식을 사용하지 않는다는것을 기억하세요. -- 예를 들면:
 
 ```js
 var a = 42;
@@ -321,11 +321,11 @@ a > b;		// false
 a == b;		// false
 ```
 
-Wait, how can all three of those comparisons be `false`? Because the `b` value is being coerced to the "invalid number value" `NaN` in the `<` and `>` comparisons, and the specification says that `NaN` is neither greater-than nor less-than any other value.
+어떻게 세 개의 모든 비교가 `false`일까요? 왜냐하면 `<` 와 `>` 비교에서 `b` 값은 강제 변환이 되어 "유효하지 않은 숫자 값" `NaN`이 되기 때문이고, 기술 명세서에서 `NaN`은 어떤 다른 값 과도 크거나 혹은 작지 않다고 설명되어 있습니다.
 
-The `==` comparison fails for a different reason. `a == b` could fail if it's interpreted either as `42 == NaN` or `"42" == "foo"` -- as we explained earlier, the former is the case.
+`==`의 비교의 실패는 다른 원인이 있습니다. 이전 설명했던 경우처럼 `a == b`는 `42 == NaN` 나 `"42" == "foo"` 로 해석될 수 있습니다.
 
-**Note:** For more information about the inequality comparison rules, see section 11.8.5 of the ES5 specification and also consult Chapter 4 of the *Types & Grammar* title of this series.
+**Note:** 비동등 규칙에 대해서 더 많은 내용을 알고 싶으시면 ES5의 기술 명세서 중 11.8.5 부분을 확인해 보세요. 또한 Types & Grammar시리즈의 4장을 참고하세요.
 
 ## Variables
 
