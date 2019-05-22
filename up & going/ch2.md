@@ -134,9 +134,9 @@ typeof arr;		// "object"
 
 위와 같은 이유로, 특정한 이름이 붙여진 속성이 필요하다면 `object`를 이용하고, 순서를 갖는 값들은 배열을 이용하는 것이 가장 자연스럽고 좋은 방법입니다.
 
-#### Functions
+#### 함수
 
-The other `object` subtype you'll use all over your JS programs is a function:
+함수는 여러분이 자바스크립트 프로그램을 작성할 때 사용하게 될 `object`의 다른 하위 타입입니다:
 
 ```js
 function foo() {
@@ -150,15 +150,15 @@ typeof foo();		// "number"
 typeof foo.bar;		// "string"
 ```
 
-Again, functions are a subtype of `objects` -- `typeof` returns `"function"`, which implies that a `function` is a main type -- and can thus have properties, but you typically will only use function object properties (like `foo.bar`) in limited cases.
+다시 말하지만, 함수는 `objects`의 하위 타입입니다. — `typeof`는 함수에 대해서 `"function"`을 반환하는데 이는 `function`이 주요 타입임을 의미합니다 -- 일반적으로 제한적인 경우에만 `foo.bar`와 같은 함수 객체 속성을 사용할 것입니다.
 
-**Note:** For more information on JS values and their types, see the first two chapters of the *Types & Grammar* title of this series.
+**참고:** 자바스크립트의 값과 타입에 대한 자세한 내용은, *Types & Grammar*시리즈의 처음 두 장을 참고하세요.
 
-### Built-In Type Methods
+### 내장타입 메소드
 
-The built-in types and subtypes we've just discussed have behaviors exposed as properties and methods that are quite powerful and useful.
+앞서 말한 내장타입과 하위 타입은 매우 강력하고 유용한 속성과 메소드를 갖고 있습니다.
 
-For example:
+예를 들어:
 
 ```js
 var a = "hello world";
@@ -169,31 +169,31 @@ a.toUpperCase();		// "HELLO WORLD"
 b.toFixed(4);			// "3.1416"
 ```
 
-The "how" behind being able to call `a.toUpperCase()` is more complicated than just that method existing on the value.
+`a.toUpperCase()`를 호출하는 방법은 생각보다 복잡합니다.
 
-Briefly, there is a `String` (capital `S`) object wrapper form, typically called a "native," that pairs with the primitive `string` type; it's this object wrapper that defines the `toUpperCase()` method on its prototype.
+요약하면, 일반적으로 "네이티브"라고 부르는 `String`(대문자 `S`)객체 래퍼 형태가 있고, 이는 원시 `string`타입과 짝을 이룹니다; 이는 프로토타입에서 `toUpperCase()` 메소드를 정의하는 객체 래퍼입니다.
 
-When you use a primitive value like `"hello world"` as an `object` by referencing a property or method (e.g., `a.toUpperCase()` in the previous snippet), JS automatically "boxes" the value to its object wrapper counterpart (hidden under the covers).
+`"hello world"`와 같은 원시값을 속성이나 메소드를 참조하는 `object`처럼 사용할 때(예를 들어 이전의 스니펫에서 `a.toUpperCase()` 처럼), 자바스크립트는 원시값을 짝이 맞는 객체 래퍼로 "감쌉니다".
 
-A `string` value can be wrapped by a `String` object, a `number` can be wrapped by a `Number` object, and a `boolean` can be wrapped by a `Boolean` object. For the most part, you don't need to worry about or directly use these object wrapper forms of the values -- prefer the primitive value forms in practically all cases and JavaScript will take care of the rest for you.
+`string`값은 `String`객체로 감쌀 수 있고, `number`는 `Number`객체로 감쌀 수 있고, `boolean`은 `Boolean`객체로 감쌀 수 있습니다. 실제로 모든 경우에 원시값 형태를 사용하는 것을 선호하고 자바스크립트가 여러분을 위해 나머지 부분을 처리해주기 때문에 여러분은 객체 래퍼 형태를 직접 사용할 필요는 없습니다.
 
-**Note:** For more information on JS natives and "boxing," see Chapter 3 of the *Types & Grammar* title of this series. To better understand the prototype of an object, see Chapter 5 of the *this & Object Prototypes* title of this series.
+**참고:** 자바스크립트 네이티브와 박싱에 대한 자세한 내용은 *Types & Grammar*시리즈의 3장을 참고하세요. 객체의 프로토타입을 잘 이해하려면, *this & Object Prototypes* 시리즈의 5장을 참고하세요.
 
-### Comparing Values
+### 값 비교하기
 
-There are two main types of value comparison that you will need to make in your JS programs: *equality* and *inequality*. The result of any comparison is a strictly `boolean` value (`true` or `false`), regardless of what value types are compared.
+자바스크립트에는 값 비교를 할 때 사용하는 주요한 타입 두 가지가 있습니다: *동등* 과 *비동등*. 비교되는 값의 타입이 무엇인지 관계 없이, 모든 비교의 결과는 엄격하게 `boolean`값입니다(`true` 또는 `false`).
 
-#### Coercion
+#### 강제 변환
 
-We talked briefly about coercion in Chapter 1, but let's revisit it here.
+우리는 1장에서 강제 변환에 대해 간단하게 얘기했는데, 여기에서 다시 한번 다뤄보도록 하겠습니다.
 
-Coercion comes in two forms in JavaScript: *explicit* and *implicit*. Explicit coercion is simply that you can see obviously from the code that a conversion from one type to another will occur, whereas implicit coercion is when the type conversion can happen as more of a non-obvious side effect of some other operation.
+명시적인 강제 변환은 어떤 타입에서 다른 타입으로 변환이 일어나는 것을 코드를 통해 명백하게 알아볼 수 있을 만큼 단순하지만, 암시적인 강제 변환은 타입 변환이 다른 동작의 불분명하고 의도하지 않은 결과처럼 보일 수 있습니다.
 
-You've probably heard sentiments like "coercion is evil" drawn from the fact that there are clearly places where coercion can produce some surprising results. Perhaps nothing evokes frustration from developers more than when the language surprises them.
+여러분은 아마 "강제 변환은 악마다"와 같은 말을 들어봤을 겁니다. 강제 변환이 특정 위치에서는 예상치 못한 결과를 불러올 수 있기 때문에 전해진 말입니다. 아마 언어가 당황스럽게 할 때만큼 개발자들이 좌절감을 느끼는 때도 없을 것입니다.
 
-Coercion is not evil, nor does it have to be surprising. In fact, the majority of cases you can construct with type coercion are quite sensible and understandable, and can even be used to *improve* the readability of your code. But we won't go much further into that debate -- Chapter 4 of the *Types & Grammar* title of this series covers all sides.
+강제 변환은 악마도 아니고, 놀랄 일도 아닙니다. 사실, 타입 강제 변환을 사용할 수 있는 대부분의 경우는 상당히 알아채기 쉽고 이해할 수 있는 부분이고, 심지어 여러분의 코드의 가독성을 *향상시키는데* 사용될 수 있습니다. 그러나 우리는 이 논쟁에 대해서는 더 이상 진행하지 않을 것입니다 -- *Types & Grammar*시리즈 4장에서 이 부분을 다루고 있습니다.
 
-Here's an example of *explicit* coercion:
+다음은 *명시적인* 강제 변환의 예시입니다:
 
 ```js
 var a = "42";
@@ -201,18 +201,18 @@ var a = "42";
 var b = Number( a );
 
 a;				// "42"
-b;				// 42 -- the number!
+b;				// 42 -- 숫자!
 ```
 
-And here's an example of *implicit* coercion:
+그리고 다음은 *암시적인* 강제 변환의 예시입니다:
 
 ```js
 var a = "42";
 
-var b = a * 1;	// "42" implicitly coerced to 42 here
+var b = a * 1;	// "42" "42" 암시적으로 42를 강제 변환
 
 a;				// "42"
-b;				// 42 -- the number!
+b;				// 42 -- 숫자!
 ```
 
 #### Truthy & Falsy
