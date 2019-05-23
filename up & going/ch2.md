@@ -440,9 +440,9 @@ Because of using `let` instead of `var`, `b` will belong only to the `if` statem
 
 ## Conditionals
 
-In addition to the `if` statement we introduced briefly in Chapter 1, JavaScript provides a few other conditionals mechanisms that we should take a look at.
+1장에서 간단하게 소개한 `if`문에 더하여, 우리는 자바스크립트가 제공하는 몇개의 다른 조건 메커니즘을 살펴보려고 합니다.
 
-Sometimes you may find yourself writing a series of `if..else..if` statements like this:
+때때로 여러분은 아래와 같은 일련의 `if..else..if`문을 작성할 겁니다: 
 
 ```js
 if (a == 2) {
@@ -459,7 +459,7 @@ else {
 }
 ```
 
-This structure works, but it's a little verbose because you need to specify the `a` test for each case. Here's another option, the `switch` statement:
+물론 위와 같은 구조도 잘 작동하지만 각각의 케이스마다 `a`값이 뭔지 확인을 해야하기때문에 조금은 장황하게 보입니다. 지금과 같은 상황에선 아래와 같은 `switch`문이 대안이 될 수 있습니다:
 
 ```js
 switch (a) {
@@ -478,6 +478,7 @@ switch (a) {
 ```
 
 The `break` is important if you want only the statement(s) in one `case` to run. If you omit `break` from a `case`, and that `case` matches or runs, execution will continue with the next `case`'s statements regardless of that `case` matching. This so called "fall through" is sometimes useful/desired:
+`break`는 여러분이 단지 한 `case`에서만 문을 실행하려고 할 때 중요합니다. 
 
 ```js
 switch (a) {
