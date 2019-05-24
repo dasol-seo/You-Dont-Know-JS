@@ -327,51 +327,51 @@ a == b;		// false
 
 **Note:** 비동등 규칙에 대해서 더 많은 내용을 알고 싶으시면 ES5의 기술 명세서 중 11.8.5 부분을 확인해 보세요. 또한 Types & Grammar시리즈의 4장을 참고하세요.
 
-## Variables
+## 변수
 
-In JavaScript, variable names (including function names) must be valid *identifiers*. The strict and complete rules for valid characters in identifiers are a little complex when you consider nontraditional characters such as Unicode. If you only consider typical ASCII alphanumeric characters, though, the rules are simple.
+자바스크립트에서 변수 이름은 (함수 이름또한 포함됩니다) 유효한 *식별자* 이여야 합니다. 유효한 글자로 되어진 식별자를 위한 엄격하고 완전한 규칙은 유니코드 같은 비전통적인 글자를 고려할때 조금 복잡해 집니다. 하지만 일반적인 ASCII 영숫자만 신경써야 한다면 그 규칙은 단순해집니다.
 
-An identifier must start with `a`-`z`, `A`-`Z`, `$`, or `_`. It can then contain any of those characters plus the numerals `0`-`9`.
+식별자는 무조건 `a`-`z`, `A`-`Z`, `$`, `_`로 시작해야 합니다. 식별자 글자 중에 숫자 `0`-`9`가 포함 되어 질수 있습니다.
 
-Generally, the same rules apply to a property name as to a variable identifier. However, certain words cannot be used as variables, but are OK as property names. These words are called "reserved words," and include the JS keywords (`for`, `in`, `if`, etc.) as well as `null`, `true`, and `false`.
+Generally, the same rules apply to a property name as to a variable identifier. However, certain words cannot be used as variables, but are OK as property names. These words are called "reserved words," and include the JS keywords (`for`, `in`, `if`, etc.) as well as `null`, `true`, and `false`. 보통 변수 식별자로서의 속성이 이름또한 같은 규칙을 적용합니다. 하지만 특정 단어들은 변수로 쓸수 없지만 속성 이름으로는 가능합니다. 이러한 단어들을 "예약어"라고 합니다. 또한 자바스크립트 키워드(`for`, `in`, `if`, 등등)와 `null`, `true`, `false`도 포함됩니다.
 
-**Note:** For more information about reserved words, see Appendix A of the *Types & Grammar* title of this series.
+**참고:** 예약어에 대해서 더많은 내용을 알고 싶으시면 *Types & Grammar* 의 부록 A를 참고하세요.
 
-### Function Scopes
+### 함수 스코프
 
-You use the `var` keyword to declare a variable that will belong to the current function scope, or the global scope if at the top level outside of any function.
+변수 선언시 `var` 키워드를 사용합니다. 이것은 현재 함수 스코프에 속해 있거나 가장 밖, 최상의 위치가 함수라면 전역 스코프에 속해 있을 것입니다.
 
-#### Hoisting
+#### 호이스팅
 
-Wherever a `var` appears inside a scope, that declaration is taken to belong to the entire scope and accessible everywhere throughout.
+`var`가 내장 스코프에 있다면 언제든지 그 선언은 전역 스코프에 속하며 어디서든 접근이 가능합니다.
 
-Metaphorically, this behavior is called *hoisting*, when a `var` declaration is conceptually "moved" to the top of its enclosing scope. Technically, this process is more accurately explained by how code is compiled, but we can skip over those details for now.
+은유적으로 `var`선언이 개념상 가장 최상단에 둘러진 스코프에 "옮겨질"때 *호이스팅*이라고 합니다. 기술적으로 어떻게 코드가 컴파일이 되어질느냐에 이 과정이 더 정확하게 설명 될수 있지만 자세한 설명은 여기서는 생략하겠습니다. 
 
-Consider:
+생각해보세요:
 
 ```js
 var a = 2;
 
-foo();					// works because `foo()`
-						// declaration is "hoisted"
+foo();					// `foo()`때문에 동작 합니다
+						// 선언이 "호이스팅"되었습니다.
 
 function foo() {
 	a = 3;
 
 	console.log( a );	// 3
 
-	var a;				// declaration is "hoisted"
-						// to the top of `foo()`
+	var a;				// `foo()`의 위로
+						// 선언이 "호이스팅"되었습니다.
 }
 
 console.log( a );	// 2
 ```
 
-**Warning:** It's not common or a good idea to rely on variable *hoisting* to use a variable earlier in its scope than its `var` declaration appears; it can be quite confusing. It's much more common and accepted to use *hoisted* function declarations, as we do with the `foo()` call appearing before its formal declaration.
+**경고:** `var` 선언이 나오기 전에 스코프 안의 *호이스팅* 변수에 의존하여 변수를 사용하는 것은 일반적이지 않거니와 좋은 생각이 아닙니다; 매우 혼동될수 있습니다. 위에서 `foo()` 호출이 형식적인 선언 전에 나타난것 처럼 *호이스팅이 된* 함수 선언을 사용하는 것은 훨씬 더 일반적이고 용인됩니다.
 
-#### Nested Scopes
+#### 중첩 스코프
 
-When you declare a variable, it is available anywhere in that scope, as well as any lower/inner scopes. For example:
+변수를 선언할때 스코프 안에서는 어디에서든 하위 또는 내장 스코프에서도 가능합니다. 예를 들어:
 
 ```js
 function foo() {
@@ -397,22 +397,22 @@ function foo() {
 foo();
 ```
 
-Notice that `c` is not available inside of `bar()`, because it's declared only inside the inner `baz()` scope, and that `b` is not available to `foo()` for the same reason.
+`c`는 `bar()`안에서는 불가능 한것을 알아차렸을 겁니다. 이것은 내부 `baz()` 스코프 안에만 선언되었기 때문입니다. `b`도 마찬가지로 `foo()`에서는 불가능 합니다.
 
-If you try to access a variable's value in a scope where it's not available, you'll get a `ReferenceError` thrown. If you try to set a variable that hasn't been declared, you'll either end up creating a variable in the top-level global scope (bad!) or getting an error, depending on "strict mode" (see "Strict Mode"). Let's take a look:
+접근 불가능한 스코프 안에서 변수의 값에 접근을 시도한다면, `ReferenceError`를 받게 될 것입낟. 선언이 되어지지 않은 곳에서 변수에 설정을 하려고 하면 "엄격 모드"("엄격 모드"를 보세요) 에 따라 결국 변수가 최상단 전역 스코프에 만들어 지거나 (좋지 않음!) 에러가 발생할것입니다. 함께 봅시다: 
 
 ```js
 function foo() {
-	a = 1;	// `a` not formally declared
+	a = 1;	// `a`가 형식에 맞지 않게 선언되었습니다.
 }
 
 foo();
-a;			// 1 -- oops, auto global variable :(
+a;			// 1 -- 이런, 자동적으로 전역 변수가 되었군요 :(
 ```
 
-This is a very bad practice. Don't do it! Always formally declare your variables.
+이건 정말 좋지 않은 연습문제 입니다. 하지마세요! 항상 변수를 형식에 맞는 선언을 하세요.
 
-In addition to creating declarations for variables at the function level, ES6 *lets* you declare variables to belong to individual blocks (pairs of `{ .. }`), using the `let` keyword. Besides some nuanced details, the scoping rules will behave roughly the same as we just saw with functions:
+덧붙여서 각각의 블럭 요소에 속한 (`{ .. }`의 한쌍) 함수 위치에서 변수 선언을 하는것은 ES6 *lets* 변수 선언, `let` 키워드를 사용합니다. 게다가 몇몇 미묘한 차이들이 있는데, 스코프 규칙은 대략적으로 위와 같은 함수처럼 적용 될것입니다.
 
 ```js
 function foo() {
@@ -434,9 +434,9 @@ foo();
 // 5 7 9
 ```
 
-Because of using `let` instead of `var`, `b` will belong only to the `if` statement and thus not to the whole `foo()` function's scope. Similarly, `c` belongs only to the `while` loop. Block scoping is very useful for managing your variable scopes in a more fine-grained fashion, which can make your code much easier to maintain over time.
+`var`대신 `let`을 사용하는 이유는 `foo()`함수 스코프 전체가 아닌 `if`문에만 속해지기 위함입니다. `c`가 `while`반복분에만 속하는 것 또한 마찬가지 입니다. 한층 더 매끄럽게 변수 스코프를 관리하고자 한다면 블록 스코프는 매우 유용합니다.
 
-**Note:** For more information about scope, see the *Scope & Closures* title of this series. See the *ES6 & Beyond* title of this series for more information about `let` block scoping.
+**참고:** 스코프에 대해서 더많은 내용을 알고 싶으시면 *Scope & Closures*를 참고하세요. `let` 블록 스코핑에 대해 더많은 내용을 알고 싶으시면 *ES6 & Beyond*를 참고하세요.
 
 ## Conditionals
 
