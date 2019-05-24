@@ -763,7 +763,7 @@ There's a good chance that with just this brief glimpse at closure and the modul
 
 From here, go read the *Scope & Closures* title of this series for a much more in-depth exploration.
 
-## `this`
+## `this`식별자
 
 자바스크립트에서 일반적으로 잘못 이해하는 또 다른 개념은 `this`입니다. 다시 말해, *this & Object Prototypes*시리즈에는 이 내용에 대해 다루는 몇 개의 장이 있습니다. 따라서 여기에서는 이 개념에 대해 간단하게 소개만 하고 넘어가겠습니다.
 
