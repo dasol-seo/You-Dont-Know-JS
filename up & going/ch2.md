@@ -763,17 +763,17 @@ There's a good chance that with just this brief glimpse at closure and the modul
 
 From here, go read the *Scope & Closures* title of this series for a much more in-depth exploration.
 
-## `this` Identifier
+## `this`
 
-Another very commonly misunderstood concept in JavaScript is the `this` identifier. Again, there's a couple of chapters on it in the *this & Object Prototypes* title of this series, so here we'll just briefly introduce the concept.
+자바스크립트에서 일반적으로 잘못 이해하는 또 다른 개념은 `this`입니다. 다시 말해, *this & Object Prototypes*시리즈에는 이 내용에 대해 다루는 몇 개의 장이 있습니다. 따라서 여기에서는 이 개념에 대해 간단하게 소개만 하고 넘어가겠습니다.
 
-While it may often seem that `this` is related to "object-oriented patterns," in JS `this` is a different mechanism.
+자바스크립트에서 `this`가 "객체 지향 패턴"과 관련이 있는 것처럼 보일 수도 있지만 실제로는 다른 메커니즘입니다.
 
-If a function has a `this` reference inside it, that `this` reference usually points to an `object`. But which `object` it points to depends on how the function was called.
+함수 안에서 `this`를 참조하고 있다면 해당 `this`는 일반적으로 `object`를 가리킵니다. 하지만 어떤 `object`를 가리키던지 함수가 어떻게 호출되는지에 따라 달라집니다.
 
-It's important to realize that `this` *does not* refer to the function itself, as is the most common misconception.
+가장 일반적인 오해인 `this`는 함수 스스로를 참조*하지 않는다*는 것을 깨닫는 것은 중요합니다.
 
-Here's a quick illustration:
+다음은 간단한 설명입니다:
 
 ```js
 function foo() {
@@ -799,52 +799,52 @@ foo.call( obj2 );		// "obj2"
 new foo();			// undefined
 ```
 
-There are four rules for how `this` gets set, and they're shown in those last four lines of that snippet.
+여기에 `this`가 어떻게 설정되는지에 대한 4가지 규칙이 있고, 스니펫의 마지막 4줄에서 결과를 볼 수 있습니다.
 
-1. `foo()` ends up setting `this` to the global object in non-strict mode -- in strict mode, `this` would be `undefined` and you'd get an error in accessing the `bar` property -- so `"global"` is the value found for `this.bar`.
-2. `obj1.foo()` sets `this` to the `obj1` object.
-3. `foo.call(obj2)` sets `this` to the `obj2` object.
-4. `new foo()` sets `this` to a brand new empty object.
+1. 비엄격 모드에서 `foo()`는 `this`를 글로벌 객체로 설정하고 종료합니다 -- 엄격 모드에서 `this`는 `undefined`이고 `bar`속성에 접근할면 에러가 뜰 것입니다 -- 따라서 `"global"`은 `this.bar`에서 발견되는 값입니다.
+2. `obj1.foo()`는 `this`를 `obj1`객체로 설정합니다.
+3. `foo.call(obj2)`는 `this`를 `obj2`객체로 설정합니다.
+4. `new foo()`는 `this`를 새로운 빈 객체로 설정합니다.
 
-Bottom line: to understand what `this` points to, you have to examine how the function in question was called. It will be one of those four ways just shown, and that will then answer what `this` is.
+결론: `this`가 가리키는 것이 무엇인지 이해하기 위해 여러분은 함수가 어떻게 호출되는지 검토해야 합니다. 방금 본 4가지 방법 중에 하나일 것이고, 그러면 `this`가 무엇인지 대답할 수 있을 것입니다.
 
-**Note:** For more information about `this`, see Chapters 1 and 2 of the *this & Object Prototypes* title of this series.
+**참고:** `this`에 자세한 내용은, *this & Object Prototypes*시리즈의 1장과 2장을 참고하세요.
 
-## Prototypes
+## 프로토타입
 
-The prototype mechanism in JavaScript is quite complicated. We will only glance at it here. You will want to spend plenty of time reviewing Chapters 4-6 of the *this & Object Prototypes* title of this series for all the details.
+자바스크립트에서 프로토타입 메커니즘은 매우 복잡합니다. 여기에서는 흝어만 볼 것이고, 자세한 내용은 *this & Object Prototypes*시리즈의 4-6장에서 확인하길 바랍니다.
 
-When you reference a property on an object, if that property doesn't exist, JavaScript will automatically use that object's internal prototype reference to find another object to look for the property on. You could think of this almost as a fallback if the property is missing.
+여러분이 객체의 속성을 참조할 때, 속성이 없다면, 자바스크립트는 자동으로 속성을 찾기 위한 또 다른 객체를 찾기 위해 객체의 내부 프로토타입을 참조합니다. 속성이 없는 경우 여러분은 객체의 내부 프로토타입 참조를 대비책으로 생각할 것입니다.
 
-The internal prototype reference linkage from one object to its fallback happens at the time the object is created. The simplest way to illustrate it is with a built-in utility called `Object.create(..)`.
+객체가 생성될 때 해당 객체와 상위 객체 간의 내부 프로토타입 참조 연결이 발생합니다. `Object.create(..)`라고 불리는 내장 유틸리티를 통해 이를 간단하게 설명할 수 있습니다.
 
-Consider:
+생각해보세요:
 
 ```js
 var foo = {
 	a: 42
 };
 
-// create `bar` and link it to `foo`
+// `bar`를 생성하고 이를 `foo`에 연결합니다.
 var bar = Object.create( foo );
 
 bar.b = "hello world";
 
 bar.b;		// "hello world"
-bar.a;		// 42 <-- delegated to `foo`
+bar.a;		// 42 <-- `foo`에게 위임됨
 ```
 
-It may help to visualize the `foo` and `bar` objects and their relationship:
+아래의 내용은` foo`와 `bar`객체와 그들의 관계를 시각화하는데 도움이 될 수 있습니다:
 
 <img src="fig6.png">
 
-The `a` property doesn't actually exist on the `bar` object, but because `bar` is prototype-linked to `foo`, JavaScript automatically falls back to looking for `a` on the `foo` object, where it's found.
+실제로 `a`속성은 `bar`객체에 존재하지 않지만, `bar`는 `foo`와 프로토타입으로 연결되어 있기 때문에, 자바스크립트는 자동으로 `foo`객체에서 `a`를 찾기 위해 프로토타입 체인을 타고 올라갑니다.
 
-This linkage may seem like a strange feature of the language. The most common way this feature is used -- and I would argue, abused -- is to try to emulate/fake a "class" mechanism with "inheritance."
+이러한 연결 관계는 자바스크립트의 이상한 특징처럼 보일 수 있습니다. 논란의 소지가 있지만 이 특징이 사용되는 가장 일반적인 경우는 "상속"과 함께 "클래스"메커니즘을 모방하고 가짜로 만들려고 할 때입니다.
 
-But a more natural way of applying prototypes is a pattern called "behavior delegation," where you intentionally design your linked objects to be able to *delegate* from one to the other for parts of the needed behavior.
+하지만 프로토타입을 적용하는 보다 자연스러운 방법은 "행동 위임"패턴인데, 여러분은 필요한 동작의 일부분을 *위임*할 수 있도록 연결 객체를 의도적으로 설계합니다.
 
-**Note:** For more information about prototypes and behavior delegation, see Chapters 4-6 of the *this & Object Prototypes* title of this series.
+**참고:** 프로토타입과 행동 위임에 대한 자세한 내용은, *this & Object Prototypes*시리즈의 4-6장을 참고하세요.
 
 ## Old & New
 
