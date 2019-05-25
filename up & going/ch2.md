@@ -477,26 +477,25 @@ switch (a) {
 }
 ```
 
-The `break` is important if you want only the statement(s) in one `case` to run. If you omit `break` from a `case`, and that `case` matches or runs, execution will continue with the next `case`'s statements regardless of that `case` matching. This so called "fall through" is sometimes useful/desired:
-`break`는 여러분이 단지 한 `case`에서만 문을 실행하려고 할 때 중요합니다. 
+`break`는 여러분이 오직 한 `case`안에서의 문을 실행하려고 할 때 중요합니다. 만약 여러분이 원하는 `case`안에 `break`가 빠져있다면, 그 `case`만 실행되기를 원해도, 다음 단계의 `case`가 실행될 것 입니다. "통과하다"라고 불리는 이 상황은 종종 유용/필요 하기도 합니다:
 
 ```js
 switch (a) {
 	case 2:
 	case 10:
-		// some cool stuff
+		// 코드
 		break;
 	case 42:
-		// other stuff
+		// 위와는 다른 코드
 		break;
 	default:
-		// fallback
+		// 아무 케이스에도 해당 되지 않는 나머지 인자들에 대해 실행
 }
 ```
 
-Here, if `a` is either `2` or `10`, it will execute the "some cool stuff" code statements.
+여기서 `a`가 `2` 또는 `10`이라면 "코드" 에 해당하는 내용의 코드를 실행하게 된다.
 
-Another form of conditional in JavaScript is the "conditional operator," often called the "ternary operator." It's like a more concise form of a single `if..else` statement, such as:
+자바스크립트의 또 다른 조건문 형태는 "조건 연산자"로써 보통 "삼항 연산자"라고 불린다. 삼항 연산자는 단일 `iif..else`문의 간결한 형태와 같다. 예를 들어:
 
 ```js
 var a = 42;
@@ -513,64 +512,64 @@ var b = (a > 41) ? "hello" : "world";
 // }
 ```
 
-If the test expression (`a > 41` here) evaluates as `true`, the first clause (`"hello"`) results, otherwise the second clause (`"world"`) results, and whatever the result is then gets assigned to `b`.
+실험 표현식(여기서는 `a > 41`)이 `true`로 판단된다면, 물음표 뒤의 첫 번째 절(`"hello"`)의 결과가 나오고, 그렇지 않으면 두 번째 절(`"world"`)의 결과가 나옵니다. 여기에서 결과가 무엇이든 `b`에 배정됩니다.
 
-The conditional operator doesn't have to be used in an assignment, but that's definitely the most common usage.
+조건 연산자는 할당에 사용될 필요는 없지만, 이는 분명히 가장 일반적인 사용법입니다.
 
-**Note:** For more information about testing conditions and other patterns for `switch` and `? :`, see the *Types & Grammar* title of this series.
+**참고:** `switch` 와 `? :`의 테스트 조건과 다른 패턴들에 대한 자세한 내용은 이 시리즈의 *Types & Grammar*를 참고하세요.
 
-## Strict Mode
+## 엄격 모드
 
-ES5 added a "strict mode" to the language, which tightens the rules for certain behaviors. Generally, these restrictions are seen as keeping the code to a safer and more appropriate set of guidelines. Also, adhering to strict mode makes your code generally more optimizable by the engine. Strict mode is a big win for code, and you should use it for all your programs.
+ES5는 자바스크립트에 "엄격 모드"를 추가하여 특정 행동에 대한 규칙을 강화하였습니다. 일반적으로 이러한 제한은 코드를 더 안전하고 일련의 가이드라인에 더 적절하게 유지할 수 있게 합니다. 또한, 엄격 모드를 따르면 엔진에 의해 코드를 더 최적화 할 수 있습니다. 엄격 모드는 코드에서의 큰 승리이며, 여러분은 이를 여러분의 모든 프로그램에서 사용해야 합니다.
 
-You can opt in to strict mode for an individual function, or an entire file, depending on where you put the strict mode pragma:
+여러분은 엄격 모드의 실용성을 어디에 두느냐에 따라 개별 기능, 또는 전체 파일에 대해 엄격 모드의 사용을 선택할 수 있습니다.
 
 ```js
 function foo() {
 	"use strict";
 
-	// this code is strict mode
+	// 이 코드는 엄격 모드 입니다.
 
 	function bar() {
-		// this code is strict mode
+		// 이 코드는 엄격 모드 입니다.
 	}
 }
 
-// this code is not strict mode
+// 이 코드는 엄격 모드가 아닙니다.
 ```
 
-Compare that to:
+아래와 비교해봅시다:
 
 ```js
 "use strict";
 
 function foo() {
-	// this code is strict mode
+	// 이 코드는 엄격 모드입니다.
 
 	function bar() {
-		// this code is strict mode
+		// 이 코드는 엄격 모드 입니다.
 	}
 }
 
-// this code is strict mode
+// 이 코드는 엄격 모드 입니다.
 ```
 
-One key difference (improvement!) with strict mode is disallowing the implicit auto-global variable declaration from omitting the `var`:
+엄격 모드를 사용하는 한가지 중요한 차이점(개선!)은 `var`생략함으로써 발생하는 암묵적인 자동-글로벌 변수 선언을 허용하지 않는 것입니다.  
 
 ```js
 function foo() {
-	"use strict";	// turn on strict mode
-	a = 1;			// `var` missing, ReferenceError
+	"use strict";	// 엄격 모드를 사용합니다.
+	a = 1;			// `var`를 생략했음으로 참조에러가 닙니다.
 }
 
 foo();
 ```
 
-If you turn on strict mode in your code, and you get errors, or code starts behaving buggy, your temptation might be to avoid strict mode. But that instinct would be a bad idea to indulge. If strict mode causes issues in your program, almost certainly it's a sign that you have things in your program you should fix.
+여러분이 여러분의 코드에서 엄격 모드를 사용했을 때 에러가 발생하거나, 코드가 버그를 일으키기 시작하면, 엄격 모드를 피하고 싶은 유혹에 빠질 수 있습니다. 그러나 그러한 유혹에 빠지는 것은 좋지 않습니다. 만약 엄격 모드가  여러분의 코드에서 어떤 이슈를 발생 시킨다면, 그것은 여러분의 프로그램상에서 고쳐야할 어떤 것이 있다는 분명한 신호입니다. 
 
-Not only will strict mode keep your code to a safer path, and not only will it make your code more optimizable, but it also represents the future direction of the language. It'd be easier on you to get used to strict mode now than to keep putting it off -- it'll only get harder to convert later!
+엄격 모드는 여러분의 코드를 자바스크립트가 근 미래에 나가야할 방향에 있어서 안전한 경로를 유지해주고, 최적화되게 만들어 줄 것입니다. 여러분에게는 엄격 모드의 사용을 미루는 것보다, 익숙해지는 것이 나중에 변환하는 것보다는 훨씬 쉬울 것입니다. 
 
-**Note:** For more information about strict mode, see the Chapter 5 of the *Types & Grammar* title of this series.
+**참고:** 엄격 모드에 대한 자세한 내용은 이 시리즈의 *Types & Grammar* 5장을 참고하세요.
 
 ## Functions As Values
 
