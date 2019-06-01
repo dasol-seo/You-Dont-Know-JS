@@ -1,28 +1,28 @@
 # You Don't Know JS: Up & Going
 # Chapter 2: Into JavaScript
 
-In the previous chapter, I introduced the basic building blocks of programming, such as variables, loops, conditionals, and functions. Of course, all the code shown has been in JavaScript. But in this chapter, we want to focus specifically on things you need to know about JavaScript to get up and going as a JS developer.
+이전 장에서는 자바스크립트로 작성된 예제 코드와 함께 변수, 반복문, 조건문, 함수와 같은 프로그래밍의 기본적인 구성 요소를 소개했습니다. 이 장에서는, 여러분이 자바스크립트 개발자가 되기 위해 자바스크립트에 대해 알아야 할 것들에 중점을 두려고 합니다.
 
-We will introduce quite a few concepts in this chapter that will not be fully explored until subsequent *YDKJS* books. You can think of this chapter as an overview of the topics covered in detail throughout the rest of this series.
+이 장에서 *YDKJS* 시리즈의 후속책까지는 자세히 다뤄지지 않을 꽤 많은 개념을 소개할 것입니다. 이 장을 이 시리즈의 나머지 부분에서 자세히 다루는 주제들의 개요로 생각하셔도 좋습니다.
 
-Especially if you're new to JavaScript, you should expect to spend quite a bit of time reviewing the concepts and code examples here multiple times. Any good foundation is laid brick by brick, so don't expect that you'll immediately understand it all the first pass through.
+특히 자바스크립트가 처음이라면, 이 장에서 여러 번 개념과 코드 예제를 검토하는 데 꽤 많은 시간을 할애해야 합니다. 기반을 단단히 하려면 벽돌을 하나씩 차근차근 쌓아올려야 하는 것처럼, 처음부터 모든것을 이해하려고 하지 마세요.
 
-Your journey to deeply learn JavaScript starts here.
+자바스크립트를 깊이 있게 배우기 위한 여정은 여기에서 시작됩니다.
 
-**Note:** As I said in Chapter 1, you should definitely try all this code yourself as you read and work through this chapter. Be aware that some of the code here assumes capabilities introduced in the newest version of JavaScript at the time of this writing (commonly referred to as "ES6" for the 6th edition of ECMAScript -- the official name of the JS specification). If you happen to be using an older, pre-ES6 browser, the code may not work. A recent update of a modern browser (like Chrome, Firefox, or IE) should be used.
+**참고:** 1장에서 말했듯이, 이 장에서도 모든 예제 코드를 직접 실행해봐야 합니다. 여기에 있는 코드 중 일부는 이 문서를 작성하는 시점의 최신 자바스크립트 버전인 ES6에 소개된 기능을 전제한다는 점에 유의해주세요. (자바스크립트 기술명세서의 공식 명칭인 ECMAScript의 6번째 버전에 대해서는 일반적으로 "ES6"라고 합니다) ES6 이전 브라우저를 사용한다면 코드가 작동하지 않을 수도 있습니다. 최신 업데이트가 된 브라우저(Chrome, Firefox 혹은 IE)를 사용해주세요.
 
-## Values & Types
+## 값 & 타입
 
-As we asserted in Chapter 1, JavaScript has typed values, not typed variables. The following built-in types are available:
+1장에서 설명한 것처럼 자바스크립트는 타입이 지정된 변수가 아닌, 타입이 지정된 값을 가집니다. 다음과 같은 내장 타입들을 사용할 수 있습니다:
 
 * `string`
 * `number`
 * `boolean`
-* `null` and `undefined`
+* `null`과 `undefined`
 * `object`
-* `symbol` (new to ES6)
+* `symbol` (ES6에서 추가됨)
 
-JavaScript provides a `typeof` operator that can examine a value and tell you what type it is:
+자바스크립트에는 값을 검사하고 어떤 타입인지 알려주는 `typeof` 연산자가 있습니다:
 
 ```js
 var a;
@@ -38,7 +38,7 @@ a = true;
 typeof a;				// "boolean"
 
 a = null;
-typeof a;				// "object" -- weird, bug
+typeof a;				// "object" -- 이상한 버그
 
 a = undefined;
 typeof a;				// "undefined"
@@ -47,15 +47,15 @@ a = { b: "c" };
 typeof a;				// "object"
 ```
 
-The return value from the `typeof` operator is always one of six (seven as of ES6! - the "symbol" type) string values. That is, `typeof "abc"` returns `"string"`, not `string`.
+`typeof` 연산자의 반환값은 항상 여섯개(ES6에서는 "symbol" 타입이 추가된 일곱개!)의 문자열 값 중 하나입니다. 즉, `typeof "abc"`는 `string`이 아니라 `"string"`을 반환합니다.
 
-Notice how in this snippet the `a` variable holds every different type of value, and that despite appearances, `typeof a` is not asking for the "type of `a`", but rather for the "type of the value currently in `a`." Only values have types in JavaScript; variables are just simple containers for those values.
+이 스니펫에서 `a` 변수가 모든 다른 타입의 값을 갖고 있으며, 위와 같은 상황에서 `typeof a`가 "`a`의 타입"이 아니라 "현재 `a`에 있는 값의 타입"을 물어본다는 점에 주목하세요.
 
-`typeof null` is an interesting case, because it errantly returns `"object"`, when you'd expect it to return `"null"`.
+`typeof null`은 흥미로운 경우입니다, 왜냐하면 `"null"`을 반환해야한다고 예상하지만 `"object"`를 반환하기 때문입니다.
 
-**Warning:** This is a long-standing bug in JS, but one that is likely never going to be fixed. Too much code on the Web relies on the bug and thus fixing it would cause a lot more bugs!
+**주의:** 이것은 자바스크립트의 오래된 버그지만 절대 고쳐지지 않을 것 같습니다. 웹 상의 너무 많은 코드가 버그에 의존하고 있고, 따라서 이것을 고치는 게 더 많은 버그를 초래할 것입니다!
 
-Also, note `a = undefined`. We're explicitly setting `a` to the `undefined` value, but that is behaviorally no different from a variable that has no value set yet, like with the `var a;` line at the top of the snippet. A variable can get to this "undefined" value state in several different ways, including functions that return no values and usage of the `void` operator.
+또한 `a = undefined`에도 유의하세요. 명시적으로 `a`에 `undefined`값을 할당했지만, 스니펫의 가장 윗 줄에 있는 `var a;`와 같이 값이 설정되지 않은 변수(초기화 되지 않은 변수)와 동작상으로 다를 바가 없습니다. 변수는 아무 값도 반환하지 않는 함수나 `void` 연산자를 사용하는 방법을 포함한 여러가지 방법으로 "undefined"값 상태가 될 수 있습니다.
 
 ### 객체
 
