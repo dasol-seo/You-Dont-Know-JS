@@ -1,28 +1,28 @@
 # You Don't Know JS: Up & Going
 # Chapter 2: Into JavaScript
 
-In the previous chapter, I introduced the basic building blocks of programming, such as variables, loops, conditionals, and functions. Of course, all the code shown has been in JavaScript. But in this chapter, we want to focus specifically on things you need to know about JavaScript to get up and going as a JS developer.
+이전 장에서는 자바스크립트로 작성된 예제 코드와 함께 변수, 반복문, 조건문, 함수와 같은 프로그래밍의 기본적인 구성 요소를 소개했습니다. 이 장에서는, 여러분이 자바스크립트 개발자가 되기 위해 자바스크립트에 대해 알아야 할 것들에 중점을 두려고 합니다.
 
-We will introduce quite a few concepts in this chapter that will not be fully explored until subsequent *YDKJS* books. You can think of this chapter as an overview of the topics covered in detail throughout the rest of this series.
+이 장에서 *YDKJS* 시리즈의 후속책까지는 자세히 다뤄지지 않을 꽤 많은 개념을 소개할 것입니다. 이 장을 이 시리즈의 나머지 부분에서 자세히 다루는 주제들의 개요로 생각하셔도 좋습니다.
 
-Especially if you're new to JavaScript, you should expect to spend quite a bit of time reviewing the concepts and code examples here multiple times. Any good foundation is laid brick by brick, so don't expect that you'll immediately understand it all the first pass through.
+특히 자바스크립트가 처음이라면, 이 장에서 여러 번 개념과 코드 예제를 검토하는 데 꽤 많은 시간을 할애해야 합니다. 기반을 단단히 하려면 벽돌을 하나씩 차근차근 쌓아올려야 하는 것처럼, 처음부터 모든것을 이해하려고 하지 마세요.
 
-Your journey to deeply learn JavaScript starts here.
+자바스크립트를 깊이 있게 배우기 위한 여정은 여기에서 시작됩니다.
 
-**Note:** As I said in Chapter 1, you should definitely try all this code yourself as you read and work through this chapter. Be aware that some of the code here assumes capabilities introduced in the newest version of JavaScript at the time of this writing (commonly referred to as "ES6" for the 6th edition of ECMAScript -- the official name of the JS specification). If you happen to be using an older, pre-ES6 browser, the code may not work. A recent update of a modern browser (like Chrome, Firefox, or IE) should be used.
+**참고:** 1장에서 말했듯이, 이 장에서도 모든 예제 코드를 직접 실행해봐야 합니다. 여기에 있는 코드 중 일부는 이 문서를 작성하는 시점의 최신 자바스크립트 버전인 ES6에 소개된 기능을 전제한다는 점에 유의해주세요. (자바스크립트 기술명세서의 공식 명칭인 ECMAScript의 6번째 버전에 대해서는 일반적으로 "ES6"라고 합니다) ES6 이전 브라우저를 사용한다면 코드가 작동하지 않을 수도 있습니다. 최신 업데이트가 된 브라우저(Chrome, Firefox 혹은 IE)를 사용해주세요.
 
-## Values & Types
+## 값 & 타입
 
-As we asserted in Chapter 1, JavaScript has typed values, not typed variables. The following built-in types are available:
+1장에서 설명한 것처럼 자바스크립트는 타입이 지정된 변수가 아닌, 타입이 지정된 값을 가집니다. 다음과 같은 내장 타입들을 사용할 수 있습니다:
 
 * `string`
 * `number`
 * `boolean`
-* `null` and `undefined`
+* `null`과 `undefined`
 * `object`
-* `symbol` (new to ES6)
+* `symbol` (ES6에서 추가됨)
 
-JavaScript provides a `typeof` operator that can examine a value and tell you what type it is:
+자바스크립트에는 값을 검사하고 어떤 타입인지 알려주는 `typeof` 연산자가 있습니다:
 
 ```js
 var a;
@@ -38,7 +38,7 @@ a = true;
 typeof a;				// "boolean"
 
 a = null;
-typeof a;				// "object" -- weird, bug
+typeof a;				// "object" -- 이상한 버그
 
 a = undefined;
 typeof a;				// "undefined"
@@ -47,19 +47,19 @@ a = { b: "c" };
 typeof a;				// "object"
 ```
 
-The return value from the `typeof` operator is always one of six (seven as of ES6! - the "symbol" type) string values. That is, `typeof "abc"` returns `"string"`, not `string`.
+`typeof` 연산자의 반환값은 항상 여섯개(ES6에서는 "symbol" 타입이 추가된 일곱개!)의 문자열 값 중 하나입니다. 즉, `typeof "abc"`는 `string`이 아니라 `"string"`을 반환합니다.
 
-Notice how in this snippet the `a` variable holds every different type of value, and that despite appearances, `typeof a` is not asking for the "type of `a`", but rather for the "type of the value currently in `a`." Only values have types in JavaScript; variables are just simple containers for those values.
+이 스니펫에서 `a` 변수가 모든 다른 타입의 값을 갖고 있으며, 위와 같은 상황에서 `typeof a`가 "`a`의 타입"이 아니라 "현재 `a`에 있는 값의 타입"을 물어본다는 점에 주목하세요.
 
-`typeof null` is an interesting case, because it errantly returns `"object"`, when you'd expect it to return `"null"`.
+`typeof null`은 흥미로운 경우입니다, 왜냐하면 `"null"`을 반환해야한다고 예상하지만 `"object"`를 반환하기 때문입니다.
 
-**Warning:** This is a long-standing bug in JS, but one that is likely never going to be fixed. Too much code on the Web relies on the bug and thus fixing it would cause a lot more bugs!
+**주의:** 이것은 자바스크립트의 오래된 버그지만 절대 고쳐지지 않을 것 같습니다. 웹 상의 너무 많은 코드가 버그에 의존하고 있고, 따라서 이것을 고치는 게 더 많은 버그를 초래할 것입니다!
 
-Also, note `a = undefined`. We're explicitly setting `a` to the `undefined` value, but that is behaviorally no different from a variable that has no value set yet, like with the `var a;` line at the top of the snippet. A variable can get to this "undefined" value state in several different ways, including functions that return no values and usage of the `void` operator.
+또한 `a = undefined`에도 유의하세요. 명시적으로 `a`에 `undefined`값을 할당했지만, 스니펫의 가장 윗 줄에 있는 `var a;`와 같이 값이 설정되지 않은 변수(초기화 되지 않은 변수)와 동작상으로 다를 바가 없습니다. 변수는 아무 값도 반환하지 않는 함수나 `void` 연산자를 사용하는 방법을 포함한 여러가지 방법으로 "undefined"값 상태가 될 수 있습니다.
 
-### Objects
+### 객체
 
-The `object` type refers to a compound value where you can set properties (named locations) that each hold their own values of any type. This is perhaps one of the most useful value types in all of JavaScript.
+`object` 타입은 여러분이 원하는 이름으로 만든 속성들을 저장할 수 있는 복합적인 값을 참조합니다. 이때 속성들은 각각 자신의 값을 갖고 있고, 그 값의 타입에는 제한이 없습니다. `object` 타입은 자바스크립트에서 가장 유용하게 사용할 수 있는 타입 중 하나입니다.
 
 ```js
 var obj = {
@@ -77,15 +77,15 @@ obj["b"];	// 42
 obj["c"];	// true
 ```
 
-It may be helpful to think of this `obj` value visually:
+아래 그림은 여러분이 위의 `obj`에 대해 더 잘 이해할 수 있게 도식화하였습니다:
 
 <img src="fig4.png">
 
-Properties can either be accessed with *dot notation* (i.e., `obj.a`) or *bracket notation* (i.e., `obj["a"]`). Dot notation is shorter and generally easier to read, and is thus preferred when possible.
+속성들에는 *점 표기법* (i.e., `obj.a`)과 *대괄호 표기법* (i.e., `obj["a"]`)으로 접근이 가능합니다. 일반적으로 점 표기법은 짧고, 가독성이 좋기 때문에 객체에 접근할 때 주로 사용됩니다.
 
-Bracket notation is useful if you have a property name that has special characters in it, like `obj["hello world!"]` -- such properties are often referred to as *keys* when accessed via bracket notation. The `[ ]` notation requires either a variable (explained next) or a `string` *literal* (which needs to be wrapped in `" .. "` or `' .. '`).
+대괄호 표기법은 만약 여러분이 지정한 속성의 이름이 obj["hello world!"]처럼 특수 문자를 포함하고 있을 때 유용합니다. 이러한 속성들의 이름은 해당 객체에 대괄호 표기법으로 접근할 때 보통 *키*라고 불립니다. `[ ]` 표기법은 변수(다음에 설명합니다.)나 `string` *리터럴*(`" .. "` 나 `' .. '`로 감싸져 있는)을 필요로 합니다.
 
-Of course, bracket notation is also useful if you want to access a property/key but the name is stored in another variable, such as:
+대괄호 표기법은 다음과 같이 다른 변수에 속성/키의 이름이 저장된 경우에도 매우 유용합니다:
 
 ```js
 var obj = {
@@ -99,13 +99,13 @@ obj[b];			// "hello world"
 obj["b"];		// 42
 ```
 
-**Note:** For more information on JavaScript `object`s, see the *this & Object Prototypes* title of this series, specifically Chapter 3.
+**참고:** 자바스크립트 `object`에 대해 더 자세한 정보를 알고 싶다면, 이 시리즈의 *this & Object Prototypes*(특히 3장)을 참고하세요. 
 
-There are a couple of other value types that you will commonly interact with in JavaScript programs: *array* and *function*. But rather than being proper built-in types, these should be thought of more like subtypes -- specialized versions of the `object` type.
+자바스크립트 프로그램에서 여러분들이 자주 보게 될 몇 가지 다른 타입들이 있습니다: *배열*과 *함수*. 하지만 이 두 타입은 자바스크립트에 내장된 타입이라고 하기보단, `object` 타입에서 조금 더 전문화되어 만들어진 버전, 즉 일종의 하위 타입이라고 생각하는 것이 좋습니다.
 
-#### Arrays
+#### 배열
 
-An array is an `object` that holds values (of any type) not particularly in named properties/keys, but rather in numerically indexed positions. For example:
+배열은 특정한 이름으로 지정된 속성/키 대신 오름차순 숫자 목록을 사용하는 object입니다. 예를 들어:
 
 ```js
 var arr = [
@@ -122,21 +122,21 @@ arr.length;		// 3
 typeof arr;		// "object"
 ```
 
-**Note:** Languages that start counting at zero, like JS does, use `0` as the index of the first element in the array.
+**참고:** 자바스크립트와 같이 0부터 숫자를 세는 언어는, 배열의 첫 번째 요소의 인덱스로 0을 사용합니다.
 
-It may be helpful to think of `arr` visually:
+아래 그림은 여러분이 위의 `arr`에 대해 더 잘 이해할 수 있게 도식화하였습니다:
 
 <img src="fig5.png">
 
-Because arrays are special objects (as `typeof` implies), they can also have properties, including the automatically updated `length` property.
+배열도 typeof가 암시하듯 특별하지만 객체이기 때문에 자동으로 갱신되는 length 속성을 비롯한 다른 속성들을 가질 수 있습니다.
 
-You theoretically could use an array as a normal object with your own named properties, or you could use an `object` but only give it numeric properties (`0`, `1`, etc.) similar to an array. However, this would generally be considered improper usage of the respective types.
+이론적으로는 배열도 여러분이 원하는 이름으로 작성된 속성을 갖는 일반 객체로써 사용할 수 있습니다. 또한 `object`를 숫자로 된 속성(`0`, `1`, etc.)값만을 갖는 배열과 같은 형태로 사용할 수 도 있습니다. 그러나 이런 방법들은 일반적으로 각각의 타입의 관점에서 봤을 때 부적절한 사용법으로 여겨집니다.
 
-The best and most natural approach is to use arrays for numerically positioned values and use `object`s for named properties.
+위와 같은 이유로, 특정한 이름이 붙여진 속성이 필요하다면 `object`를 이용하고, 순서를 갖는 값들은 배열을 이용하는 것이 가장 자연스럽고 좋은 방법입니다.
 
-#### Functions
+#### 함수
 
-The other `object` subtype you'll use all over your JS programs is a function:
+함수는 여러분이 자바스크립트 프로그램을 작성할 때 사용하게 될 `object`의 다른 하위 타입입니다:
 
 ```js
 function foo() {
@@ -150,15 +150,15 @@ typeof foo();		// "number"
 typeof foo.bar;		// "string"
 ```
 
-Again, functions are a subtype of `objects` -- `typeof` returns `"function"`, which implies that a `function` is a main type -- and can thus have properties, but you typically will only use function object properties (like `foo.bar`) in limited cases.
+다시 말하지만, 함수는 `objects`의 하위 타입입니다. — `typeof`는 함수에 대해서 `"function"`을 반환하는데 이는 `function`이 주요 타입임을 의미합니다 -- 일반적으로 제한적인 경우에만 `foo.bar`와 같은 함수 객체 속성을 사용할 것입니다.
 
-**Note:** For more information on JS values and their types, see the first two chapters of the *Types & Grammar* title of this series.
+**참고:** 자바스크립트의 값과 타입에 대한 자세한 내용은, *Types & Grammar*시리즈의 처음 두 장을 참고하세요.
 
-### Built-In Type Methods
+### 내장타입 메소드
 
-The built-in types and subtypes we've just discussed have behaviors exposed as properties and methods that are quite powerful and useful.
+앞서 말한 내장타입과 하위 타입은 매우 강력하고 유용한 속성과 메소드를 갖고 있습니다.
 
-For example:
+예를 들어:
 
 ```js
 var a = "hello world";
@@ -169,31 +169,31 @@ a.toUpperCase();		// "HELLO WORLD"
 b.toFixed(4);			// "3.1416"
 ```
 
-The "how" behind being able to call `a.toUpperCase()` is more complicated than just that method existing on the value.
+`a.toUpperCase()`를 호출하는 방법은 생각보다 복잡합니다.
 
-Briefly, there is a `String` (capital `S`) object wrapper form, typically called a "native," that pairs with the primitive `string` type; it's this object wrapper that defines the `toUpperCase()` method on its prototype.
+요약하면, 일반적으로 "네이티브"라고 부르는 `String`(대문자 `S`)객체 래퍼 형태가 있고, 이는 원시 `string`타입과 짝을 이룹니다; 이는 프로토타입에서 `toUpperCase()` 메소드를 정의하는 객체 래퍼입니다.
 
-When you use a primitive value like `"hello world"` as an `object` by referencing a property or method (e.g., `a.toUpperCase()` in the previous snippet), JS automatically "boxes" the value to its object wrapper counterpart (hidden under the covers).
+`"hello world"`와 같은 원시값을 속성이나 메소드를 참조하는 `object`처럼 사용할 때(예를 들어 이전의 스니펫에서 `a.toUpperCase()` 처럼), 자바스크립트는 원시값을 짝이 맞는 객체 래퍼로 "감쌉니다".
 
-A `string` value can be wrapped by a `String` object, a `number` can be wrapped by a `Number` object, and a `boolean` can be wrapped by a `Boolean` object. For the most part, you don't need to worry about or directly use these object wrapper forms of the values -- prefer the primitive value forms in practically all cases and JavaScript will take care of the rest for you.
+`string`값은 `String`객체로 감쌀 수 있고, `number`는 `Number`객체로 감쌀 수 있고, `boolean`은 `Boolean`객체로 감쌀 수 있습니다. 실제로 모든 경우에 원시값 형태를 사용하는 것을 선호하고 자바스크립트가 여러분을 위해 나머지 부분을 처리해주기 때문에 여러분은 객체 래퍼 형태를 직접 사용할 필요는 없습니다.
 
-**Note:** For more information on JS natives and "boxing," see Chapter 3 of the *Types & Grammar* title of this series. To better understand the prototype of an object, see Chapter 5 of the *this & Object Prototypes* title of this series.
+**참고:** 자바스크립트 네이티브와 박싱에 대한 자세한 내용은 *Types & Grammar*시리즈의 3장을 참고하세요. 객체의 프로토타입을 잘 이해하려면, *this & Object Prototypes* 시리즈의 5장을 참고하세요.
 
-### Comparing Values
+### 값 비교하기
 
-There are two main types of value comparison that you will need to make in your JS programs: *equality* and *inequality*. The result of any comparison is a strictly `boolean` value (`true` or `false`), regardless of what value types are compared.
+자바스크립트에는 값 비교를 할 때 사용하는 주요한 타입 두 가지가 있습니다: *동등* 과 *비동등*. 비교되는 값의 타입이 무엇인지 관계 없이, 모든 비교의 결과는 엄격하게 `boolean`값입니다(`true` 또는 `false`).
 
-#### Coercion
+#### 강제 변환
 
-We talked briefly about coercion in Chapter 1, but let's revisit it here.
+우리는 1장에서 강제 변환에 대해 간단하게 얘기했는데, 여기에서 다시 한번 다뤄보도록 하겠습니다.
 
-Coercion comes in two forms in JavaScript: *explicit* and *implicit*. Explicit coercion is simply that you can see obviously from the code that a conversion from one type to another will occur, whereas implicit coercion is when the type conversion can happen as more of a non-obvious side effect of some other operation.
+명시적인 강제 변환은 어떤 타입에서 다른 타입으로 변환이 일어나는 것을 코드를 통해 명백하게 알아볼 수 있을 만큼 단순하지만, 암시적인 강제 변환은 타입 변환이 다른 동작의 불분명하고 의도하지 않은 결과처럼 보일 수 있습니다.
 
-You've probably heard sentiments like "coercion is evil" drawn from the fact that there are clearly places where coercion can produce some surprising results. Perhaps nothing evokes frustration from developers more than when the language surprises them.
+여러분은 아마 "강제 변환은 악마다"와 같은 말을 들어봤을 겁니다. 강제 변환이 특정 위치에서는 예상치 못한 결과를 불러올 수 있기 때문에 전해진 말입니다. 아마 언어가 당황스럽게 할 때만큼 개발자들이 좌절감을 느끼는 때도 없을 것입니다.
 
-Coercion is not evil, nor does it have to be surprising. In fact, the majority of cases you can construct with type coercion are quite sensible and understandable, and can even be used to *improve* the readability of your code. But we won't go much further into that debate -- Chapter 4 of the *Types & Grammar* title of this series covers all sides.
+강제 변환은 악마도 아니고, 놀랄 일도 아닙니다. 사실, 타입 강제 변환을 사용할 수 있는 대부분의 경우는 상당히 알아채기 쉽고 이해할 수 있는 부분이고, 심지어 여러분의 코드의 가독성을 *향상시키는데* 사용될 수 있습니다. 그러나 우리는 이 논쟁에 대해서는 더 이상 진행하지 않을 것입니다 -- *Types & Grammar*시리즈 4장에서 이 부분을 다루고 있습니다.
 
-Here's an example of *explicit* coercion:
+다음은 *명시적인* 강제 변환의 예시입니다:
 
 ```js
 var a = "42";
@@ -201,18 +201,18 @@ var a = "42";
 var b = Number( a );
 
 a;				// "42"
-b;				// 42 -- the number!
+b;				// 42 -- 숫자!
 ```
 
-And here's an example of *implicit* coercion:
+그리고 다음은 *암시적인* 강제 변환의 예시입니다:
 
 ```js
 var a = "42";
 
-var b = a * 1;	// "42" implicitly coerced to 42 here
+var b = a * 1;	// "42" "42" 암시적으로 42를 강제 변환
 
 a;				// "42"
-b;				// 42 -- the number!
+b;				// 42 -- 숫자!
 ```
 
 #### 참 추정 & 거짓 추정
