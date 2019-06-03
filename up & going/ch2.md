@@ -333,7 +333,7 @@ a == b;		// false
 
 식별자는 무조건 `a`-`z`, `A`-`Z`, `$`, `_`로 시작해야 합니다. 식별자 글자 중에 숫자 `0`-`9`가 포함 되어 질수 있습니다.
 
-Generally, the same rules apply to a property name as to a variable identifier. However, certain words cannot be used as variables, but are OK as property names. These words are called "reserved words," and include the JS keywords (`for`, `in`, `if`, etc.) as well as `null`, `true`, and `false`. 보통 변수 식별자로서의 속성이 이름또한 같은 규칙을 적용합니다. 하지만 특정 단어들은 변수로 쓸수 없지만 속성 이름으로는 가능합니다. 이러한 단어들을 "예약어"라고 합니다. 또한 자바스크립트 키워드(`for`, `in`, `if`, 등등)와 `null`, `true`, `false`도 포함됩니다.
+보통 변수 식별자로서의 속성이 이름또한 같은 규칙을 적용합니다. 하지만 특정 단어들은 변수로 쓸수 없지만 속성 이름으로는 가능합니다. 이러한 단어들을 "예약어"라고 합니다. 또한 자바스크립트 키워드(`for`, `in`, `if`, 등등)와 `null`, `true`, `false`도 포함됩니다.
 
 **참고:** 예약어에 대해서 더많은 내용을 알고 싶으시면 *Types & Grammar* 의 부록 A를 참고하세요.
 
