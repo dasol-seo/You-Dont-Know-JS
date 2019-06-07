@@ -663,20 +663,20 @@ x;	// 42
 
 The `42` value gets `return`ed from the `IIFE`-named function being executed, and is then assigned to `x`.
 
-### Closure
+### 클로져
 
-*Closure* is one of the most important, and often least understood, concepts in JavaScript. I won't cover it in deep detail here, and instead refer you to the *Scope & Closures* title of this series. But I want to say a few things about it so you understand the general concept. It will be one of the most important techniques in your JS skillset.
+*클로져*는 자바스트립트 개념에서 가장 중요한 개념이기도 하면서 이해도가 낮기도 합니다. 이 장에서는 세부사항까지 깊게 다루지 않을 것입니다. 대신에, 이 시리즈의 *Scope & Closure*를 참고하세요. 하지만 여러분에게 일반적인 개념을 이해시켜 드리기 위해 약간의 설명을 드리려고 합니다. 자바스크립트 기술 중에 가장 중요한 부분이 될 것입니다.
 
-You can think of closure as a way to "remember" and continue to access a function's scope (its variables) even once the function has finished running.
+클로져는 함수 실행이 끝났음에도 불구하고, 함수 스코프를(내부 변수) “기억” 하고 계속 접근하는 방법이라고 생각하셔도 좋습니다.
 
-Consider:
+생각해보세요:
 
 ```js
 function makeAdder(x) {
-	// parameter `x` is an inner variable
+	// 파라미터 ‘x’는 내부 변수입니다.
 
-	// inner function `add()` uses `x`, so
-	// it has a "closure" over it
+	// 내부 함수 `add()`는 `x`를 사용하기 때문에
+	// "closure"를 가지고 있습니다.
 	function add(y) {
 		return y + x;
 	};
@@ -685,17 +685,17 @@ function makeAdder(x) {
 }
 ```
 
-The reference to the inner `add(..)` function that gets returned with each call to the outer `makeAdder(..)` is able to remember whatever `x` value was passed in to `makeAdder(..)`. Now, let's use `makeAdder(..)`:
+외부 `makeAdder()`함수 호출에 따라 반환되는 내부 `add()`함수 참조는 `makeAdder()`로 어떤 `x` 값이 들어오든지 기억을 할 수 있습니다. 그럼, `makeAdder(..)`를 사용해보겠습니다:
 
 ```js
-// `plusOne` gets a reference to the inner `add(..)`
-// function with closure over the `x` parameter of
-// the outer `makeAdder(..)`
+// ‘plusOne’은
+// 외부 `makeAdder(..)`함수의 `x` 파라미터 클로저를 가지는
+// 내부 `add()`함수에 대한 참조를 갖습니다.
 var plusOne = makeAdder( 1 );
 
-// `plusTen` gets a reference to the inner `add(..)`
-// function with closure over the `x` parameter of
-// the outer `makeAdder(..)`
+// ‘plusTen’은
+// 외부 `makeAdder(..)`함수의 `x` 파라미터 클로저를 가지는
+// 내부 `add()`함수에 대한 참조를 갖습니다.
 var plusTen = makeAdder( 10 );
 
 plusOne( 3 );		// 4  <-- 1 + 3
@@ -704,22 +704,22 @@ plusOne( 41 );		// 42 <-- 1 + 41
 plusTen( 13 );		// 23 <-- 10 + 13
 ```
 
-More on how this code works:
+어떻게 코드가 동작하는지 자세히 살펴보면:
 
-1. When we call `makeAdder(1)`, we get back a reference to its inner `add(..)` that remembers `x` as `1`. We call this function reference `plusOne(..)`.
-2. When we call `makeAdder(10)`, we get back another reference to its inner `add(..)` that remembers `x` as `10`. We call this function reference `plusTen(..)`.
-3. When we call `plusOne(3)`, it adds `3` (its inner `y`) to the `1` (remembered by `x`), and we get `4` as the result.
-4. When we call `plusTen(13)`, it adds `13` (its inner `y`) to the `10` (remembered by `x`), and we get `23` as the result.
+1. `makeAdder(1)`를 호출할 때, `x`를 `1`이라고 기억하는 내부 `add(..)`에 대한 참조를 돌려받습니다. 우리는 이 함수 참조 `plusOne(..)`을 호출합니다.
+2. `makeAdder(10)`를 호출할 때, `x`를 `10`이라고 기억하는 내부 `add(..)`에 대한 참조를 돌려받습니다. 우리는 이 함수 참조 `plusTen(..)`을 호출합니다.
+3. `plusOne(3)`을 호출할 때, 함수는 `3`(내부 `y`)을 `1`(`x`로 기억된)과 더하고, `4`를 결괏값으로 받습니다.
+4. `plusOne(13)`을 호출할 때, 함수는 `13`(내부 `y`)을 `10`(`x`로 기억된)과 더하고, `23`을 결괏값으로 받습니다.
 
-Don't worry if this seems strange and confusing at first -- it can be! It'll take lots of practice to understand it fully.
+만약 처음에 이상해 보이고 헷갈리시면 걱정하지 마세요 —- 처음에는 그럴 수도 있습니다! 완전히 이해하는 데에는 수많은 연습이 필요할 것입니다.
 
-But trust me, once you do, it's one of the most powerful and useful techniques in all of programming. It's definitely worth the effort to let your brain simmer on closures for a bit. In the next section, we'll get a little more practice with closure.
+하지만 저를 믿으십시오, 그러면 프로그래밍에서 가장 강력하고 유용한 기술 중 하나가 될 것입니다. 클로져에 대해서 충분히 생각해보는 것은 확실히 가치가 있습니다. 다음 섹션에서는, 클로져를 가지고 더 실습해 볼 것입니다.
 
-#### Modules
+#### 모듈
 
-The most common usage of closure in JavaScript is the module pattern. Modules let you define private implementation details (variables, functions) that are hidden from the outside world, as well as a public API that *is* accessible from the outside.
+자바스크립트에서 가장 일반적 클로져 사용은 모듈 패턴입니다. 모듈은 외부 세계로부터 은닉된 수행 세부사항(변수, 함수)과 외부에서 접근 가능한 공개 API를 정의할 수 있게 합니다.
 
-Consider:
+생각해보세요:
 
 ```js
 function User(){
@@ -729,7 +729,7 @@ function User(){
 		username = user;
 		password = pw;
 
-		// do the rest of the login work
+		// 나머지 로그인 과정을 수행
 	}
 
 	var publicAPI = {
@@ -739,29 +739,29 @@ function User(){
 	return publicAPI;
 }
 
-// create a `User` module instance
+// ‘User’ 모듈 인스턴스 만들기
 var fred = User();
 
 fred.login( "fred", "12Battery34!" );
 ```
 
-The `User()` function serves as an outer scope that holds the variables `username` and `password`, as well as the inner `doLogin()` function; these are all private inner details of this `User` module that cannot be accessed from the outside world.
+‘User()’함수는 변수 `username`과 `password`를 가지고 있는 외부 스코프 역할과 내부 `doLogin()`함수 스코프 역할을 합니다. 이러한 것들은 전부 외부 세계에서 접근할 수 없는 `User` 모듈의 은닉화된 내부 사항입니다.
 
-**Warning:** We are not calling `new User()` here, on purpose, despite the fact that probably seems more common to most readers. `User()` is just a function, not a class to be instantiated, so it's just called normally. Using `new` would be inappropriate and actually waste resources.
+**경고:** 대부분 독자들에게 더 일반적 일지라도, 우리는 여기서 의도적으로 `new User()`를 호출하지 않을 것입니다. `User()`는 인스턴스화되는 클래스가 아니라 단지 일반 함수이기 때문에, 그냥 일반적으로 호출될 것입니다. `new`를 사용하는 것은 적절하지 못하고 사실 자원 낭비일 것입니다.
 
-Executing `User()` creates an *instance* of the `User` module -- a whole new scope is created, and thus a whole new copy of each of these inner variables/functions. We assign this instance to `fred`. If we run `User()` again, we'd get a new instance entirely separate from `fred`.
+`User()`를 실행하는 것은 `User` 모듈의 *인스턴스*를 생성합니다. —- 완전히 새로운 스코프가 생성되고, 각 내부 변수/함수들에 대한 완전히 새로운 복사가 이루어집니다. 우리는 이 인스턴스를 `fred`에 할당을 했습니다. 만약에 `User()`를 다시 실행하게 되면, 우리는 `fred`와는 완전히 독립적인 새로운 인스턴스를 얻게 됩니다.
 
-The inner `doLogin()` function has a closure over `username` and `password`, meaning it will retain its access to them even after the `User()` function finishes running.
+내부 `doLogin()` 함수는 `username`과 `password`에 대해 클로져를 가지고, 이는 `User()`함수 실행이 끝난 이후에도 그 변수들에 접근 가능하다는 것을 의미합니다.
 
-`publicAPI` is an object with one property/method on it, `login`, which is a reference to the inner `doLogin()` function. When we return `publicAPI` from `User()`, it becomes the instance we call `fred`.
+`publicAPI`는 `login`이라는 하나의 프로퍼티/메소드를 가지고 있는 객체 입니다. 이 객체는 내부 `doLogin()`함수를 참조합니다. `User()`로부터 `publicAPI`를 반환할 때, 이 객체는 `fred`라는 인스턴스가 됩니다.
 
-At this point, the outer `User()` function has finished executing. Normally, you'd think the inner variables like `username` and `password` have gone away. But here they have not, because there's a closure in the `login()` function keeping them alive.
+이 시점에서, 외부 `User()` 함수는 실행이 종료됩니다. 일반적으로, `username`과 `password` 변수는 사라진다고 생각할 것입니다. 하지만 그렇지 않습니다. 왜냐하면, `login()` 함수에 변수들을 기억하는 클로져가 있기 때문입니다.
 
-That's why we can call `fred.login(..)` -- the same as calling the inner `doLogin(..)` -- and it can still access `username` and `password` inner variables.
+이러한 이유로 우리는 `fred.login(..)` —- 내부 `doLogin(..)`을 호출하는 것과 같은 -— 을 호출할 수 있고, 내부변수 `username`과 `password`에 접근할 수 있습니다.
 
-There's a good chance that with just this brief glimpse at closure and the module pattern, some of it is still a bit confusing. That's OK! It takes some work to wrap your brain around it.
+이렇게 클로져와 모듈 패턴을 잠깐 살펴볼 기회가 있었습니다. 이중 몇몇은 여전히 헷갈릴 것입니다. 괜찮습니다! 머리속에 정리되는 데에 조금의 노력이 필요합니다.
 
-From here, go read the *Scope & Closures* title of this series for a much more in-depth exploration.
+더 깊은 내용에 대해 알고 싶으시면 이 시리즈의 *Scope & Closures*를 읽어보세요.
 
 ## `this` Identifier
 
